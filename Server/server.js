@@ -176,8 +176,29 @@ const FIREBASE_WEB_CONFIG = { // giống Client/auth.js
     projectId: "chat-app-demo-7d5c8",
     appId: "1:447306601552:web:44bd55538f9d245404ad55"
 };
+// Trình duyệt điện thoại chặn cookie bên thứ ba, nên đăng nhập Google qua chat-app-demo-7d5c8.firebaseapp.com
+// hay hỏng (auth/popup-closed-by-user). Cách Firebase khuyến nghị: chuyển tiếp /__/auth/* qua chính tên miền này
+// rồi đặt authDomain = tên miền của server. Cần thêm https://<tên miền>/__/auth/handler vào Authorized redirect URIs.
+app.use('/__', async (req, res) => {
+    try {
+        const r = await fetch(`https://${FIREBASE_WEB_CONFIG.authDomain}/__${req.url}`, {
+            headers: { 'user-agent': req.get('user-agent') || '', 'accept-language': req.get('accept-language') || '' }
+        });
+        res.status(r.status);
+        const ct = r.headers.get('content-type');
+        if (ct) res.type(ct);
+        res.send(Buffer.from(await r.arrayBuffer()));
+    } catch (e) {
+        res.status(502).send('Không chuyển tiếp được tới Firebase Auth.');
+    }
+});
+
 app.get(['/app', '/app/'], (req, res) => {
     const body = fs.readFileSync(path.join(__dirname, '../mobile/NutriAI-App.html'), 'utf8');
+    const host = req.get('host') || '';
+    const firebaseCfg = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(host)
+        ? FIREBASE_WEB_CONFIG
+        : { ...FIREBASE_WEB_CONFIG, authDomain: host };
     res.type('html').send(`<!doctype html>
 <html lang="vi"><head>
 <meta charset="utf-8">
@@ -186,7 +207,7 @@ app.get(['/app', '/app/'], (req, res) => {
 <style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box;height:100%}</style>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-<script>window.NUTRIAI_ONLINE = { api: '', firebase: ${JSON.stringify(FIREBASE_WEB_CONFIG)} };</script>
+<script>window.NUTRIAI_ONLINE = { api: '', firebase: ${JSON.stringify(firebaseCfg)} };</script>
 </head><body>
 ${body}
 </body></html>`);
@@ -195,7 +216,8 @@ ${body}
 // --- API ROUTES ---
 
 app.post('/api/auth/register', async (req, res) => {
-    const { name, email, password, phone, age, gender } = req.body;
+    const { name, password, phone, age, gender } = req.body;
+    const email = String(req.body.email || '').trim().toLowerCase();
     try {
         const role = (email === process.env.ADMIN_EMAIL) ? 'admin' : 'user';
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -211,9 +233,11 @@ app.post('/api/auth/register', async (req, res) => {
 });
 
 app.post('/api/auth/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { password } = req.body;
+    // TiDB mặc định so sánh chuỗi phân biệt hoa/thường; bàn phím điện thoại hay tự viết hoa chữ đầu
+    const email = String(req.body.email || '').trim();
     try {
-        const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+        const [rows] = await pool.query('SELECT * FROM users WHERE LOWER(email) = LOWER(?)', [email]);
         const user = rows[0];
         if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({ id: user.id, role: user.role }, JWT_SECRET, { expiresIn: '7d' });
@@ -232,7 +256,7 @@ app.post('/api/auth/google', async (req, res) => {
         const decodedToken = await getAuth().verifyIdToken(token);
         const { email, name, picture } = decodedToken;
 
-        let [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+        let [rows] = await pool.query('SELECT * FROM users WHERE LOWER(email) = LOWER(?)', [email]);
         let user = rows[0];
         if (!user) {
             const role = (email === process.env.ADMIN_EMAIL) ? 'admin' : 'user';

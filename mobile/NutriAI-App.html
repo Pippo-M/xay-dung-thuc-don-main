@@ -378,15 +378,42 @@ function pushProfile(){
     .then(function(r){ toast('Đã lưu hồ sơ lên máy chủ' + (r.targets ? ' · TDEE ' + nf(r.targets.tdee_kcal, 0) + ' kcal' : '')); })
     .catch(function(e){ toast('Chưa lưu được lên máy chủ: ' + e.message); });
 }
-function googleLogin(){
-  if (!window.firebase) { toast('Chưa tải được Firebase, kiểm tra kết nối mạng'); return; }
+function fbAuth(){
+  if (!window.firebase) return null;
   try { if (!firebase.apps.length) firebase.initializeApp(ONLINE.firebase); } catch (e) {}
-  U.busy = true; U.loginErr = ''; render();
-  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    .then(function(r){ return r.user.getIdToken(); })
+  return firebase.auth();
+}
+function googleError(e){
+  U.busy = false;
+  var code = (e && e.code) || '';
+  U.loginErr = code === 'auth/unauthorized-domain' ? 'Tên miền này chưa được thêm vào Firebase (Authorized domains).'
+    : (code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request') ? 'Cửa sổ Google đã đóng trước khi xong. Hãy thử lại.'
+    : 'Đăng nhập Google thất bại: ' + ((e && e.message) || e);
+  render();
+}
+function finishGoogle(user){
+  return user.getIdToken()
     .then(function(t){ return api('/api/auth/google', 'POST', { token:t }); })
-    .then(function(d){ return onAuthed(d, 'google'); })
-    .catch(function(e){ U.busy = false; U.loginErr = 'Đăng nhập Google thất bại: ' + (e.message || e); render(); });
+    .then(function(d){ return onAuthed(d, 'google'); });
+}
+/* Điện thoại: chuyển hẳn sang trang Google rồi quay lại (popup trên điện thoại hay bị mất liên lạc) */
+var IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+function googleLogin(){
+  var auth = fbAuth();
+  if (!auth) { toast('Chưa tải được Firebase, kiểm tra kết nối mạng'); return; }
+  U.busy = true; U.loginErr = ''; render();
+  var provider = new firebase.auth.GoogleAuthProvider();
+  provider.setCustomParameters({ prompt:'select_account' });
+  if (IS_MOBILE) { auth.signInWithRedirect(provider).catch(googleError); return; }
+  auth.signInWithPopup(provider).then(function(r){ return finishGoogle(r.user); }).catch(googleError);
+}
+function resumeGoogleRedirect(){
+  var auth = fbAuth();
+  if (!auth) return;
+  U.busy = true; render();
+  auth.getRedirectResult()
+    .then(function(r){ if (r && r.user) return finishGoogle(r.user); U.busy = false; render(); })
+    .catch(googleError);
 }
 function emailLogin(em, pw, register){
   U.busy = true; U.loginErr = ''; render();
@@ -395,7 +422,8 @@ function emailLogin(em, pw, register){
   p.then(function(d){ return onAuthed(d, 'email'); })
    .catch(function(e){
      U.busy = false;
-     if (!register && e.status === 401) { U.pending = { em:em, pw:pw }; U.offerRegister = true; U.loginErr = 'Sai email hoặc mật khẩu. Nếu chưa có tài khoản, bấm “Tạo tài khoản mới”.'; }
+     if (!register && e.status === 401) { U.pending = { em:em, pw:pw }; U.offerRegister = true; U.loginErr = 'Sai email hoặc mật khẩu. Nếu trước đây bạn đăng ký bằng Google, hãy bấm “Tiếp tục với Google”. Nếu chưa có tài khoản, bấm “Tạo tài khoản mới”.'; }
+     else if (register && /tồn tại/.test(e.message)) U.loginErr = 'Email này đã có tài khoản. Nếu tài khoản được tạo bằng Google, hãy đăng nhập bằng nút Google.';
      else U.loginErr = e.message;
      render();
      var el = document.getElementById('lg-email'); if (el) el.value = em;
@@ -504,7 +532,7 @@ function vLogin(){
       '<button class="btn btn-s btn-x block" data-a="google" style="background:var(--surface)"' + (U.busy ? ' disabled' : '') + '><span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;border:2px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">G</span>Tiếp tục với Google</button>' +
       '<div class="row s muted"><span style="flex:1;height:1px;background:var(--line)"></span>hoặc dùng email<span style="flex:1;height:1px;background:var(--line)"></span></div>' +
       '<form data-form="login" class="stack-s" novalidate>' +
-        '<div class="field"><label for="lg-email">Email</label><input class="input' + (U.loginErr ? ' err' : '') + '" id="lg-email" type="email" autocomplete="email" inputmode="email" placeholder="ten@vidu.com"></div>' +
+        '<div class="field"><label for="lg-email">Email</label><input class="input' + (U.loginErr ? ' err' : '') + '" id="lg-email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="ten@vidu.com"></div>' +
         '<div class="field"><label for="lg-pass">Mật khẩu</label><input class="input" id="lg-pass" type="password" autocomplete="current-password" placeholder="Ít nhất 6 ký tự"></div>' +
         (U.loginErr ? '<p role="alert" class="s" style="color:var(--bad)">' + esc(U.loginErr) + '</p>' : '') +
         '<button type="submit" class="btn btn-p btn-x block"' + (U.busy ? ' disabled' : '') + '>' + (U.busy ? 'Đang đăng nhập…' : (ONLINE ? 'Đăng nhập' : 'Đăng nhập / Tạo tài khoản')) + '</button>' +
@@ -1013,7 +1041,7 @@ app.addEventListener('submit', function(e){
   e.preventDefault();
   var f = e.target.getAttribute('data-form');
   if (f === 'login') {
-    var em = (document.getElementById('lg-email').value || '').trim(), pw = document.getElementById('lg-pass').value || '';
+    var em = (document.getElementById('lg-email').value || '').trim().toLowerCase(), pw = document.getElementById('lg-pass').value || '';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { U.loginErr = 'Email chưa đúng định dạng, ví dụ ten@vidu.com.'; render(); return; }
     if (pw.length < 6) { U.loginErr = 'Mật khẩu cần ít nhất 6 ký tự.'; render(); document.getElementById('lg-email').value = em; return; }
     if (ONLINE) { U.offerRegister = false; emailLogin(em, pw, false); return; }
@@ -1035,5 +1063,6 @@ S.chat = (S.chat || []).filter(function(m){ return m.k !== 'typing'; });
 applyTheme();
 render();
 if (ONLINE && S.token) pullProfile();
+else if (ONLINE) resumeGoogleRedirect();
 })();
 </script>

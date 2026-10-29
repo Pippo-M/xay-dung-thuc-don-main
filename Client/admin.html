@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Dinh Dưỡng AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background: #f0f2f5; margin: 0; display: flex; height: 100vh; overflow: hidden; color: #1c1e21; }
+        
+        /* Sidebar */
+        .sidebar { width: 280px; background: #ffffff; border-right: 1px solid #dddfe2; display: flex; flex-direction: column; transition: 0.3s; box-shadow: 2px 0 10px rgba(0,0,0,0.05); z-index: 10; }
+        .sidebar-header { padding: 30px 20px; text-align: center; background: linear-gradient(135deg, #00796B, #009688); color: white; font-size: 24px; font-weight: bold; }
+        .sidebar-menu { list-style: none; padding: 20px 0; margin: 0; flex: 1; }
+        .sidebar-menu li { padding: 14px 25px; cursor: pointer; color: #606770; font-weight: 500; transition: 0.2s; display: flex; align-items: center; gap: 15px; margin: 4px 15px; border-radius: 10px; }
+        .sidebar-menu li i { font-size: 18px; width: 20px; text-align: center; }
+        .sidebar-menu li:hover { background: #f0f2f5; color: #00796B; transform: translateX(5px); }
+        .sidebar-menu li.active { background: #e0f2f1; color: #00796B; font-weight: bold; }
+        
+        /* Main Content */
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; background: #f8f9fa; }
+        .topbar { background: white; padding: 0 40px; height: 80px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dddfe2; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .topbar-title { font-size: 20px; font-weight: bold; color: #333; margin: 0; }
+        .topbar-right { display: flex; align-items: center; gap: 25px; }
+        .admin-profile { display: flex; align-items: center; gap: 12px; background: #f0f2f5; padding: 8px 16px; border-radius: 30px; cursor: pointer; transition: 0.2s; }
+        .admin-profile:hover { background: #e4e6eb; }
+        .topbar-avatar { width: 36px; height: 36px; background: #00796B; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; }
+        
+        .dashboard-container { padding: 40px; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+        
+        /* Stats Grid */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .card-stat { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(0,0,0,0.05); transition: 0.3s; position: relative; overflow: hidden; }
+        .card-stat::after { content: ''; position: absolute; top: 0; right: 0; width: 100px; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8)); transform: skewX(-20deg); left: -150%; transition: 0.5s; }
+        .card-stat:hover::after { left: 150%; }
+        .card-stat:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .card-info h4 { margin: 0 0 10px 0; color: #65676b; font-size: 15px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-info p { margin: 0; font-size: 36px; font-weight: 800; color: #1c1e21; }
+        .card-icon { width: 70px; height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+        
+        .icon-blue { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); color: #1976D2; }
+        .icon-green { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #388E3C; }
+        .icon-purple { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); color: #7B1FA2; }
+        .icon-yellow { background: linear-gradient(135deg, #FFF8E1, #FFECB3); color: #F57F17; }
+
+        /* Groq Limits Section */
+        .groq-section { background: linear-gradient(135deg, #1e293b, #343a40); color: white; border-radius: 20px; padding: 30px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .groq-info { flex: 1; }
+        .groq-info h3 { margin: 0 0 15px 0; font-size: 22px; display: flex; align-items: center; gap: 10px; color: #e9ecef; }
+        .groq-stats { display: flex; gap: 40px; }
+        .groq-stat-item p { margin: 0; font-size: 14px; color: #adb5bd; text-transform: uppercase; letter-spacing: 1px; }
+        .groq-stat-item h4 { margin: 5px 0 0 0; font-size: 28px; font-weight: 700; color: #4dabf7; }
+        .groq-status { background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 15px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+
+        /* Chart Grid */
+        .grid-charts { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-bottom: 40px; }
+        .chart-box { background: white; padding: 30px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .chart-header { font-size: 18px; font-weight: bold; margin-bottom: 25px; color: #050505; display: flex; justify-content: space-between; align-items: center; }
+
+        /* User Table */
+        .table-section { background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); overflow: hidden; margin-bottom: 40px; }
+        .table-header { padding: 25px 30px; border-bottom: 1px solid #f0f2f5; display: flex; justify-content: space-between; align-items: center; background: #fafafa; }
+        .table-header h3 { margin: 0; font-size: 20px; color: #050505; display: flex; align-items: center; gap: 10px; }
+        
+        .table-wrapper { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th { padding: 18px 30px; background: white; color: #888; font-size: 13px; text-transform: uppercase; font-weight: 600; text-align: left; border-bottom: 2px solid #f0f2f5; }
+        td { padding: 20px 30px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; color: #444; font-size: 15px; }
+        tr:hover td { background: #f8f9fa; }
+        
+        .user-cell { display: flex; align-items: center; gap: 15px; }
+        .user-avatar { width: 42px; height: 42px; border-radius: 50%; background: #e4e6eb; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .user-name { font-weight: 600; color: #222; }
+
+        .badge { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; letter-spacing: 0.5px; }
+        .badge-admin { background: #e8eaf6; color: #3f51b5; border: 1px solid #c5cae9; }
+        .badge-user { background: #f5f5f5; color: #666; border: 1px solid #e0e0e0; }
+
+        .btn-action { width: 36px; height: 36px; border-radius: 10px; border: none; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; font-size: 15px; }
+        .btn-delete { background: #ffebee; color: #d32f2f; }
+        .btn-delete:hover { background: #d32f2f; color: white; transform: scale(1.05); }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .grid-charts { grid-template-columns: 1fr; }
+            .groq-section { flex-direction: column; gap: 20px; text-align: center; }
+            .groq-stats { justify-content: center; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-seedling" style="margin-right: 10px;"></i> NutriAI
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active"><i class="fa-solid fa-chart-line"></i> Tổng quan</li>
+            <li onclick="window.location.href='index.html'"><i class="fa-solid fa-house"></i> Về Trang chủ</li>
+            <li onclick="logout()" style="margin-top: auto; color: #d32f2f;"><i class="fa-solid fa-power-off"></i> Đăng xuất</li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <i class="fa-solid fa-bars" id="toggleSidebar" style="color: #65676b; font-size: 22px; cursor: pointer;"></i>
+                <h1 class="topbar-title">Bảng Điều Khiển Quản Trị</h1>
+            </div>
+            <div class="topbar-right">
+                <div class="admin-profile" onclick="logout()">
+                    <div class="topbar-avatar"><i class="fa-solid fa-user-shield"></i></div>
+                    <span id="admin-display-name" style="font-weight: 600; color: #333;">Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <!-- AI API Stats Section -->
+            <div class="groq-section">
+                <div class="groq-info">
+                    <h3><i class="fa-solid fa-microchip"></i> Trạng thái AI Engine (Groq Cloud)</h3>
+                    <div class="groq-stats">
+                        <div class="groq-stat-item">
+                            <p>Tokens Còn Lại / Ngày</p>
+                            <h4 id="groq-tokens">Đang tải...</h4>
+                        </div>
+                        <div class="groq-stat-item">
+                            <p>Requests Còn Lại / Ngày</p>
+                            <h4 id="groq-requests">Đang tải...</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="groq-status">
+                    <i class="fa-solid fa-check-circle" style="color: #4caf50; font-size: 24px; margin-bottom: 10px; display: block;"></i>
+                    <span style="font-weight: 600; letter-spacing: 1px;">KẾT NỐI ỔN ĐỊNH</span>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid-cards">
+                <div class="card-stat">
+                    <div class="card-info">
+                        <h4>Tổng Người Dùng</h4>
+                        <p id="stat-users">--</p>
+                    </div>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-users"></i></div>
+                </div>
+                <div class="card-stat">
+                    <div class="card-info">
+                        <h4>Thực Đơn Đã Lập</h4>
+                        <p id="stat-schedules">--</p>
+                    </div>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-file-invoice"></i></div>
+                </div>
+                <div class="card-stat">
+                    <div class="card-info">
+                        <h4>Email Nhắc Lịch</h4>
+                        <p style="font-size: 22px; color: #388E3C; font-weight: 700; margin-top: 5px;">HOẠT ĐỘNG</p>
+                    </div>
+                    <div class="card-icon icon-yellow"><i class="fa-regular fa-paper-plane"></i></div>
+                </div>
+                <div class="card-stat">
+                    <div class="card-info">
+                        <h4>Máy Chủ Database</h4>
+                        <p style="font-size: 22px; color: #7B1FA2; font-weight: 700; margin-top: 5px;">TiDB Cloud</p>
+                    </div>
+                    <div class="card-icon icon-purple"><i class="fa-solid fa-database"></i></div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid-charts">
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <span><i class="fa-solid fa-arrow-trend-up" style="color: #1976D2; margin-right: 10px;"></i> Biểu đồ tăng trưởng (7 ngày)</span>
+                    </div>
+                    <canvas id="growthChart" height="120"></canvas>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-header">
+                        <span><i class="fa-solid fa-chart-pie" style="color: #F57F17; margin-right: 10px;"></i> Phân loại bệnh lý</span>
+                    </div>
+                    <canvas id="diseaseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-section">
+                <div class="table-header">
+                    <h3><i class="fa-solid fa-address-book" style="color: #00796B;"></i> Danh Sách Tài Khoản</h3>
+                    <div style="background: #eef2f1; color: #00796B; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 13px;" id="user-count-label">-- người dùng</div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hồ sơ</th>
+                                <th>Thông tin liên hệ</th>
+                                <th>Vai trò</th>
+                                <th>Ngày tham gia</th>
+                                <th style="text-align: center;">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-list-body">
+                            <tr><td colspan="5" style="text-align: center; padding: 50px; color: #888;"><i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; display: block;"></i> Đang tải dữ liệu...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const API_BASE = window.location.origin;
+        let charts = {};
+
+        async function initDashboard() {
+            const token = localStorage.getItem('token');
+            const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+
+            if (!token || currentUser.role !== 'admin') {
+                alert("Bạn không có quyền truy cập trang này!");
+                window.location.href = 'index.html';
+                return;
+            }
+
+            document.getElementById('admin-display-name').innerText = currentUser.name || 'Admin';
+            
+            await fetchStats();
+            await fetchUsers();
+        }
+
+        async function fetchStats() {
+            const token = localStorage.getItem('token');
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/stats`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (!res.ok) throw new Error("Lỗi tải thống kê");
+                
+                const data = await res.json();
+                
+                document.getElementById('stat-users').innerText = data.totalUsers;
+                document.getElementById('stat-schedules').innerText = data.totalSchedules;
+                document.getElementById('user-count-label').innerText = `${data.totalUsers} người dùng`;
+
+                // Update Groq Limits
+                if (data.groqLimits) {
+                    const remainingTokens = data.groqLimits.remainingTokens !== 'Unknown' ? Number(data.groqLimits.remainingTokens).toLocaleString() : 'Chưa có data';
+                    const remainingReqs = data.groqLimits.remainingRequests !== 'Unknown' ? Number(data.groqLimits.remainingRequests).toLocaleString() : 'Chưa có data';
+                    
+                    document.getElementById('groq-tokens').innerText = remainingTokens;
+                    document.getElementById('groq-requests').innerText = remainingReqs;
+                }
+
+                renderGrowthChart(data.growthData);
+                renderDiseaseChart(data.diseaseStats);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        async function fetchUsers() {
+            const token = localStorage.getItem('token');
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/users`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const users = await res.json();
+                const tbody = document.getElementById('user-list-body');
+                tbody.innerHTML = '';
+
+                if (!users || users.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 40px;">Không có người dùng nào.</td></tr>';
+                    return;
+                }
+
+                users.forEach(u => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>
+                            <div class="user-cell">
+                                <div class="user-avatar">
+                                    ${u.avatar ? `<img src="${u.avatar}">` : `<i class="fa-solid fa-user" style="color:#aaa;"></i>`}
+                                </div>
+                                <span class="user-name">${u.name}</span>
+                            </div>
+                        </td>
+                        <td>${u.email}</td>
+                        <td><span class="badge ${u.role === 'admin' ? 'badge-admin' : 'badge-user'}">${u.role.toUpperCase()}</span></td>
+                        <td style="color: #65676b; font-weight: 500;">${new Date(u.created_at).toLocaleDateString('vi-VN')}</td>
+                        <td style="text-align: center;">
+                            ${u.role !== 'admin' ? 
+                                `<button class="btn-action btn-delete" title="Xóa người dùng" onclick="deleteUser(${u.id})">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>` : 
+                                '<i class="fa-solid fa-shield-halved" style="color: #c5cae9; font-size: 18px;" title="Tài khoản bảo vệ"></i>'}
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        function renderGrowthChart(data) {
+            if (charts.growth) charts.growth.destroy();
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            const labels = data.map(d => d.date);
+            const values = data.map(d => d.count);
+
+            charts.growth = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Đăng ký mới',
+                        data: values,
+                        borderColor: '#00796B',
+                        backgroundColor: 'rgba(0, 121, 107, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#00796B',
+                        pointBorderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#f0f2f5' }, ticks: { stepSize: 1 } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function renderDiseaseChart(stats) {
+            if (charts.disease) charts.disease.destroy();
+            const ctx = document.getElementById('diseaseChart').getContext('2d');
+            
+            const labels = Object.keys(stats);
+            const values = Object.values(stats);
+
+            charts.disease = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: ['#00796B', '#1976D2', '#FBC02D', '#D32F2F', '#7B1FA2', '#9E9E9E'],
+                        borderWidth: 0,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '75%',
+                    plugins: {
+                        legend: { position: 'right', labels: { usePointStyle: true, padding: 20, font: { family: 'Roboto' } } }
+                    }
+                }
+            });
+        }
+
+        async function deleteUser(id) {
+            if (!confirm("⚠️ CẢNH BÁO: Bạn đang thực hiện xóa người dùng vĩnh viễn. Mọi dữ liệu thực đơn liên quan cũng sẽ bị xóa sạch. Bạn có chắc không?")) return;
+            
+            const token = localStorage.getItem('token');
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/users/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    await initDashboard();
+                } else {
+                    const err = await res.json();
+                    alert(err.error || "Không thể xóa người dùng.");
+                }
+            } catch (err) {
+                alert("Lỗi kết nối.");
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        }
+
+        // Toggle Sidebar
+        document.getElementById('toggleSidebar').onclick = () => {
+            const sidebar = document.getElementById('adminSidebar');
+            sidebar.style.width = sidebar.style.width === '0px' ? '280px' : '0px';
+        };
+
+        initDashboard();
+    </script>
+</body>
+</html>

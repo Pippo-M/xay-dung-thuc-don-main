@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 850" width="1000" height="850" font-family="Times New Roman, Times, serif">
+  <defs>
+    <marker id="ar" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#12222e"/>
+    </marker>
+    <marker id="arLoop" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#8a5a00"/>
+    </marker>
+    <marker id="arRet" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#1f5c4a"/>
+    </marker>
+    <style>
+      .box   { fill:#ffffff; stroke:#12222e; stroke-width:1.8; }
+      .actor { fill:#eef2f5; stroke:#12222e; stroke-width:1.8; }
+      .inner { fill:#f7f9fa; stroke:#5b7080; stroke-width:1.2; }
+      .ttl   { font-size:17px; font-weight:bold; fill:#12222e; }
+      .sub   { font-size:13.5px; fill:#33444f; }
+      .tag   { font-size:12.5px; font-style:italic; fill:#5b7080; }
+      .flow  { stroke:#12222e; stroke-width:1.8; fill:none; marker-end:url(#ar); }
+      .lbl   { font-size:12.5px; fill:#12222e; }
+      .loop  { stroke:#8a5a00; stroke-width:1.8; fill:none; stroke-dasharray:7 4; marker-end:url(#arLoop); }
+      .looplbl { font-size:13.5px; font-weight:bold; fill:#8a5a00; }
+      .ret   { stroke:#1f5c4a; stroke-width:1.8; fill:none; stroke-dasharray:7 4; marker-end:url(#arRet); }
+      .retlbl{ font-size:13.5px; font-weight:bold; fill:#1f5c4a; }
+      .num   { fill:#12222e; }
+      .numt  { font-size:15px; font-weight:bold; fill:#ffffff; text-anchor:middle; }
+    </style>
+  </defs>
+
+  <!-- NGƯỜI BỆNH -->
+  <rect class="actor" x="220" y="14" width="280" height="44" rx="22"/>
+  <text class="ttl" x="360" y="42" text-anchor="middle">NGƯỜI BỆNH ĐÁI THÁO ĐƯỜNG</text>
+
+  <path class="flow" d="M360,58 L360,100"/>
+  <text class="lbl" x="372" y="84">hồ sơ sinh trắc + truy vấn</text>
+
+  <!-- 1. CONTROLLER -->
+  <rect class="box" x="150" y="102" width="420" height="62" rx="5"/>
+  <circle class="num" cx="176" cy="128" r="14"/><text class="numt" x="176" y="133">1</text>
+  <text class="ttl" x="200" y="133">Controller Agent</text>
+  <text class="sub" x="166" y="155">Điểm truy cập duy nhất · định tuyến quy trình</text>
+
+  <path class="flow" d="M260,164 L260,190 L200,190 L200,212"/>
+  <path class="flow" d="M460,164 L460,190 L520,190 L520,212"/>
+  <text class="lbl" x="112" y="206">hồ sơ sinh trắc</text>
+  <text class="lbl" x="540" y="206">bệnh nền</text>
+
+  <!-- 2. NUTRITION CALCULATOR -->
+  <rect class="box" x="60" y="214" width="280" height="62" rx="5"/>
+  <circle class="num" cx="86" cy="240" r="14"/><text class="numt" x="86" y="245">2</text>
+  <text class="ttl" x="110" y="245">Nutrition Calculator</text>
+  <text class="sub" x="76" y="267">Công thức (1)–(7) → TDEE và P-L-C</text>
+  <text class="tag" x="76" y="292">→ nutrition_targets</text>
+
+  <!-- 3. FOOD RAG -->
+  <rect class="box" x="380" y="214" width="280" height="62" rx="5"/>
+  <circle class="num" cx="406" cy="240" r="14"/><text class="numt" x="406" y="245">3</text>
+  <text class="ttl" x="430" y="245">Food Knowledge &amp; RAG</text>
+  <text class="sub" x="396" y="267">FCDB 621 thực phẩm · ưu tiên GI thấp</text>
+  <text class="tag" x="396" y="292">← foods</text>
+
+  <path class="flow" d="M200,300 L200,326 L320,326 L320,348"/>
+  <path class="flow" d="M520,300 L520,326 L400,326 L400,348"/>
+  <text class="lbl" x="126" y="320">ngân sách</text>
+  <text class="lbl" x="540" y="320">danh mục món</text>
+
+  <!-- 4. MENU GENERATION -->
+  <rect class="box" x="180" y="350" width="360" height="62" rx="5"/>
+  <circle class="num" cx="206" cy="376" r="14"/><text class="numt" x="206" y="381">4</text>
+  <text class="ttl" x="230" y="381">Menu Generation Agent</text>
+  <text class="sub" x="196" y="403">GPT-OSS-120B trên Groq LPU · τ = 0,1</text>
+
+  <path class="flow" d="M360,412 L360,448"/>
+  <text class="lbl" x="372" y="434">thực đơn thô</text>
+
+  <!-- 5. GUARDRAIL -->
+  <rect class="box" x="150" y="450" width="420" height="98" rx="5"/>
+  <circle class="num" cx="176" cy="476" r="14"/><text class="numt" x="176" y="481">5</text>
+  <text class="ttl" x="200" y="481">Dual-Layer Safety Guardrail</text>
+  <rect class="inner" x="166" y="494" width="190" height="40" rx="4"/>
+  <text class="sub" x="180" y="519">Lớp 1 — Luật &amp; regex</text>
+  <rect class="inner" x="368" y="494" width="190" height="40" rx="4"/>
+  <text class="sub" x="382" y="519">Lớp 2 — AI, τ = 0,1</text>
+
+  <path class="flow" d="M360,548 L360,584"/>
+  <text class="lbl" x="372" y="570">món vi phạm / GI cao</text>
+
+  <!-- 6. COUNTERFACTUAL -->
+  <rect class="box" x="170" y="586" width="380" height="62" rx="5"/>
+  <circle class="num" cx="196" cy="612" r="14"/><text class="numt" x="196" y="617">6</text>
+  <text class="ttl" x="220" y="617">Counterfactual Optimization</text>
+  <text class="sub" x="186" y="639">Công thức (8)–(10) · thay sang món GI thấp</text>
+
+  <path class="flow" d="M360,648 L360,684"/>
+  <text class="lbl" x="372" y="670">thực đơn đã hiệu chỉnh</text>
+
+  <!-- 7. STATE &amp; EXPORT -->
+  <rect class="box" x="180" y="686" width="360" height="62" rx="5"/>
+  <circle class="num" cx="206" cy="712" r="14"/><text class="numt" x="206" y="717">7</text>
+  <text class="ttl" x="230" y="717">State &amp; Export Agent</text>
+  <text class="sub" x="196" y="739">TiDB Cloud · nhắc bữa · xuất bệnh án</text>
+  <text class="tag" x="196" y="764">→ meal_items, daily_nutrition_summary</text>
+
+  <!-- VÒNG LẶP CẤP BỮA -->
+  <path class="loop" d="M540,700 L620,700 L620,390 L542,390"/>
+  <text class="looplbl" x="700" y="496">VÒNG LẶP CẤP BỮA</text>
+  <text class="lbl" x="700" y="518">Ngân sách còn lại của ngày</text>
+  <text class="lbl" x="700" y="536">ràng buộc bữa kế tiếp</text>
+
+  <!-- VÒNG LẶP CẤP NGÀY -->
+  <path class="loop" d="M540,726 L690,726 L690,133 L572,133"/>
+  <text class="looplbl" x="720" y="232">VÒNG LẶP CẤP NGÀY</text>
+  <text class="lbl" x="720" y="254">Tái cân bằng kế hoạch</text>
+  <text class="lbl" x="720" y="272">dinh dưỡng ngày kế tiếp</text>
+
+  <!-- ĐƯỜNG TRẢ KẾT QUẢ -->
+  <path class="ret" d="M180,712 L100,712 L100,800 L18,800 L18,36 L218,36"/>
+  <text class="retlbl" x="40" y="828">THỰC ĐƠN AN TOÀN</text>
+  <text class="lbl" x="196" y="828">· đúng ngân sách năng lượng · không chứa thực phẩm chống chỉ định · GL thấp · PPG ≤ 140 mg/dL</text>
+</svg>

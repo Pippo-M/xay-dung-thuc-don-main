@@ -1,0 +1,4349 @@
+[
+  {
+    "TenThucPham": "Gạo nếp cái",
+    "Kcal": 348.3,
+    "Protid_g": 8.6,
+    "Lipid_g": 1.5,
+    "Carb_g": 75.1
+  },
+  {
+    "TenThucPham": "Gạo nếp (loại thường)",
+    "Kcal": 349.6,
+    "Protid_g": 8.4,
+    "Lipid_g": 1.6,
+    "Carb_g": 75.4
+  },
+  {
+    "TenThucPham": "Gạo tẻ giã",
+    "Kcal": 346.9,
+    "Protid_g": 8.1,
+    "Lipid_g": 1.3,
+    "Carb_g": 75.7
+  },
+  {
+    "TenThucPham": "Gạo tẻ máy",
+    "Kcal": 345.8,
+    "Protid_g": 7.9,
+    "Lipid_g": 1.0,
+    "Carb_g": 76.3
+  },
+  {
+    "TenThucPham": "Gạo lứt",
+    "Kcal": 358.8,
+    "Protid_g": 7.5,
+    "Lipid_g": 2.7,
+    "Carb_g": 76.2
+  },
+  {
+    "TenThucPham": "Kê",
+    "Kcal": 344.6,
+    "Protid_g": 7.0,
+    "Lipid_g": 3.0,
+    "Carb_g": 72.4
+  },
+  {
+    "TenThucPham": "Ngô bắp tươi",
+    "Kcal": 200.3,
+    "Protid_g": 4.1,
+    "Lipid_g": 2.3,
+    "Carb_g": 40.8
+  },
+  {
+    "TenThucPham": "Ngô vàng hạt khô",
+    "Kcal": 362.3,
+    "Protid_g": 8.6,
+    "Lipid_g": 4.7,
+    "Carb_g": 71.4
+  },
+  {
+    "TenThucPham": "Bánh bao",
+    "Kcal": 276.0,
+    "Protid_g": 10.4,
+    "Lipid_g": 10.8,
+    "Carb_g": 34.3
+  },
+  {
+    "TenThucPham": "Bánh đa nem",
+    "Kcal": 335.4,
+    "Protid_g": 4.0,
+    "Lipid_g": 0.2,
+    "Carb_g": 79.4
+  },
+  {
+    "TenThucPham": "Bánh đúc",
+    "Kcal": 51.9,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.3,
+    "Carb_g": 11.4
+  },
+  {
+    "TenThucPham": "Bánh mỳ",
+    "Kcal": 250.0,
+    "Protid_g": 7.9,
+    "Lipid_g": 0.8,
+    "Carb_g": 52.8
+  },
+  {
+    "TenThucPham": "Bánh phở",
+    "Kcal": 141.2,
+    "Protid_g": 3.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 32.1
+  },
+  {
+    "TenThucPham": "Bánh quẩy nóng",
+    "Kcal": 200.4,
+    "Protid_g": 3.7,
+    "Lipid_g": 6.8,
+    "Carb_g": 31.1
+  },
+  {
+    "TenThucPham": "Bỏng ngô",
+    "Kcal": 385.6,
+    "Protid_g": 8.6,
+    "Lipid_g": 1.6,
+    "Carb_g": 84.2
+  },
+  {
+    "TenThucPham": "Bột gạo nếp",
+    "Kcal": 364.8,
+    "Protid_g": 8.2,
+    "Lipid_g": 1.6,
+    "Carb_g": 79.4
+  },
+  {
+    "TenThucPham": "Bột gạo tẻ",
+    "Kcal": 360.4,
+    "Protid_g": 6.6,
+    "Lipid_g": 0.4,
+    "Carb_g": 82.6
+  },
+  {
+    "TenThucPham": "Bột mì",
+    "Kcal": 346.7,
+    "Protid_g": 11.0,
+    "Lipid_g": 1.1,
+    "Carb_g": 73.2
+  },
+  {
+    "TenThucPham": "Bột ngô vàng",
+    "Kcal": 367.2,
+    "Protid_g": 8.3,
+    "Lipid_g": 4.0,
+    "Carb_g": 74.5
+  },
+  {
+    "TenThucPham": "Bún",
+    "Kcal": 111.6,
+    "Protid_g": 1.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 26.2
+  },
+  {
+    "TenThucPham": "Cốm tươi",
+    "Kcal": 306.9,
+    "Protid_g": 4.4,
+    "Lipid_g": 1.7,
+    "Carb_g": 68.5
+  },
+  {
+    "TenThucPham": "Mỳ sợi",
+    "Kcal": 350.1,
+    "Protid_g": 11.0,
+    "Lipid_g": 0.9,
+    "Carb_g": 74.5
+  },
+  {
+    "TenThucPham": "Ngô nếp luộc",
+    "Kcal": 171.8,
+    "Protid_g": 3.9,
+    "Lipid_g": 2.2,
+    "Carb_g": 34.1
+  },
+  {
+    "TenThucPham": "Mỳ ăn liền (mỳ tôm)",
+    "Kcal": 456.0,
+    "Protid_g": 10.5,
+    "Lipid_g": 20.4,
+    "Carb_g": 57.6
+  },
+  {
+    "TenThucPham": "Củ ấu",
+    "Kcal": 159.7,
+    "Protid_g": 3.6,
+    "Lipid_g": 0.5,
+    "Carb_g": 35.2
+  },
+  {
+    "TenThucPham": "Củ cái",
+    "Kcal": 133.6,
+    "Protid_g": 3.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 30.3
+  },
+  {
+    "TenThucPham": "Củ dong",
+    "Kcal": 128.8,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 30.8
+  },
+  {
+    "TenThucPham": "Củ sắn",
+    "Kcal": 157.8,
+    "Protid_g": 1.1,
+    "Lipid_g": 0.2,
+    "Carb_g": 37.9
+  },
+  {
+    "TenThucPham": "Củ sắn dây",
+    "Kcal": 156.1,
+    "Protid_g": 1.6,
+    "Lipid_g": 0.1,
+    "Carb_g": 37.2
+  },
+  {
+    "TenThucPham": "Củ súng khô (đã bỏ vỏ)",
+    "Kcal": 359.3,
+    "Protid_g": 16.1,
+    "Lipid_g": 0.5,
+    "Carb_g": 72.6
+  },
+  {
+    "TenThucPham": "Củ từ",
+    "Kcal": 96.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 22.7
+  },
+  {
+    "TenThucPham": "Khoai lang",
+    "Kcal": 124.2,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.2,
+    "Carb_g": 29.8
+  },
+  {
+    "TenThucPham": "Khoai lang nghệ",
+    "Kcal": 119.1,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.3,
+    "Carb_g": 27.9
+  },
+  {
+    "TenThucPham": "Khoai môn",
+    "Kcal": 113.4,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.2,
+    "Carb_g": 26.4
+  },
+  {
+    "TenThucPham": "Khoai nước",
+    "Kcal": 106.1,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.1,
+    "Carb_g": 25.3
+  },
+  {
+    "TenThucPham": "Khoai riềng",
+    "Kcal": 113.6,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 27.6
+  },
+  {
+    "TenThucPham": "Khoai sọ",
+    "Kcal": 118.9,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.1,
+    "Carb_g": 27.7
+  },
+  {
+    "TenThucPham": "Khoai tây",
+    "Kcal": 96.0,
+    "Protid_g": 2.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 22.0
+  },
+  {
+    "TenThucPham": "Miến dong",
+    "Kcal": 338.1,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.1,
+    "Carb_g": 83.7
+  },
+  {
+    "TenThucPham": "Bột dong lọc",
+    "Kcal": 343.2,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 85.2
+  },
+  {
+    "TenThucPham": "Bột khoai lang",
+    "Kcal": 340.5,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.5,
+    "Carb_g": 81.8
+  },
+  {
+    "TenThucPham": "Bột khoai riềng (bột đao)",
+    "Kcal": 343.2,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 85.6
+  },
+  {
+    "TenThucPham": "Bột khoai tây (lọc)",
+    "Kcal": 344.4,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 85.1
+  },
+  {
+    "TenThucPham": "Bột sắn",
+    "Kcal": 341.3,
+    "Protid_g": 2.4,
+    "Lipid_g": 0.5,
+    "Carb_g": 81.8
+  },
+  {
+    "TenThucPham": "Bột sắn dây",
+    "Kcal": 343.2,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 85.1
+  },
+  {
+    "TenThucPham": "Khoai lang khô",
+    "Kcal": 347.7,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.5,
+    "Carb_g": 83.6
+  },
+  {
+    "TenThucPham": "Khoai tây khô",
+    "Kcal": 343.1,
+    "Protid_g": 6.6,
+    "Lipid_g": 0.3,
+    "Carb_g": 78.5
+  },
+  {
+    "TenThucPham": "Khoai tây lát chiên",
+    "Kcal": 549.8,
+    "Protid_g": 2.2,
+    "Lipid_g": 35.4,
+    "Carb_g": 55.6
+  },
+  {
+    "TenThucPham": "Sắn khô",
+    "Kcal": 351.5,
+    "Protid_g": 3.0,
+    "Lipid_g": 0.7,
+    "Carb_g": 83.3
+  },
+  {
+    "TenThucPham": "Trân châu sắn",
+    "Kcal": 343.6,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 84.9
+  },
+  {
+    "TenThucPham": "Cùi dừa già",
+    "Kcal": 384.8,
+    "Protid_g": 4.8,
+    "Lipid_g": 36.0,
+    "Carb_g": 10.4
+  },
+  {
+    "TenThucPham": "Cùi dừa non",
+    "Kcal": 53.7,
+    "Protid_g": 3.5,
+    "Lipid_g": 1.7,
+    "Carb_g": 6.1
+  },
+  {
+    "TenThucPham": "Đậu cô ve (hạt)",
+    "Kcal": 335.2,
+    "Protid_g": 21.8,
+    "Lipid_g": 1.6,
+    "Carb_g": 58.4
+  },
+  {
+    "TenThucPham": "Đậu đen (hạt)",
+    "Kcal": 341.3,
+    "Protid_g": 24.2,
+    "Lipid_g": 1.7,
+    "Carb_g": 57.3
+  },
+  {
+    "TenThucPham": "Đậu đũa (hạt)",
+    "Kcal": 337.6,
+    "Protid_g": 23.7,
+    "Lipid_g": 2.0,
+    "Carb_g": 56.2
+  },
+  {
+    "TenThucPham": "Đậu Hà lan (hạt)",
+    "Kcal": 341.8,
+    "Protid_g": 22.2,
+    "Lipid_g": 1.4,
+    "Carb_g": 60.1
+  },
+  {
+    "TenThucPham": "Đậu tương (đậu nành)",
+    "Kcal": 418.0,
+    "Protid_g": 34.0,
+    "Lipid_g": 18.4,
+    "Carb_g": 29.1
+  },
+  {
+    "TenThucPham": "Đậu trắng hạt (Đậu Tây)",
+    "Kcal": 341.3,
+    "Protid_g": 23.2,
+    "Lipid_g": 2.1,
+    "Carb_g": 57.4
+  },
+  {
+    "TenThucPham": "Đậu trứng cuốc",
+    "Kcal": 340.4,
+    "Protid_g": 25.8,
+    "Lipid_g": 2.0,
+    "Carb_g": 54.8
+  },
+  {
+    "TenThucPham": "Đậu xanh (đậu tắt)",
+    "Kcal": 346.4,
+    "Protid_g": 23.4,
+    "Lipid_g": 2.4,
+    "Carb_g": 57.8
+  },
+  {
+    "TenThucPham": "Hạt dẻ to",
+    "Kcal": 651.8,
+    "Protid_g": 18.0,
+    "Lipid_g": 59.0,
+    "Carb_g": 12.2
+  },
+  {
+    "TenThucPham": "Hạt dẻ tươi",
+    "Kcal": 223.1,
+    "Protid_g": 4.2,
+    "Lipid_g": 1.1,
+    "Carb_g": 49.1
+  },
+  {
+    "TenThucPham": "Hạt dẻ khô",
+    "Kcal": 362.6,
+    "Protid_g": 6.8,
+    "Lipid_g": 1.8,
+    "Carb_g": 79.8
+  },
+  {
+    "TenThucPham": "Hạt đen",
+    "Kcal": 486.2,
+    "Protid_g": 17.3,
+    "Lipid_g": 29.0,
+    "Carb_g": 39.0
+  },
+  {
+    "TenThucPham": "Hạt điều",
+    "Kcal": 607.5,
+    "Protid_g": 18.4,
+    "Lipid_g": 46.3,
+    "Carb_g": 29.3
+  },
+  {
+    "TenThucPham": "Hạt mít",
+    "Kcal": 165.9,
+    "Protid_g": 0.7,
+    "Lipid_g": 1.1,
+    "Carb_g": 38.3
+  },
+  {
+    "TenThucPham": "Lạc hạt",
+    "Kcal": 582.5,
+    "Protid_g": 27.5,
+    "Lipid_g": 44.5,
+    "Carb_g": 18.0
+  },
+  {
+    "TenThucPham": "Quả cọ tươi",
+    "Kcal": 192.2,
+    "Protid_g": 2.3,
+    "Lipid_g": 13.4,
+    "Carb_g": 15.6
+  },
+  {
+    "TenThucPham": "Quả đại hái tươi",
+    "Kcal": 440.4,
+    "Protid_g": 20.0,
+    "Lipid_g": 38.0,
+    "Carb_g": 4.6
+  },
+  {
+    "TenThucPham": "Vừng (đen, trắng)",
+    "Kcal": 582.4,
+    "Protid_g": 20.1,
+    "Lipid_g": 46.4,
+    "Carb_g": 21.1
+  },
+  {
+    "TenThucPham": "Bột đậu tương đã loại béo (đậu nành)",
+    "Kcal": 331.0,
+    "Protid_g": 49.0,
+    "Lipid_g": 1.0,
+    "Carb_g": 31.5
+  },
+  {
+    "TenThucPham": "Bột đậu tương rang chín",
+    "Kcal": 427.6,
+    "Protid_g": 41.0,
+    "Lipid_g": 18.0,
+    "Carb_g": 25.4
+  },
+  {
+    "TenThucPham": "Bột đậu xanh",
+    "Kcal": 362.5,
+    "Protid_g": 24.6,
+    "Lipid_g": 2.5,
+    "Carb_g": 60.4
+  },
+  {
+    "TenThucPham": "Bột lạc",
+    "Kcal": 583.4,
+    "Protid_g": 27.5,
+    "Lipid_g": 45.0,
+    "Carb_g": 17.1
+  },
+  {
+    "TenThucPham": "Đậu phụ",
+    "Kcal": 96.6,
+    "Protid_g": 10.9,
+    "Lipid_g": 5.4,
+    "Carb_g": 1.1
+  },
+  {
+    "TenThucPham": "Đậu phụ chúc",
+    "Kcal": 415.2,
+    "Protid_g": 50.2,
+    "Lipid_g": 20.8,
+    "Carb_g": 6.8
+  },
+  {
+    "TenThucPham": "Đậu phụ nướng",
+    "Kcal": 116.4,
+    "Protid_g": 13.4,
+    "Lipid_g": 6.4,
+    "Carb_g": 1.3
+  },
+  {
+    "TenThucPham": "Hạt bí đỏ rang",
+    "Kcal": 527.8,
+    "Protid_g": 35.1,
+    "Lipid_g": 31.8,
+    "Carb_g": 25.3
+  },
+  {
+    "TenThucPham": "Hạt dưa đỏ rang (dưa hấu)",
+    "Kcal": 558.3,
+    "Protid_g": 31.8,
+    "Lipid_g": 39.1,
+    "Carb_g": 19.8
+  },
+  {
+    "TenThucPham": "Hạt điều khô, chiên dầu",
+    "Kcal": 585.3,
+    "Protid_g": 18.3,
+    "Lipid_g": 49.3,
+    "Carb_g": 17.1
+  },
+  {
+    "TenThucPham": "Sữa bột đậu nành",
+    "Kcal": 413.3,
+    "Protid_g": 31.1,
+    "Lipid_g": 9.7,
+    "Carb_g": 50.4
+  },
+  {
+    "TenThucPham": "Sữa đậu nành (100g đậu/lít)",
+    "Kcal": 28.8,
+    "Protid_g": 3.1,
+    "Lipid_g": 1.6,
+    "Carb_g": 0.5
+  },
+  {
+    "TenThucPham": "Tào phớ",
+    "Kcal": 46.4,
+    "Protid_g": 3.8,
+    "Lipid_g": 1.2,
+    "Carb_g": 5.1
+  },
+  {
+    "TenThucPham": "Bầu",
+    "Kcal": 18.0,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.9
+  },
+  {
+    "TenThucPham": "Bí đao (bí xanh)",
+    "Kcal": 16.0,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.4
+  },
+  {
+    "TenThucPham": "Bí ngô",
+    "Kcal": 28.8,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.9
+  },
+  {
+    "TenThucPham": "Cà bát",
+    "Kcal": 27.6,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.7
+  },
+  {
+    "TenThucPham": "Cà chua",
+    "Kcal": 22.4,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.0
+  },
+  {
+    "TenThucPham": "Cà pháo",
+    "Kcal": 26.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.2
+  },
+  {
+    "TenThucPham": "Cà rốt (củ đỏ, vàng)",
+    "Kcal": 42.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.2
+  },
+  {
+    "TenThucPham": "Cà rốt khô",
+    "Kcal": 330.3,
+    "Protid_g": 9.2,
+    "Lipid_g": 1.5,
+    "Carb_g": 70.0
+  },
+  {
+    "TenThucPham": "Cà tím",
+    "Kcal": 28.0,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.0
+  },
+  {
+    "TenThucPham": "Cải bắp",
+    "Kcal": 35.2,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.0
+  },
+  {
+    "TenThucPham": "Cải bắp đỏ",
+    "Kcal": 61.4,
+    "Protid_g": 1.9,
+    "Lipid_g": 0.2,
+    "Carb_g": 13.0
+  },
+  {
+    "TenThucPham": "Cải bắp khô",
+    "Kcal": 301.2,
+    "Protid_g": 18.0,
+    "Lipid_g": 1.6,
+    "Carb_g": 53.7
+  },
+  {
+    "TenThucPham": "Cải cúc",
+    "Kcal": 22.0,
+    "Protid_g": 1.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.9
+  },
+  {
+    "TenThucPham": "Cải soong",
+    "Kcal": 22.0,
+    "Protid_g": 2.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.4
+  },
+  {
+    "TenThucPham": "Cải thìa (cải trắng)",
+    "Kcal": 23.2,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.4
+  },
+  {
+    "TenThucPham": "Cải xanh",
+    "Kcal": 22.4,
+    "Protid_g": 1.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.9
+  },
+  {
+    "TenThucPham": "Cần ta",
+    "Kcal": 16.0,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Cần tây",
+    "Kcal": 53.2,
+    "Protid_g": 3.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.6
+  },
+  {
+    "TenThucPham": "Chuối xanh",
+    "Kcal": 76.0,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 17.8
+  },
+  {
+    "TenThucPham": "Củ cải đỏ",
+    "Kcal": 52.0,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 11.7
+  },
+  {
+    "TenThucPham": "Củ cải trắng",
+    "Kcal": 26.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.2
+  },
+  {
+    "TenThucPham": "Củ cải trắng khô",
+    "Kcal": 290.3,
+    "Protid_g": 17.6,
+    "Lipid_g": 1.5,
+    "Carb_g": 51.6
+  },
+  {
+    "TenThucPham": "Củ đậu",
+    "Kcal": 30.8,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.7
+  },
+  {
+    "TenThucPham": "Củ niễng",
+    "Kcal": 36.8,
+    "Protid_g": 2.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.2
+  },
+  {
+    "TenThucPham": "Dọc củ cải (non)",
+    "Kcal": 21.2,
+    "Protid_g": 1.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.4
+  },
+  {
+    "TenThucPham": "Dọc mùng",
+    "Kcal": 12.8,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.8
+  },
+  {
+    "TenThucPham": "Dưa chuột",
+    "Kcal": 18.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.7
+  },
+  {
+    "TenThucPham": "Dưa gang",
+    "Kcal": 14.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.7
+  },
+  {
+    "TenThucPham": "Đậu cô ve",
+    "Kcal": 77.2,
+    "Protid_g": 5.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 14.3
+  },
+  {
+    "TenThucPham": "Đậu đũa",
+    "Kcal": 65.2,
+    "Protid_g": 6.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 10.3
+  },
+  {
+    "TenThucPham": "Đậu Hà Lan",
+    "Kcal": 74.0,
+    "Protid_g": 6.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 12.0
+  },
+  {
+    "TenThucPham": "Đậu rồng (quả non)",
+    "Kcal": 40.1,
+    "Protid_g": 1.9,
+    "Lipid_g": 0.1,
+    "Carb_g": 7.9
+  },
+  {
+    "TenThucPham": "Đu đủ xanh",
+    "Kcal": 29.6,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.6
+  },
+  {
+    "TenThucPham": "Gấc",
+    "Kcal": 128.7,
+    "Protid_g": 2.1,
+    "Lipid_g": 7.9,
+    "Carb_g": 12.3
+  },
+  {
+    "TenThucPham": "Giá đậu tương",
+    "Kcal": 81.8,
+    "Protid_g": 7.7,
+    "Lipid_g": 1.8,
+    "Carb_g": 8.7
+  },
+  {
+    "TenThucPham": "Giá đậu xanh",
+    "Kcal": 51.2,
+    "Protid_g": 5.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.3
+  },
+  {
+    "TenThucPham": "Hành củ tươi",
+    "Kcal": 27.2,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.5
+  },
+  {
+    "TenThucPham": "Hành lá (hành hoa)",
+    "Kcal": 26.0,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.2
+  },
+  {
+    "TenThucPham": "Hành tây",
+    "Kcal": 44.8,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.4
+  },
+  {
+    "TenThucPham": "Hạt sen tươi",
+    "Kcal": 161.2,
+    "Protid_g": 9.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 30.8
+  },
+  {
+    "TenThucPham": "Hạt sen khô",
+    "Kcal": 342.4,
+    "Protid_g": 20.0,
+    "Lipid_g": 2.4,
+    "Carb_g": 60.2
+  },
+  {
+    "TenThucPham": "Hẹ lá",
+    "Kcal": 19.6,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.7
+  },
+  {
+    "TenThucPham": "Hoa chuối",
+    "Kcal": 28.0,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.5
+  },
+  {
+    "TenThucPham": "Hoa lý",
+    "Kcal": 34.8,
+    "Protid_g": 2.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.8
+  },
+  {
+    "TenThucPham": "Khế",
+    "Kcal": 25.2,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.7
+  },
+  {
+    "TenThucPham": "Lá lốt",
+    "Kcal": 48.8,
+    "Protid_g": 4.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.9
+  },
+  {
+    "TenThucPham": "Lá me",
+    "Kcal": 46.0,
+    "Protid_g": 7.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.0
+  },
+  {
+    "TenThucPham": "Lá mơ lông",
+    "Kcal": 47.6,
+    "Protid_g": 3.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 8.0
+  },
+  {
+    "TenThucPham": "Lá sắn tươi",
+    "Kcal": 95.6,
+    "Protid_g": 7.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 16.9
+  },
+  {
+    "TenThucPham": "Măng chua",
+    "Kcal": 27.6,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.5
+  },
+  {
+    "TenThucPham": "Măng khô",
+    "Kcal": 300.9,
+    "Protid_g": 13.0,
+    "Lipid_g": 2.1,
+    "Carb_g": 57.5
+  },
+  {
+    "TenThucPham": "Măng tây",
+    "Kcal": 22.8,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.5
+  },
+  {
+    "TenThucPham": "Măng tre",
+    "Kcal": 30.0,
+    "Protid_g": 1.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.8
+  },
+  {
+    "TenThucPham": "Mướp",
+    "Kcal": 17.6,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.5
+  },
+  {
+    "TenThucPham": "Mướp đắng",
+    "Kcal": 20.0,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.1
+  },
+  {
+    "TenThucPham": "Mướp Nhật bản",
+    "Kcal": 16.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.2
+  },
+  {
+    "TenThucPham": "Ngải cứu",
+    "Kcal": 32.8,
+    "Protid_g": 3.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.4
+  },
+  {
+    "TenThucPham": "Ngô bao tử",
+    "Kcal": 41.8,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.2,
+    "Carb_g": 7.8
+  },
+  {
+    "TenThucPham": "Ngó sen",
+    "Kcal": 64.8,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.2
+  },
+  {
+    "TenThucPham": "Nụ mướp",
+    "Kcal": 35.6,
+    "Protid_g": 4.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.0
+  },
+  {
+    "TenThucPham": "Ớt đỏ to",
+    "Kcal": 30.8,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.3,
+    "Carb_g": 6.0
+  },
+  {
+    "TenThucPham": "Ớt vàng to",
+    "Kcal": 33.6,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.1
+  },
+  {
+    "TenThucPham": "Ớt xanh to",
+    "Kcal": 30.0,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.2
+  },
+  {
+    "TenThucPham": "Quả dọc",
+    "Kcal": 18.8,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.9
+  },
+  {
+    "TenThucPham": "Quả me chua",
+    "Kcal": 34.8,
+    "Protid_g": 1.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.8
+  },
+  {
+    "TenThucPham": "Rau bí",
+    "Kcal": 24.4,
+    "Protid_g": 2.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.4
+  },
+  {
+    "TenThucPham": "Rau câu khô",
+    "Kcal": 281.1,
+    "Protid_g": 11.2,
+    "Lipid_g": 1.1,
+    "Carb_g": 56.6
+  },
+  {
+    "TenThucPham": "Rau câu tươi",
+    "Kcal": 44.9,
+    "Protid_g": 1.9,
+    "Lipid_g": 0.1,
+    "Carb_g": 9.1
+  },
+  {
+    "TenThucPham": "Rau diếp",
+    "Kcal": 14.8,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.5
+  },
+  {
+    "TenThucPham": "Rau đay",
+    "Kcal": 30.0,
+    "Protid_g": 2.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.7
+  },
+  {
+    "TenThucPham": "Rau giấp cá, diếp cá",
+    "Kcal": 29.6,
+    "Protid_g": 2.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.5
+  },
+  {
+    "TenThucPham": "Rau giền cơm",
+    "Kcal": 25.6,
+    "Protid_g": 3.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Rau giền đỏ",
+    "Kcal": 47.1,
+    "Protid_g": 3.3,
+    "Lipid_g": 0.3,
+    "Carb_g": 7.8
+  },
+  {
+    "TenThucPham": "Rau giền trắng",
+    "Kcal": 47.6,
+    "Protid_g": 3.2,
+    "Lipid_g": 0.4,
+    "Carb_g": 7.8
+  },
+  {
+    "TenThucPham": "Rau húng",
+    "Kcal": 31.2,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.6
+  },
+  {
+    "TenThucPham": "Rau khoai lang",
+    "Kcal": 27.2,
+    "Protid_g": 2.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.2
+  },
+  {
+    "TenThucPham": "Rau kinh giới",
+    "Kcal": 36.4,
+    "Protid_g": 2.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.4
+  },
+  {
+    "TenThucPham": "Rau má rừng",
+    "Kcal": 30.8,
+    "Protid_g": 3.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.6
+  },
+  {
+    "TenThucPham": "Rau má, má mơ",
+    "Kcal": 38.0,
+    "Protid_g": 3.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.3
+  },
+  {
+    "TenThucPham": "Rau mồng tơi",
+    "Kcal": 23.6,
+    "Protid_g": 2.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.9
+  },
+  {
+    "TenThucPham": "Rau mùi",
+    "Kcal": 20.4,
+    "Protid_g": 2.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.5
+  },
+  {
+    "TenThucPham": "Rau mùi tàu",
+    "Kcal": 27.6,
+    "Protid_g": 2.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.8
+  },
+  {
+    "TenThucPham": "Rau muống",
+    "Kcal": 26.8,
+    "Protid_g": 3.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.5
+  },
+  {
+    "TenThucPham": "Rau muống khô",
+    "Kcal": 293.0,
+    "Protid_g": 34.2,
+    "Lipid_g": 1.8,
+    "Carb_g": 35.0
+  },
+  {
+    "TenThucPham": "Rau ngổ",
+    "Kcal": 23.6,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.4
+  },
+  {
+    "TenThucPham": "Rau ngót",
+    "Kcal": 44.8,
+    "Protid_g": 5.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.9
+  },
+  {
+    "TenThucPham": "Rau ngót khô",
+    "Kcal": 299.4,
+    "Protid_g": 32.2,
+    "Lipid_g": 2.6,
+    "Carb_g": 36.8
+  },
+  {
+    "TenThucPham": "Rau răm",
+    "Kcal": 45.2,
+    "Protid_g": 4.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.6
+  },
+  {
+    "TenThucPham": "Rau rút",
+    "Kcal": 35.2,
+    "Protid_g": 5.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.7
+  },
+  {
+    "TenThucPham": "Rau sà lách",
+    "Kcal": 16.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.7
+  },
+  {
+    "TenThucPham": "Rau sam",
+    "Kcal": 20.4,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.7
+  },
+  {
+    "TenThucPham": "Rau sắng (chùa hương)",
+    "Kcal": 61.6,
+    "Protid_g": 6.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 8.9
+  },
+  {
+    "TenThucPham": "Rau tàu bay",
+    "Kcal": 24.0,
+    "Protid_g": 2.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.5
+  },
+  {
+    "TenThucPham": "Rau thơm",
+    "Kcal": 29.6,
+    "Protid_g": 2.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.4
+  },
+  {
+    "TenThucPham": "Sấu xanh",
+    "Kcal": 19.2,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Su hào",
+    "Kcal": 43.2,
+    "Protid_g": 2.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 8.0
+  },
+  {
+    "TenThucPham": "Su hào khô",
+    "Kcal": 311.0,
+    "Protid_g": 20.0,
+    "Lipid_g": 1.4,
+    "Carb_g": 54.6
+  },
+  {
+    "TenThucPham": "Su su",
+    "Kcal": 22.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.7
+  },
+  {
+    "TenThucPham": "Súp lơ trắng",
+    "Kcal": 33.2,
+    "Protid_g": 2.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.8
+  },
+  {
+    "TenThucPham": "Súp lơ xanh",
+    "Kcal": 38.8,
+    "Protid_g": 3.0,
+    "Lipid_g": 0.3,
+    "Carb_g": 6.1
+  },
+  {
+    "TenThucPham": "Thìa là",
+    "Kcal": 42.0,
+    "Protid_g": 2.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.9
+  },
+  {
+    "TenThucPham": "Tía tô",
+    "Kcal": 39.6,
+    "Protid_g": 2.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.0
+  },
+  {
+    "TenThucPham": "Tỏi ta",
+    "Kcal": 124.0,
+    "Protid_g": 6.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 25.0
+  },
+  {
+    "TenThucPham": "Tỏi tây (cả lá)",
+    "Kcal": 35.2,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.4
+  },
+  {
+    "TenThucPham": "Trám đen chín",
+    "Kcal": 134.0,
+    "Protid_g": 2.5,
+    "Lipid_g": 10.0,
+    "Carb_g": 8.5
+  },
+  {
+    "TenThucPham": "Trám xanh sống, trám trắng",
+    "Kcal": 56.4,
+    "Protid_g": 1.2,
+    "Lipid_g": 1.6,
+    "Carb_g": 9.3
+  },
+  {
+    "TenThucPham": "Xương sông",
+    "Kcal": 27.6,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.7
+  },
+  {
+    "TenThucPham": "Cải ngọt",
+    "Kcal": 6.5,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cải thảo",
+    "Kcal": 3.6,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Ngọn su su",
+    "Kcal": 14.1,
+    "Protid_g": 3.3,
+    "Lipid_g": 0.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Đậu ván",
+    "Kcal": 11.2,
+    "Protid_g": 2.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cà chua muối",
+    "Kcal": 9.6,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 1.8
+  },
+  {
+    "TenThucPham": "Cà muối nén",
+    "Kcal": 20.0,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.7
+  },
+  {
+    "TenThucPham": "Cà muối sổi",
+    "Kcal": 22.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.2
+  },
+  {
+    "TenThucPham": "Dưa cải bắp",
+    "Kcal": 24.4,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.9
+  },
+  {
+    "TenThucPham": "Dưa cải bẹ",
+    "Kcal": 25.2,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.5
+  },
+  {
+    "TenThucPham": "Dưa cải sen",
+    "Kcal": 16.8,
+    "Protid_g": 1.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.1
+  },
+  {
+    "TenThucPham": "Dưa chuột muối",
+    "Kcal": 16.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.2
+  },
+  {
+    "TenThucPham": "Dưa giá (đậu xanh)",
+    "Kcal": 47.2,
+    "Protid_g": 5.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.8
+  },
+  {
+    "TenThucPham": "Hành củ muối",
+    "Kcal": 24.4,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.7
+  },
+  {
+    "TenThucPham": "Kiệu muối",
+    "Kcal": 28.8,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.9
+  },
+  {
+    "TenThucPham": "Nhút (dưa muối từ mít non,lá đậu xanh non...)",
+    "Kcal": 25.2,
+    "Protid_g": 2.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.8
+  },
+  {
+    "TenThucPham": "Men bia khô",
+    "Kcal": 366.8,
+    "Protid_g": 52.5,
+    "Lipid_g": 3.2,
+    "Carb_g": 32.0
+  },
+  {
+    "TenThucPham": "Men bia tươi",
+    "Kcal": 102.5,
+    "Protid_g": 16.2,
+    "Lipid_g": 1.3,
+    "Carb_g": 6.5
+  },
+  {
+    "TenThucPham": "Mộc nhĩ",
+    "Kcal": 332.2,
+    "Protid_g": 10.6,
+    "Lipid_g": 0.2,
+    "Carb_g": 72.0
+  },
+  {
+    "TenThucPham": "Nấm hương khô",
+    "Kcal": 342.0,
+    "Protid_g": 36.0,
+    "Lipid_g": 4.0,
+    "Carb_g": 40.5
+  },
+  {
+    "TenThucPham": "Nấm hương tươi",
+    "Kcal": 50.9,
+    "Protid_g": 5.5,
+    "Lipid_g": 0.5,
+    "Carb_g": 6.1
+  },
+  {
+    "TenThucPham": "Nấm mỡ (Nấm tây)",
+    "Kcal": 36.7,
+    "Protid_g": 4.0,
+    "Lipid_g": 0.3,
+    "Carb_g": 4.5
+  },
+  {
+    "TenThucPham": "Nấm rơm",
+    "Kcal": 61.2,
+    "Protid_g": 3.6,
+    "Lipid_g": 3.2,
+    "Carb_g": 4.5
+  },
+  {
+    "TenThucPham": "Nấm thường tươi",
+    "Kcal": 48.4,
+    "Protid_g": 4.6,
+    "Lipid_g": 0.8,
+    "Carb_g": 5.7
+  },
+  {
+    "TenThucPham": "Bưởi",
+    "Kcal": 32.8,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 8.0
+  },
+  {
+    "TenThucPham": "Cam",
+    "Kcal": 42.8,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.8
+  },
+  {
+    "TenThucPham": "Chanh",
+    "Kcal": 28.0,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.1
+  },
+  {
+    "TenThucPham": "Chôm chôm",
+    "Kcal": 76.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 17.7
+  },
+  {
+    "TenThucPham": "Chuối khô",
+    "Kcal": 301.2,
+    "Protid_g": 5.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 70.3
+  },
+  {
+    "TenThucPham": "Chuối tây",
+    "Kcal": 66.3,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.3,
+    "Carb_g": 15.0
+  },
+  {
+    "TenThucPham": "Chuối tiêu",
+    "Kcal": 99.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.2,
+    "Carb_g": 23.0
+  },
+  {
+    "TenThucPham": "Dâu gia",
+    "Kcal": 27.2,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.2
+  },
+  {
+    "TenThucPham": "Dâu tây",
+    "Kcal": 59.2,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.4,
+    "Carb_g": 12.1
+  },
+  {
+    "TenThucPham": "Dưa bở",
+    "Kcal": 21.0,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.2,
+    "Carb_g": 4.3
+  },
+  {
+    "TenThucPham": "Dưa hấu",
+    "Kcal": 17.8,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.2,
+    "Carb_g": 2.8
+  },
+  {
+    "TenThucPham": "Dưa hồng",
+    "Kcal": 18.0,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.2
+  },
+  {
+    "TenThucPham": "Dưa lê",
+    "Kcal": 20.4,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.7
+  },
+  {
+    "TenThucPham": "Dứa ta",
+    "Kcal": 32.4,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.3
+  },
+  {
+    "TenThucPham": "Dứa tây",
+    "Kcal": 39.2,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.3
+  },
+  {
+    "TenThucPham": "Đào",
+    "Kcal": 36.6,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.2,
+    "Carb_g": 7.8
+  },
+  {
+    "TenThucPham": "Đu đủ chín",
+    "Kcal": 37.2,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 8.3
+  },
+  {
+    "TenThucPham": "Gioi",
+    "Kcal": 27.2,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.4
+  },
+  {
+    "TenThucPham": "Hồng bì",
+    "Kcal": 44.0,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.6
+  },
+  {
+    "TenThucPham": "Hồng đỏ",
+    "Kcal": 37.6,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 8.7
+  },
+  {
+    "TenThucPham": "Hồng ngâm",
+    "Kcal": 48.0,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 11.1
+  },
+  {
+    "TenThucPham": "Hồng xiêm",
+    "Kcal": 58.3,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.7,
+    "Carb_g": 12.5
+  },
+  {
+    "TenThucPham": "Lê",
+    "Kcal": 47.8,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.2,
+    "Carb_g": 10.8
+  },
+  {
+    "TenThucPham": "Lựu",
+    "Kcal": 78.4,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 19.0
+  },
+  {
+    "TenThucPham": "Mãng cầu xiêm",
+    "Kcal": 57.6,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 12.6
+  },
+  {
+    "TenThucPham": "Mắc coọc",
+    "Kcal": 23.6,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.7
+  },
+  {
+    "TenThucPham": "Mận tím",
+    "Kcal": 22.6,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.2,
+    "Carb_g": 4.6
+  },
+  {
+    "TenThucPham": "Mít dai",
+    "Kcal": 52.8,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 12.6
+  },
+  {
+    "TenThucPham": "Mít khô",
+    "Kcal": 285.6,
+    "Protid_g": 2.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 68.5
+  },
+  {
+    "TenThucPham": "Mít mật",
+    "Kcal": 66.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.2
+  },
+  {
+    "TenThucPham": "Mơ",
+    "Kcal": 48.8,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 11.3
+  },
+  {
+    "TenThucPham": "Mơ khô",
+    "Kcal": 289.5,
+    "Protid_g": 3.0,
+    "Lipid_g": 1.1,
+    "Carb_g": 66.9
+  },
+  {
+    "TenThucPham": "Muỗm, quéo",
+    "Kcal": 68.8,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.4,
+    "Carb_g": 15.7
+  },
+  {
+    "TenThucPham": "Na",
+    "Kcal": 67.6,
+    "Protid_g": 1.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.3
+  },
+  {
+    "TenThucPham": "Nhãn",
+    "Kcal": 51.6,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 12.0
+  },
+  {
+    "TenThucPham": "Nhãn khô",
+    "Kcal": 292.1,
+    "Protid_g": 4.3,
+    "Lipid_g": 0.5,
+    "Carb_g": 67.6
+  },
+  {
+    "TenThucPham": "Nho ngọt",
+    "Kcal": 70.0,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 17.1
+  },
+  {
+    "TenThucPham": "Nho ta (nho chua)",
+    "Kcal": 23.6,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.5
+  },
+  {
+    "TenThucPham": "Nhót",
+    "Kcal": 22.4,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.4
+  },
+  {
+    "TenThucPham": "Ổi",
+    "Kcal": 57.2,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.0,
+    "Carb_g": 13.7
+  },
+  {
+    "TenThucPham": "Quả bơ vỏ tím",
+    "Kcal": 75.8,
+    "Protid_g": 1.8,
+    "Lipid_g": 6.2,
+    "Carb_g": 3.2
+  },
+  {
+    "TenThucPham": "Quả bơ vỏ xanh",
+    "Kcal": 103.4,
+    "Protid_g": 1.9,
+    "Lipid_g": 9.4,
+    "Carb_g": 2.8
+  },
+  {
+    "TenThucPham": "Quả cóc",
+    "Kcal": 62.0,
+    "Protid_g": 1.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 13.7
+  },
+  {
+    "TenThucPham": "Quả thanh long",
+    "Kcal": 47.2,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 10.5
+  },
+  {
+    "TenThucPham": "Quả trứng gà",
+    "Kcal": 106.0,
+    "Protid_g": 4.3,
+    "Lipid_g": 0.4,
+    "Carb_g": 21.3
+  },
+  {
+    "TenThucPham": "Quất chín (cả vỏ)",
+    "Kcal": 42.0,
+    "Protid_g": 0.9,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.6
+  },
+  {
+    "TenThucPham": "Quít",
+    "Kcal": 40.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.2
+  },
+  {
+    "TenThucPham": "Sầu riêng",
+    "Kcal": 137.6,
+    "Protid_g": 2.5,
+    "Lipid_g": 1.6,
+    "Carb_g": 28.3
+  },
+  {
+    "TenThucPham": "Sấu chín",
+    "Kcal": 48.8,
+    "Protid_g": 1.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 10.9
+  },
+  {
+    "TenThucPham": "Táo ta",
+    "Kcal": 40.0,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.2
+  },
+  {
+    "TenThucPham": "Táo tây",
+    "Kcal": 49.2,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 11.8
+  },
+  {
+    "TenThucPham": "Vải",
+    "Kcal": 47.2,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 11.1
+  },
+  {
+    "TenThucPham": "Vải khô",
+    "Kcal": 263.5,
+    "Protid_g": 3.0,
+    "Lipid_g": 1.9,
+    "Carb_g": 58.6
+  },
+  {
+    "TenThucPham": "Vú sữa",
+    "Kcal": 50.8,
+    "Protid_g": 1.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 11.7
+  },
+  {
+    "TenThucPham": "Xoài chín",
+    "Kcal": 68.7,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.3,
+    "Carb_g": 15.9
+  },
+  {
+    "TenThucPham": "Quả kiwi",
+    "Kcal": 67.9,
+    "Protid_g": 1.1,
+    "Lipid_g": 0.5,
+    "Carb_g": 14.7
+  },
+  {
+    "TenThucPham": "Bơ",
+    "Kcal": 755.5,
+    "Protid_g": 0.5,
+    "Lipid_g": 83.5,
+    "Carb_g": 0.5
+  },
+  {
+    "TenThucPham": "Dầu thảo mộc (Lạc, vừng, cám...)",
+    "Kcal": 897.3,
+    "Protid_g": 0.0,
+    "Lipid_g": 99.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Mỡ lợn muối",
+    "Kcal": 827.0,
+    "Protid_g": 2.0,
+    "Lipid_g": 91.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Mỡ lợn nước",
+    "Kcal": 896.4,
+    "Protid_g": 0.0,
+    "Lipid_g": 99.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Bơ thực vật",
+    "Kcal": 728.7,
+    "Protid_g": 0.5,
+    "Lipid_g": 80.7,
+    "Carb_g": 0.1
+  },
+  {
+    "TenThucPham": "Dầu bông",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu cám gạo",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu cọ",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu dừa",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu đậu tương",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu lạc",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu mè",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu ngô",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dầu oliu",
+    "Kcal": 900.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 100.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt bê mỡ",
+    "Kcal": 143.5,
+    "Protid_g": 19.0,
+    "Lipid_g": 7.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt bê nạc",
+    "Kcal": 84.5,
+    "Protid_g": 20.0,
+    "Lipid_g": 0.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt bò loại I",
+    "Kcal": 118.2,
+    "Protid_g": 21.0,
+    "Lipid_g": 3.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt bò loại II",
+    "Kcal": 166.5,
+    "Protid_g": 18.0,
+    "Lipid_g": 10.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt bò, lưng, nạc",
+    "Kcal": 105.3,
+    "Protid_g": 23.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.3
+  },
+  {
+    "TenThucPham": "Thịt bò, lưng, nạc và mỡ",
+    "Kcal": 126.9,
+    "Protid_g": 21.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 10.2
+  },
+  {
+    "TenThucPham": "Thịt bồ câu ra ràng (cả con)",
+    "Kcal": 340.0,
+    "Protid_g": 17.5,
+    "Lipid_g": 30.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt chó sấn",
+    "Kcal": 337.6,
+    "Protid_g": 16.0,
+    "Lipid_g": 30.4,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt chó vai",
+    "Kcal": 230.4,
+    "Protid_g": 18.0,
+    "Lipid_g": 17.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt cừu, nạc",
+    "Kcal": 218.6,
+    "Protid_g": 16.4,
+    "Lipid_g": 17.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt dê, nạc",
+    "Kcal": 121.5,
+    "Protid_g": 20.7,
+    "Lipid_g": 4.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt gà rừng (cả con)",
+    "Kcal": 140.8,
+    "Protid_g": 24.4,
+    "Lipid_g": 4.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt gà ta (cả con)",
+    "Kcal": 199.1,
+    "Protid_g": 20.3,
+    "Lipid_g": 13.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt gà tây (cả con)",
+    "Kcal": 218.1,
+    "Protid_g": 20.1,
+    "Lipid_g": 15.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt hươu",
+    "Kcal": 94.0,
+    "Protid_g": 19.0,
+    "Lipid_g": 2.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn mỡ",
+    "Kcal": 393.7,
+    "Protid_g": 14.5,
+    "Lipid_g": 37.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn nạc",
+    "Kcal": 139.0,
+    "Protid_g": 19.0,
+    "Lipid_g": 7.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn nửa nạc, nửa mỡ",
+    "Kcal": 259.5,
+    "Protid_g": 16.5,
+    "Lipid_g": 21.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt ngỗng (cả con)",
+    "Kcal": 408.8,
+    "Protid_g": 14.0,
+    "Lipid_g": 39.2,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt ngựa",
+    "Kcal": 176.0,
+    "Protid_g": 21.5,
+    "Lipid_g": 10.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt thỏ nhà (cả con)",
+    "Kcal": 158.0,
+    "Protid_g": 21.5,
+    "Lipid_g": 8.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt thỏ rừng (cả con)",
+    "Kcal": 103.0,
+    "Protid_g": 23.5,
+    "Lipid_g": 1.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt trâu",
+    "Kcal": 97.5,
+    "Protid_g": 20.4,
+    "Lipid_g": 1.4,
+    "Carb_g": 0.9
+  },
+  {
+    "TenThucPham": "Thịt trâu bắp",
+    "Kcal": 114.6,
+    "Protid_g": 21.9,
+    "Lipid_g": 3.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt trâu cổ",
+    "Kcal": 111.5,
+    "Protid_g": 20.9,
+    "Lipid_g": 3.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt trâu đùi",
+    "Kcal": 111.8,
+    "Protid_g": 21.2,
+    "Lipid_g": 3.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt trâu thăn",
+    "Kcal": 120.9,
+    "Protid_g": 22.8,
+    "Lipid_g": 3.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt vịt (cả con)",
+    "Kcal": 267.4,
+    "Protid_g": 17.8,
+    "Lipid_g": 21.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Bầu dục bò",
+    "Kcal": 67.4,
+    "Protid_g": 12.5,
+    "Lipid_g": 1.8,
+    "Carb_g": 0.3
+  },
+  {
+    "TenThucPham": "Bầu dục lợn",
+    "Kcal": 81.1,
+    "Protid_g": 13.0,
+    "Lipid_g": 3.1,
+    "Carb_g": 0.3
+  },
+  {
+    "TenThucPham": "Bì lợn",
+    "Kcal": 117.5,
+    "Protid_g": 23.3,
+    "Lipid_g": 2.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Chân giò lợn (chưa bỏ xương)",
+    "Kcal": 230.2,
+    "Protid_g": 15.7,
+    "Lipid_g": 18.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dạ dày bò",
+    "Kcal": 97.0,
+    "Protid_g": 14.8,
+    "Lipid_g": 4.2,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dạ dày lợn",
+    "Kcal": 84.5,
+    "Protid_g": 14.6,
+    "Lipid_g": 2.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Đầu bò",
+    "Kcal": 184.9,
+    "Protid_g": 18.1,
+    "Lipid_g": 12.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Đầu lợn",
+    "Kcal": 335.3,
+    "Protid_g": 13.4,
+    "Lipid_g": 31.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Đuôi bò",
+    "Kcal": 137.3,
+    "Protid_g": 19.7,
+    "Lipid_g": 6.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Đuôi lợn",
+    "Kcal": 467.1,
+    "Protid_g": 10.8,
+    "Lipid_g": 47.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Gan bò",
+    "Kcal": 109.5,
+    "Protid_g": 17.4,
+    "Lipid_g": 3.1,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Gan gà",
+    "Kcal": 111.4,
+    "Protid_g": 18.2,
+    "Lipid_g": 3.4,
+    "Carb_g": 2.0
+  },
+  {
+    "TenThucPham": "Gan lợn",
+    "Kcal": 115.6,
+    "Protid_g": 18.8,
+    "Lipid_g": 3.6,
+    "Carb_g": 2.0
+  },
+  {
+    "TenThucPham": "Gan vịt",
+    "Kcal": 121.9,
+    "Protid_g": 17.1,
+    "Lipid_g": 4.7,
+    "Carb_g": 2.8
+  },
+  {
+    "TenThucPham": "Gân chân bò",
+    "Kcal": 123.5,
+    "Protid_g": 30.2,
+    "Lipid_g": 0.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Lưỡi bò",
+    "Kcal": 164.1,
+    "Protid_g": 13.6,
+    "Lipid_g": 12.1,
+    "Carb_g": 0.2
+  },
+  {
+    "TenThucPham": "Lưỡi lợn",
+    "Kcal": 177.6,
+    "Protid_g": 14.2,
+    "Lipid_g": 12.8,
+    "Carb_g": 1.4
+  },
+  {
+    "TenThucPham": "Lòng lợn (ruột già)",
+    "Kcal": 166.7,
+    "Protid_g": 6.9,
+    "Lipid_g": 15.1,
+    "Carb_g": 0.8
+  },
+  {
+    "TenThucPham": "Lòng lợn (ruột non)",
+    "Kcal": 43.7,
+    "Protid_g": 7.2,
+    "Lipid_g": 1.3,
+    "Carb_g": 0.8
+  },
+  {
+    "TenThucPham": "Mề gà",
+    "Kcal": 99.3,
+    "Protid_g": 21.3,
+    "Lipid_g": 1.3,
+    "Carb_g": 0.6
+  },
+  {
+    "TenThucPham": "Óc bò",
+    "Kcal": 123.5,
+    "Protid_g": 9.0,
+    "Lipid_g": 9.5,
+    "Carb_g": 0.5
+  },
+  {
+    "TenThucPham": "Óc lợn",
+    "Kcal": 123.1,
+    "Protid_g": 9.0,
+    "Lipid_g": 9.5,
+    "Carb_g": 0.4
+  },
+  {
+    "TenThucPham": "Phổi bò",
+    "Kcal": 103.1,
+    "Protid_g": 15.2,
+    "Lipid_g": 4.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Phổi lợn",
+    "Kcal": 91.6,
+    "Protid_g": 14.8,
+    "Lipid_g": 3.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Sườn lợn (chưa bỏ xương)",
+    "Kcal": 186.8,
+    "Protid_g": 17.9,
+    "Lipid_g": 12.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tai lợn",
+    "Kcal": 126.1,
+    "Protid_g": 21.0,
+    "Lipid_g": 4.1,
+    "Carb_g": 1.3
+  },
+  {
+    "TenThucPham": "Tim bò",
+    "Kcal": 89.4,
+    "Protid_g": 15.0,
+    "Lipid_g": 3.0,
+    "Carb_g": 0.6
+  },
+  {
+    "TenThucPham": "Tim gà",
+    "Kcal": 113.5,
+    "Protid_g": 16.0,
+    "Lipid_g": 5.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tim lợn",
+    "Kcal": 94.0,
+    "Protid_g": 15.1,
+    "Lipid_g": 3.2,
+    "Carb_g": 1.2
+  },
+  {
+    "TenThucPham": "Tiết bò",
+    "Kcal": 75.4,
+    "Protid_g": 18.0,
+    "Lipid_g": 0.2,
+    "Carb_g": 0.4
+  },
+  {
+    "TenThucPham": "Tiết lợn luộc",
+    "Kcal": 43.7,
+    "Protid_g": 10.7,
+    "Lipid_g": 0.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tiết lợn sống",
+    "Kcal": 24.5,
+    "Protid_g": 5.7,
+    "Lipid_g": 0.1,
+    "Carb_g": 0.2
+  },
+  {
+    "TenThucPham": "Tủy xương bò",
+    "Kcal": 813.5,
+    "Protid_g": 1.1,
+    "Lipid_g": 89.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tủy xương lợn",
+    "Kcal": 749.0,
+    "Protid_g": 2.3,
+    "Lipid_g": 82.2,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Ba tê",
+    "Kcal": 326.2,
+    "Protid_g": 10.8,
+    "Lipid_g": 24.6,
+    "Carb_g": 15.4
+  },
+  {
+    "TenThucPham": "Chả lợn",
+    "Kcal": 517.2,
+    "Protid_g": 10.8,
+    "Lipid_g": 50.4,
+    "Carb_g": 5.1
+  },
+  {
+    "TenThucPham": "Chả quế lợn",
+    "Kcal": 415.8,
+    "Protid_g": 16.2,
+    "Lipid_g": 39.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Dăm bông lợn",
+    "Kcal": 318.2,
+    "Protid_g": 23.0,
+    "Lipid_g": 25.0,
+    "Carb_g": 0.3
+  },
+  {
+    "TenThucPham": "Dồi lợn",
+    "Kcal": 113.5,
+    "Protid_g": 12.4,
+    "Lipid_g": 7.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Giò bò",
+    "Kcal": 335.4,
+    "Protid_g": 18.2,
+    "Lipid_g": 29.0,
+    "Carb_g": 0.4
+  },
+  {
+    "TenThucPham": "Giò lụa",
+    "Kcal": 204.6,
+    "Protid_g": 16.9,
+    "Lipid_g": 15.0,
+    "Carb_g": 0.5
+  },
+  {
+    "TenThucPham": "Giò thủ lợn",
+    "Kcal": 552.7,
+    "Protid_g": 16.0,
+    "Lipid_g": 54.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Lạp xường",
+    "Kcal": 585.0,
+    "Protid_g": 20.8,
+    "Lipid_g": 55.0,
+    "Carb_g": 1.7
+  },
+  {
+    "TenThucPham": "Nem chạo",
+    "Kcal": 116.2,
+    "Protid_g": 12.1,
+    "Lipid_g": 1.6,
+    "Carb_g": 13.3
+  },
+  {
+    "TenThucPham": "Nem chua",
+    "Kcal": 124.9,
+    "Protid_g": 20.7,
+    "Lipid_g": 3.3,
+    "Carb_g": 3.1
+  },
+  {
+    "TenThucPham": "Ruốc thịt lợn",
+    "Kcal": 369.1,
+    "Protid_g": 46.6,
+    "Lipid_g": 20.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt bò khô",
+    "Kcal": 239.2,
+    "Protid_g": 51.0,
+    "Lipid_g": 1.6,
+    "Carb_g": 5.2
+  },
+  {
+    "TenThucPham": "Thịt trâu khô",
+    "Kcal": 225.9,
+    "Protid_g": 50.4,
+    "Lipid_g": 2.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Xúc xích",
+    "Kcal": 325.1,
+    "Protid_g": 18.5,
+    "Lipid_g": 27.2,
+    "Carb_g": 1.4
+  },
+  {
+    "TenThucPham": "Bột cóc",
+    "Kcal": 342.2,
+    "Protid_g": 55.4,
+    "Lipid_g": 13.4,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Châu chấu",
+    "Kcal": 129.6,
+    "Protid_g": 24.3,
+    "Lipid_g": 3.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Ếch (thịt đùi)",
+    "Kcal": 89.9,
+    "Protid_g": 20.0,
+    "Lipid_g": 1.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Nhộng",
+    "Kcal": 110.5,
+    "Protid_g": 13.0,
+    "Lipid_g": 6.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Lòng gà (cả bộ)",
+    "Kcal": 118.9,
+    "Protid_g": 17.9,
+    "Lipid_g": 4.5,
+    "Carb_g": 1.8
+  },
+  {
+    "TenThucPham": "Thịt lợn, nạc vai",
+    "Kcal": 148.8,
+    "Protid_g": 20.8,
+    "Lipid_g": 7.3,
+    "Carb_g": -0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn, nạc mông",
+    "Kcal": 141.2,
+    "Protid_g": 24.7,
+    "Lipid_g": 4.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn, nạc thăn",
+    "Kcal": 118.3,
+    "Protid_g": 23.0,
+    "Lipid_g": 2.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn nửa nạc, nửa mỡ, nướng",
+    "Kcal": 401.0,
+    "Protid_g": 20.5,
+    "Lipid_g": 35.2,
+    "Carb_g": 0.6
+  },
+  {
+    "TenThucPham": "Thịt gà công nghiệp, cánh",
+    "Kcal": 188.2,
+    "Protid_g": 19.1,
+    "Lipid_g": 12.4,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt gà công nghiệp, đùi",
+    "Kcal": 136.8,
+    "Protid_g": 18.0,
+    "Lipid_g": 6.8,
+    "Carb_g": 0.9
+  },
+  {
+    "TenThucPham": "Thịt gà công nghiệp, lườn",
+    "Kcal": 133.5,
+    "Protid_g": 22.9,
+    "Lipid_g": 4.7,
+    "Carb_g": -0.0
+  },
+  {
+    "TenThucPham": "Thịt ngan",
+    "Kcal": 288.2,
+    "Protid_g": 17.1,
+    "Lipid_g": 24.4,
+    "Carb_g": -0.0
+  },
+  {
+    "TenThucPham": "Chả lá lốt",
+    "Kcal": 306.4,
+    "Protid_g": 20.0,
+    "Lipid_g": 24.8,
+    "Carb_g": 0.8
+  },
+  {
+    "TenThucPham": "Cá bống",
+    "Kcal": 70.4,
+    "Protid_g": 15.8,
+    "Lipid_g": 0.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá chày",
+    "Kcal": 112.8,
+    "Protid_g": 20.1,
+    "Lipid_g": 3.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá chép",
+    "Kcal": 96.4,
+    "Protid_g": 16.0,
+    "Lipid_g": 3.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá dưa",
+    "Kcal": 115.4,
+    "Protid_g": 17.6,
+    "Lipid_g": 5.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá dầu",
+    "Kcal": 96.3,
+    "Protid_g": 18.9,
+    "Lipid_g": 2.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá diếc",
+    "Kcal": 87.0,
+    "Protid_g": 17.7,
+    "Lipid_g": 1.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá đao",
+    "Kcal": 93.9,
+    "Protid_g": 18.3,
+    "Lipid_g": 2.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá đé",
+    "Kcal": 82.9,
+    "Protid_g": 18.7,
+    "Lipid_g": 0.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá đối",
+    "Kcal": 107.7,
+    "Protid_g": 19.5,
+    "Lipid_g": 3.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá đồng tiền",
+    "Kcal": 98.4,
+    "Protid_g": 20.1,
+    "Lipid_g": 2.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá hồi",
+    "Kcal": 135.7,
+    "Protid_g": 22.0,
+    "Lipid_g": 5.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá khô (chim, thu, nụ, đé)",
+    "Kcal": 208.3,
+    "Protid_g": 43.3,
+    "Lipid_g": 3.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá lác",
+    "Kcal": 71.3,
+    "Protid_g": 16.7,
+    "Lipid_g": 0.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá mè",
+    "Kcal": 143.5,
+    "Protid_g": 15.4,
+    "Lipid_g": 9.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá mòi (cá sardin)",
+    "Kcal": 124.0,
+    "Protid_g": 17.5,
+    "Lipid_g": 6.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá mỡ",
+    "Kcal": 150.9,
+    "Protid_g": 16.8,
+    "Lipid_g": 9.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá mối",
+    "Kcal": 116.3,
+    "Protid_g": 22.1,
+    "Lipid_g": 3.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá nạc",
+    "Kcal": 79.9,
+    "Protid_g": 17.5,
+    "Lipid_g": 1.1,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá ngừ",
+    "Kcal": 86.7,
+    "Protid_g": 21.0,
+    "Lipid_g": 0.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá nục",
+    "Kcal": 110.5,
+    "Protid_g": 20.2,
+    "Lipid_g": 3.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá phèn",
+    "Kcal": 104.1,
+    "Protid_g": 15.9,
+    "Lipid_g": 4.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá quả",
+    "Kcal": 97.1,
+    "Protid_g": 18.2,
+    "Lipid_g": 2.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá rô đồng",
+    "Kcal": 125.9,
+    "Protid_g": 19.1,
+    "Lipid_g": 5.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá rô phi",
+    "Kcal": 99.5,
+    "Protid_g": 19.7,
+    "Lipid_g": 2.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá thờn bơn",
+    "Kcal": 73.2,
+    "Protid_g": 17.4,
+    "Lipid_g": 0.4,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá thu",
+    "Kcal": 165.5,
+    "Protid_g": 18.2,
+    "Lipid_g": 10.3,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá thu đao",
+    "Kcal": 155.6,
+    "Protid_g": 20.0,
+    "Lipid_g": 8.4,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá trạch",
+    "Kcal": 110.4,
+    "Protid_g": 20.4,
+    "Lipid_g": 3.2,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá trắm cỏ",
+    "Kcal": 91.4,
+    "Protid_g": 17.0,
+    "Lipid_g": 2.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá trê",
+    "Kcal": 173.1,
+    "Protid_g": 16.5,
+    "Lipid_g": 11.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá trích",
+    "Kcal": 166.2,
+    "Protid_g": 17.7,
+    "Lipid_g": 10.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá trôi",
+    "Kcal": 126.5,
+    "Protid_g": 18.8,
+    "Lipid_g": 5.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cua bể",
+    "Kcal": 103.4,
+    "Protid_g": 17.5,
+    "Lipid_g": 0.6,
+    "Carb_g": 7.0
+  },
+  {
+    "TenThucPham": "Cua đồng",
+    "Kcal": 86.9,
+    "Protid_g": 12.3,
+    "Lipid_g": 3.3,
+    "Carb_g": 2.0
+  },
+  {
+    "TenThucPham": "Cua ghẹ",
+    "Kcal": 53.9,
+    "Protid_g": 11.9,
+    "Lipid_g": 0.7,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Hải sâm",
+    "Kcal": 89.5,
+    "Protid_g": 21.5,
+    "Lipid_g": 0.3,
+    "Carb_g": 0.2
+  },
+  {
+    "TenThucPham": "Hến",
+    "Kcal": 44.7,
+    "Protid_g": 4.5,
+    "Lipid_g": 0.7,
+    "Carb_g": 5.1
+  },
+  {
+    "TenThucPham": "Lươn",
+    "Kcal": 129.9,
+    "Protid_g": 18.4,
+    "Lipid_g": 1.5,
+    "Carb_g": 10.7
+  },
+  {
+    "TenThucPham": "Mực khô",
+    "Kcal": 290.9,
+    "Protid_g": 60.1,
+    "Lipid_g": 4.5,
+    "Carb_g": 2.5
+  },
+  {
+    "TenThucPham": "Mực tươi",
+    "Kcal": 73.3,
+    "Protid_g": 16.3,
+    "Lipid_g": 0.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Ốc bươu",
+    "Kcal": 83.9,
+    "Protid_g": 11.1,
+    "Lipid_g": 0.7,
+    "Carb_g": 8.3
+  },
+  {
+    "TenThucPham": "Ốc đá",
+    "Kcal": 63.1,
+    "Protid_g": 11.2,
+    "Lipid_g": 0.3,
+    "Carb_g": 3.9
+  },
+  {
+    "TenThucPham": "Ốc nhồi",
+    "Kcal": 84.3,
+    "Protid_g": 11.9,
+    "Lipid_g": 0.7,
+    "Carb_g": 7.6
+  },
+  {
+    "TenThucPham": "Ốc vặn",
+    "Kcal": 72.3,
+    "Protid_g": 12.2,
+    "Lipid_g": 0.7,
+    "Carb_g": 4.3
+  },
+  {
+    "TenThucPham": "Rạm (muối, đồ)",
+    "Kcal": 82.9,
+    "Protid_g": 14.2,
+    "Lipid_g": 2.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Rạm tươi",
+    "Kcal": 76.8,
+    "Protid_g": 12.9,
+    "Lipid_g": 2.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Rươi",
+    "Kcal": 89.2,
+    "Protid_g": 12.4,
+    "Lipid_g": 4.4,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Sò",
+    "Kcal": 50.8,
+    "Protid_g": 8.8,
+    "Lipid_g": 0.4,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Tép gạo",
+    "Kcal": 57.6,
+    "Protid_g": 11.7,
+    "Lipid_g": 1.2,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tép khô",
+    "Kcal": 269.0,
+    "Protid_g": 59.8,
+    "Lipid_g": 3.0,
+    "Carb_g": 0.7
+  },
+  {
+    "TenThucPham": "Tôm biển",
+    "Kcal": 82.1,
+    "Protid_g": 17.6,
+    "Lipid_g": 0.9,
+    "Carb_g": 0.9
+  },
+  {
+    "TenThucPham": "Tôm đồng",
+    "Kcal": 89.8,
+    "Protid_g": 18.4,
+    "Lipid_g": 1.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tôm khô",
+    "Kcal": 346.6,
+    "Protid_g": 75.6,
+    "Lipid_g": 3.8,
+    "Carb_g": 2.5
+  },
+  {
+    "TenThucPham": "Trai",
+    "Kcal": 38.3,
+    "Protid_g": 4.6,
+    "Lipid_g": 1.1,
+    "Carb_g": 2.5
+  },
+  {
+    "TenThucPham": "Bánh phồng tôm rán",
+    "Kcal": 675.6,
+    "Protid_g": 1.6,
+    "Lipid_g": 59.2,
+    "Carb_g": 34.1
+  },
+  {
+    "TenThucPham": "Bánh phồng tôm sống",
+    "Kcal": 381.4,
+    "Protid_g": 3.4,
+    "Lipid_g": 7.4,
+    "Carb_g": 75.3
+  },
+  {
+    "TenThucPham": "Bột cá",
+    "Kcal": 322.9,
+    "Protid_g": 71.2,
+    "Lipid_g": 2.9,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Ruốc cá quả",
+    "Kcal": 311.7,
+    "Protid_g": 65.7,
+    "Lipid_g": 4.1,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Ruốc tôm",
+    "Kcal": 304.7,
+    "Protid_g": 65.5,
+    "Lipid_g": 3.1,
+    "Carb_g": 3.7
+  },
+  {
+    "TenThucPham": "Cá chim",
+    "Kcal": 142.8,
+    "Protid_g": 17.7,
+    "Lipid_g": 6.4,
+    "Carb_g": 3.6
+  },
+  {
+    "TenThucPham": "Cá chim trắng",
+    "Kcal": 246.9,
+    "Protid_g": 15.1,
+    "Lipid_g": 19.2,
+    "Carb_g": 3.4
+  },
+  {
+    "TenThucPham": "Cá điêu hồng",
+    "Kcal": 110.5,
+    "Protid_g": 17.1,
+    "Lipid_g": 3.3,
+    "Carb_g": 3.1
+  },
+  {
+    "TenThucPham": "Cá basa, phi lê",
+    "Kcal": 67.3,
+    "Protid_g": 9.7,
+    "Lipid_g": 0.8,
+    "Carb_g": 5.3
+  },
+  {
+    "TenThucPham": "Chả cá basa",
+    "Kcal": 185.9,
+    "Protid_g": 11.1,
+    "Lipid_g": 13.0,
+    "Carb_g": 6.1
+  },
+  {
+    "TenThucPham": "Con trùng trục",
+    "Kcal": 107.9,
+    "Protid_g": 14.4,
+    "Lipid_g": 1.3,
+    "Carb_g": 9.6
+  },
+  {
+    "TenThucPham": "Ngao biển trắng",
+    "Kcal": 41.6,
+    "Protid_g": 5.4,
+    "Lipid_g": 0.4,
+    "Carb_g": 4.0
+  },
+  {
+    "TenThucPham": "Trứng gà ta",
+    "Kcal": 149.8,
+    "Protid_g": 13.0,
+    "Lipid_g": 10.3,
+    "Carb_g": 1.2
+  },
+  {
+    "TenThucPham": "Lòng đỏ trứng gà",
+    "Kcal": 326.6,
+    "Protid_g": 13.6,
+    "Lipid_g": 29.8,
+    "Carb_g": 1.0
+  },
+  {
+    "TenThucPham": "Lòng trắng trứng gà",
+    "Kcal": 46.1,
+    "Protid_g": 10.3,
+    "Lipid_g": 0.1,
+    "Carb_g": 1.0
+  },
+  {
+    "TenThucPham": "Trứng vịt",
+    "Kcal": 172.0,
+    "Protid_g": 13.0,
+    "Lipid_g": 12.0,
+    "Carb_g": 2.9
+  },
+  {
+    "TenThucPham": "Lòng đỏ trứng vịt",
+    "Kcal": 364.3,
+    "Protid_g": 13.6,
+    "Lipid_g": 32.3,
+    "Carb_g": 4.8
+  },
+  {
+    "TenThucPham": "Lòng trắng trứng vịt",
+    "Kcal": 46.9,
+    "Protid_g": 10.7,
+    "Lipid_g": 0.1,
+    "Carb_g": 0.8
+  },
+  {
+    "TenThucPham": "Trứng chim cút",
+    "Kcal": 156.9,
+    "Protid_g": 12.8,
+    "Lipid_g": 10.5,
+    "Carb_g": 2.9
+  },
+  {
+    "TenThucPham": "Trứng cá",
+    "Kcal": 171.1,
+    "Protid_g": 20.5,
+    "Lipid_g": 9.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Trứng cá muối",
+    "Kcal": 273.5,
+    "Protid_g": 24.6,
+    "Lipid_g": 17.9,
+    "Carb_g": 3.5
+  },
+  {
+    "TenThucPham": "Trứng vịt lộn",
+    "Kcal": 182.0,
+    "Protid_g": 13.6,
+    "Lipid_g": 12.4,
+    "Carb_g": 4.0
+  },
+  {
+    "TenThucPham": "Bột trứng",
+    "Kcal": 563.0,
+    "Protid_g": 44.0,
+    "Lipid_g": 42.2,
+    "Carb_g": 1.8
+  },
+  {
+    "TenThucPham": "Trứng gà công nghiệp",
+    "Kcal": 132.2,
+    "Protid_g": 12.8,
+    "Lipid_g": 8.2,
+    "Carb_g": 1.9
+  },
+  {
+    "TenThucPham": "Sữa bò tươi",
+    "Kcal": 74.4,
+    "Protid_g": 3.9,
+    "Lipid_g": 4.4,
+    "Carb_g": 4.8
+  },
+  {
+    "TenThucPham": "Sữa dê tươi",
+    "Kcal": 68.9,
+    "Protid_g": 3.5,
+    "Lipid_g": 4.1,
+    "Carb_g": 4.5
+  },
+  {
+    "TenThucPham": "Sữa mẹ (sữa người)",
+    "Kcal": 61.0,
+    "Protid_g": 1.5,
+    "Lipid_g": 3.0,
+    "Carb_g": 7.0
+  },
+  {
+    "TenThucPham": "Sữa chua",
+    "Kcal": 60.9,
+    "Protid_g": 3.3,
+    "Lipid_g": 3.7,
+    "Carb_g": 3.6
+  },
+  {
+    "TenThucPham": "Sữa chua vớt béo",
+    "Kcal": 26.0,
+    "Protid_g": 3.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.1
+  },
+  {
+    "TenThucPham": "Sữa bột toàn phần",
+    "Kcal": 494.0,
+    "Protid_g": 27.0,
+    "Lipid_g": 26.0,
+    "Carb_g": 38.0
+  },
+  {
+    "TenThucPham": "Sữa bột tách béo",
+    "Kcal": 357.0,
+    "Protid_g": 35.0,
+    "Lipid_g": 1.0,
+    "Carb_g": 52.0
+  },
+  {
+    "TenThucPham": "Sữa đặc có đường Việt Nam",
+    "Kcal": 335.6,
+    "Protid_g": 8.1,
+    "Lipid_g": 8.8,
+    "Carb_g": 56.0
+  },
+  {
+    "TenThucPham": "Phó mát",
+    "Kcal": 380.1,
+    "Protid_g": 25.5,
+    "Lipid_g": 30.9,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Chuối nước đường",
+    "Kcal": 62.8,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.2
+  },
+  {
+    "TenThucPham": "Dưa chuột hộp",
+    "Kcal": 18.4,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.3
+  },
+  {
+    "TenThucPham": "Dứa hộp",
+    "Kcal": 56.8,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 13.9
+  },
+  {
+    "TenThucPham": "Lạc chao dầu",
+    "Kcal": 679.5,
+    "Protid_g": 25.7,
+    "Lipid_g": 59.5,
+    "Carb_g": 10.3
+  },
+  {
+    "TenThucPham": "Mắc coọc nước đường",
+    "Kcal": 58.4,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 14.4
+  },
+  {
+    "TenThucPham": "Mận nước đường",
+    "Kcal": 61.2,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.0
+  },
+  {
+    "TenThucPham": "Mứt bí ngô",
+    "Kcal": 201.2,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 49.8
+  },
+  {
+    "TenThucPham": "Mứt cam có vỏ",
+    "Kcal": 227.2,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 56.4
+  },
+  {
+    "TenThucPham": "Mứt chuối",
+    "Kcal": 223.6,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.0,
+    "Carb_g": 55.2
+  },
+  {
+    "TenThucPham": "Mứt dứa",
+    "Kcal": 209.6,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 51.9
+  },
+  {
+    "TenThucPham": "Mứt đu đủ",
+    "Kcal": 186.0,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 46.1
+  },
+  {
+    "TenThucPham": "Nhãn nước đường",
+    "Kcal": 66.0,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 16.0
+  },
+  {
+    "TenThucPham": "Nước dứa hộp",
+    "Kcal": 40.4,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 9.8
+  },
+  {
+    "TenThucPham": "Vải nước đường",
+    "Kcal": 64.8,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.8
+  },
+  {
+    "TenThucPham": "Cá thu hộp",
+    "Kcal": 207.2,
+    "Protid_g": 24.8,
+    "Lipid_g": 12.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cá trích hộp",
+    "Kcal": 232.8,
+    "Protid_g": 22.3,
+    "Lipid_g": 14.4,
+    "Carb_g": 3.5
+  },
+  {
+    "TenThucPham": "Thịt bò hộp",
+    "Kcal": 251.0,
+    "Protid_g": 16.4,
+    "Lipid_g": 20.6,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt gà hộp",
+    "Kcal": 273.2,
+    "Protid_g": 17.0,
+    "Lipid_g": 22.8,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt lợn hộp",
+    "Kcal": 343.7,
+    "Protid_g": 17.3,
+    "Lipid_g": 29.3,
+    "Carb_g": 2.7
+  },
+  {
+    "TenThucPham": "Thịt lợn, thịt bò xay hộp",
+    "Kcal": 244.0,
+    "Protid_g": 16.0,
+    "Lipid_g": 20.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Thịt vịt hầm",
+    "Kcal": 224.2,
+    "Protid_g": 19.6,
+    "Lipid_g": 16.2,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Bánh bích cốt",
+    "Kcal": 349.3,
+    "Protid_g": 12.3,
+    "Lipid_g": 1.3,
+    "Carb_g": 72.1
+  },
+  {
+    "TenThucPham": "Bánh bích quy",
+    "Kcal": 378.1,
+    "Protid_g": 8.8,
+    "Lipid_g": 4.5,
+    "Carb_g": 75.6
+  },
+  {
+    "TenThucPham": "Bánh chả",
+    "Kcal": 399.0,
+    "Protid_g": 3.4,
+    "Lipid_g": 6.6,
+    "Carb_g": 81.5
+  },
+  {
+    "TenThucPham": "Bánh con cá",
+    "Kcal": 369.0,
+    "Protid_g": 7.5,
+    "Lipid_g": 2.2,
+    "Carb_g": 79.8
+  },
+  {
+    "TenThucPham": "Bánh đậu xanh",
+    "Kcal": 419.9,
+    "Protid_g": 15.6,
+    "Lipid_g": 11.5,
+    "Carb_g": 63.5
+  },
+  {
+    "TenThucPham": "Bánh kem xốp",
+    "Kcal": 506.0,
+    "Protid_g": 8.3,
+    "Lipid_g": 24.0,
+    "Carb_g": 64.2
+  },
+  {
+    "TenThucPham": "Bánh khảo chay",
+    "Kcal": 377.1,
+    "Protid_g": 3.2,
+    "Lipid_g": 0.3,
+    "Carb_g": 90.4
+  },
+  {
+    "TenThucPham": "Bánh quế",
+    "Kcal": 436.3,
+    "Protid_g": 8.3,
+    "Lipid_g": 10.7,
+    "Carb_g": 76.7
+  },
+  {
+    "TenThucPham": "Bánh sô cô la",
+    "Kcal": 449.2,
+    "Protid_g": 3.9,
+    "Lipid_g": 17.6,
+    "Carb_g": 68.8
+  },
+  {
+    "TenThucPham": "Bánh thỏi sô cô la",
+    "Kcal": 543.2,
+    "Protid_g": 4.9,
+    "Lipid_g": 30.4,
+    "Carb_g": 62.5
+  },
+  {
+    "TenThucPham": "Bánh trứng nhện",
+    "Kcal": 369.3,
+    "Protid_g": 9.6,
+    "Lipid_g": 3.7,
+    "Carb_g": 74.4
+  },
+  {
+    "TenThucPham": "Bột ca cao",
+    "Kcal": 423.0,
+    "Protid_g": 23.3,
+    "Lipid_g": 17.0,
+    "Carb_g": 44.2
+  },
+  {
+    "TenThucPham": "Đường cát",
+    "Kcal": 382.8,
+    "Protid_g": 1.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 94.6
+  },
+  {
+    "TenThucPham": "Đường kính",
+    "Kcal": 397.2,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 99.3
+  },
+  {
+    "TenThucPham": "Kẹo bơ cứng",
+    "Kcal": 447.6,
+    "Protid_g": 2.1,
+    "Lipid_g": 17.2,
+    "Carb_g": 71.1
+  },
+  {
+    "TenThucPham": "Kẹo cà phê",
+    "Kcal": 377.7,
+    "Protid_g": 0.0,
+    "Lipid_g": 1.3,
+    "Carb_g": 91.5
+  },
+  {
+    "TenThucPham": "Kẹo cam chanh",
+    "Kcal": 378.1,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.5,
+    "Carb_g": 93.4
+  },
+  {
+    "TenThucPham": "Kẹo dừa mềm",
+    "Kcal": 424.6,
+    "Protid_g": 0.6,
+    "Lipid_g": 12.2,
+    "Carb_g": 78.1
+  },
+  {
+    "TenThucPham": "Kẹo dứa mềm",
+    "Kcal": 424.6,
+    "Protid_g": 0.6,
+    "Lipid_g": 12.2,
+    "Carb_g": 78.1
+  },
+  {
+    "TenThucPham": "Kẹo lạc",
+    "Kcal": 457.7,
+    "Protid_g": 10.3,
+    "Lipid_g": 16.5,
+    "Carb_g": 67.0
+  },
+  {
+    "TenThucPham": "Kẹo Pastille (kẹo ngậm bạc hà)",
+    "Kcal": 356.0,
+    "Protid_g": 5.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 83.8
+  },
+  {
+    "TenThucPham": "Kẹo sô cô la",
+    "Kcal": 393.0,
+    "Protid_g": 1.6,
+    "Lipid_g": 4.6,
+    "Carb_g": 86.3
+  },
+  {
+    "TenThucPham": "Kẹo sữa",
+    "Kcal": 390.4,
+    "Protid_g": 2.9,
+    "Lipid_g": 5.2,
+    "Carb_g": 83.0
+  },
+  {
+    "TenThucPham": "Kẹo vừng viên",
+    "Kcal": 423.7,
+    "Protid_g": 2.8,
+    "Lipid_g": 6.9,
+    "Carb_g": 87.6
+  },
+  {
+    "TenThucPham": "Mạch nha",
+    "Kcal": 330.8,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 82.5
+  },
+  {
+    "TenThucPham": "Mật ong",
+    "Kcal": 326.8,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 81.3
+  },
+  {
+    "TenThucPham": "Mứt lạc",
+    "Kcal": 433.4,
+    "Protid_g": 5.4,
+    "Lipid_g": 8.6,
+    "Carb_g": 83.6
+  },
+  {
+    "TenThucPham": "Cary bột",
+    "Kcal": 318.1,
+    "Protid_g": 8.2,
+    "Lipid_g": 7.3,
+    "Carb_g": 54.9
+  },
+  {
+    "TenThucPham": "Gừng khô (bột)",
+    "Kcal": 372.7,
+    "Protid_g": 9.1,
+    "Lipid_g": 5.9,
+    "Carb_g": 70.8
+  },
+  {
+    "TenThucPham": "Gừng tươi",
+    "Kcal": 42.0,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.8,
+    "Carb_g": 8.3
+  },
+  {
+    "TenThucPham": "Hạt tiêu",
+    "Kcal": 365.0,
+    "Protid_g": 7.0,
+    "Lipid_g": 7.4,
+    "Carb_g": 67.6
+  },
+  {
+    "TenThucPham": "Muối",
+    "Kcal": 0.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Nghệ khô, bột",
+    "Kcal": 379.9,
+    "Protid_g": 7.8,
+    "Lipid_g": 9.9,
+    "Carb_g": 64.9
+  },
+  {
+    "TenThucPham": "Nghệ tươi",
+    "Kcal": 51.1,
+    "Protid_g": 1.1,
+    "Lipid_g": 0.3,
+    "Carb_g": 11.0
+  },
+  {
+    "TenThucPham": "Ớt khô bột",
+    "Kcal": 321.8,
+    "Protid_g": 15.6,
+    "Lipid_g": 4.2,
+    "Carb_g": 55.4
+  },
+  {
+    "TenThucPham": "Riềng",
+    "Kcal": 26.0,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 6.2
+  },
+  {
+    "TenThucPham": "Magi",
+    "Kcal": 65.3,
+    "Protid_g": 10.0,
+    "Lipid_g": 0.1,
+    "Carb_g": 6.1
+  },
+  {
+    "TenThucPham": "Mắm tôm đặc",
+    "Kcal": 72.7,
+    "Protid_g": 14.8,
+    "Lipid_g": 1.5,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Mắm tôm loãng",
+    "Kcal": 43.6,
+    "Protid_g": 7.0,
+    "Lipid_g": 0.8,
+    "Carb_g": 2.1
+  },
+  {
+    "TenThucPham": "Mắm tép chua",
+    "Kcal": 67.6,
+    "Protid_g": 8.7,
+    "Lipid_g": 1.2,
+    "Carb_g": 5.5
+  },
+  {
+    "TenThucPham": "Nước mắm cá (loại đặc biệt)",
+    "Kcal": 60.0,
+    "Protid_g": 15.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Nước mắm loại I",
+    "Kcal": 28.4,
+    "Protid_g": 7.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Nước mắm loại II",
+    "Kcal": 20.8,
+    "Protid_g": 5.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Nước mắm cá",
+    "Kcal": 34.9,
+    "Protid_g": 5.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 3.6
+  },
+  {
+    "TenThucPham": "Nước mắm cô",
+    "Kcal": 131.2,
+    "Protid_g": 32.8,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Tương ngô",
+    "Kcal": 74.5,
+    "Protid_g": 3.9,
+    "Lipid_g": 0.1,
+    "Carb_g": 14.5
+  },
+  {
+    "TenThucPham": "Tương nếp",
+    "Kcal": 86.3,
+    "Protid_g": 4.3,
+    "Lipid_g": 0.7,
+    "Carb_g": 15.7
+  },
+  {
+    "TenThucPham": "Tương ớt",
+    "Kcal": 40.5,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.5,
+    "Carb_g": 8.5
+  },
+  {
+    "TenThucPham": "Xì dầu",
+    "Kcal": 55.4,
+    "Protid_g": 6.3,
+    "Lipid_g": 0.0,
+    "Carb_g": 7.5
+  },
+  {
+    "TenThucPham": "Sốt mayonnaise",
+    "Kcal": 700.6,
+    "Protid_g": 0.0,
+    "Lipid_g": 77.8,
+    "Carb_g": 0.1
+  },
+  {
+    "TenThucPham": "Bia (cồn: 4,5 g)",
+    "Kcal": 43.0,
+    "Protid_g": 0.5,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.3
+  },
+  {
+    "TenThucPham": "Cô nhắc (cồn 32 g)",
+    "Kcal": 224.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Cốc tain (cồn 13 g)",
+    "Kcal": 155.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 15.7
+  },
+  {
+    "TenThucPham": "Coca cola",
+    "Kcal": 41.6,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 10.4
+  },
+  {
+    "TenThucPham": "Nước cam tươi",
+    "Kcal": 23.4,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.2,
+    "Carb_g": 4.7
+  },
+  {
+    "TenThucPham": "Nước dừa non tươi",
+    "Kcal": 20.8,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.0,
+    "Carb_g": 4.8
+  },
+  {
+    "TenThucPham": "Nước ép cà chua",
+    "Kcal": 20.6,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.6,
+    "Carb_g": 3.0
+  },
+  {
+    "TenThucPham": "Nước khoáng",
+    "Kcal": 0.1,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Nước quít tươi",
+    "Kcal": 24.6,
+    "Protid_g": 0.4,
+    "Lipid_g": 0.2,
+    "Carb_g": 5.3
+  },
+  {
+    "TenThucPham": "Rượu cam, chanh (cồn 24,2 g)",
+    "Kcal": 169.4,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Rượu nếp (80g/ 24 ml) (cồn 5 g)",
+    "Kcal": 202.6,
+    "Protid_g": 4.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 37.9
+  },
+  {
+    "TenThucPham": "Rượu trắng (cồn 39 g)",
+    "Kcal": 273.0,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Rượu vang đỏ (cồn 9,5 g)",
+    "Kcal": 75.4,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 2.0
+  },
+  {
+    "TenThucPham": "Rượu vang trắng (cồn 9,5 g)",
+    "Kcal": 67.7,
+    "Protid_g": 0.1,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.2
+  },
+  {
+    "TenThucPham": "Rượu vang trắng ngọt (cồn 10.2 g)",
+    "Kcal": 95.8,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.0,
+    "Carb_g": 5.9
+  },
+  {
+    "TenThucPham": "Rượu Whisky (cồn 35,2 g)",
+    "Kcal": 246.4,
+    "Protid_g": 0.0,
+    "Lipid_g": 0.0,
+    "Carb_g": 0.0
+  },
+  {
+    "TenThucPham": "Bánh bao chiên có nhân",
+    "Kcal": 177.3,
+    "Protid_g": 2.3,
+    "Lipid_g": 10.1,
+    "Carb_g": 19.3
+  },
+  {
+    "TenThucPham": "Bánh bèo",
+    "Kcal": 117.6,
+    "Protid_g": 1.8,
+    "Lipid_g": 4.2,
+    "Carb_g": 18.1
+  },
+  {
+    "TenThucPham": "Bánh bột lọc",
+    "Kcal": 136.9,
+    "Protid_g": 6.8,
+    "Lipid_g": 4.3,
+    "Carb_g": 17.7
+  },
+  {
+    "TenThucPham": "Bánh chay",
+    "Kcal": 155.9,
+    "Protid_g": 3.3,
+    "Lipid_g": 3.1,
+    "Carb_g": 28.7
+  },
+  {
+    "TenThucPham": "Bánh chín tầng mây",
+    "Kcal": 169.3,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.6,
+    "Carb_g": 40.8
+  },
+  {
+    "TenThucPham": "Bánh chưng",
+    "Kcal": 181.4,
+    "Protid_g": 4.3,
+    "Lipid_g": 4.2,
+    "Carb_g": 31.6
+  },
+  {
+    "TenThucPham": "Bánh chuối",
+    "Kcal": 297.2,
+    "Protid_g": 2.0,
+    "Lipid_g": 14.2,
+    "Carb_g": 40.3
+  },
+  {
+    "TenThucPham": "Bánh cốm",
+    "Kcal": 250.3,
+    "Protid_g": 3.4,
+    "Lipid_g": 0.3,
+    "Carb_g": 58.5
+  },
+  {
+    "TenThucPham": "Bánh cuốn",
+    "Kcal": 129.3,
+    "Protid_g": 3.0,
+    "Lipid_g": 5.3,
+    "Carb_g": 17.4
+  },
+  {
+    "TenThucPham": "Bánh cuốn nóng nhân thịt",
+    "Kcal": 102.4,
+    "Protid_g": 2.1,
+    "Lipid_g": 2.6,
+    "Carb_g": 17.6
+  },
+  {
+    "TenThucPham": "Bánh dẻo nhân thập cẩm",
+    "Kcal": 349.4,
+    "Protid_g": 5.0,
+    "Lipid_g": 9.8,
+    "Carb_g": 60.3
+  },
+  {
+    "TenThucPham": "Bánh dẻo nhân trứng",
+    "Kcal": 337.8,
+    "Protid_g": 7.4,
+    "Lipid_g": 8.2,
+    "Carb_g": 58.6
+  },
+  {
+    "TenThucPham": "Bánh đúc nguội",
+    "Kcal": 88.3,
+    "Protid_g": 2.0,
+    "Lipid_g": 2.1,
+    "Carb_g": 15.4
+  },
+  {
+    "TenThucPham": "Bánh đúc nóng",
+    "Kcal": 108.1,
+    "Protid_g": 3.9,
+    "Lipid_g": 6.3,
+    "Carb_g": 8.9
+  },
+  {
+    "TenThucPham": "Bánh gai",
+    "Kcal": 250.5,
+    "Protid_g": 4.7,
+    "Lipid_g": 2.5,
+    "Carb_g": 52.3
+  },
+  {
+    "TenThucPham": "Bánh gio",
+    "Kcal": 173.4,
+    "Protid_g": 2.0,
+    "Lipid_g": 0.4,
+    "Carb_g": 40.4
+  },
+  {
+    "TenThucPham": "Bánh giò",
+    "Kcal": 233.9,
+    "Protid_g": 2.8,
+    "Lipid_g": 17.5,
+    "Carb_g": 16.3
+  },
+  {
+    "TenThucPham": "Bánh khoai",
+    "Kcal": 141.4,
+    "Protid_g": 4.1,
+    "Lipid_g": 1.6,
+    "Carb_g": 27.6
+  },
+  {
+    "TenThucPham": "Bánh khoái",
+    "Kcal": 159.2,
+    "Protid_g": 0.6,
+    "Lipid_g": 10.2,
+    "Carb_g": 16.3
+  },
+  {
+    "TenThucPham": "Bánh khoai sọ chiên",
+    "Kcal": 196.7,
+    "Protid_g": 5.6,
+    "Lipid_g": 8.3,
+    "Carb_g": 24.9
+  },
+  {
+    "TenThucPham": "Bánh khúc",
+    "Kcal": 249.4,
+    "Protid_g": 4.1,
+    "Lipid_g": 3.8,
+    "Carb_g": 49.7
+  },
+  {
+    "TenThucPham": "Bánh mè",
+    "Kcal": 482.2,
+    "Protid_g": 5.5,
+    "Lipid_g": 26.5,
+    "Carb_g": 55.4
+  },
+  {
+    "TenThucPham": "Bánh mì xíu mại",
+    "Kcal": 188.7,
+    "Protid_g": 11.3,
+    "Lipid_g": 7.5,
+    "Carb_g": 19.0
+  },
+  {
+    "TenThucPham": "Bánh mỳ patê",
+    "Kcal": 265.8,
+    "Protid_g": 9.8,
+    "Lipid_g": 11.0,
+    "Carb_g": 31.9
+  },
+  {
+    "TenThucPham": "Bánh nếp",
+    "Kcal": 215.9,
+    "Protid_g": 5.0,
+    "Lipid_g": 3.2,
+    "Carb_g": 41.8
+  },
+  {
+    "TenThucPham": "Bánh nướng nhân thập cẩm",
+    "Kcal": 386.4,
+    "Protid_g": 5.2,
+    "Lipid_g": 14.8,
+    "Carb_g": 58.1
+  },
+  {
+    "TenThucPham": "Bánh nướng nhân trứng đỗ xanh",
+    "Kcal": 371.1,
+    "Protid_g": 9.6,
+    "Lipid_g": 13.9,
+    "Carb_g": 51.9
+  },
+  {
+    "TenThucPham": "Bánh phu thê (su sê, xu xuê)",
+    "Kcal": 184.5,
+    "Protid_g": 2.1,
+    "Lipid_g": 1.3,
+    "Carb_g": 41.1
+  },
+  {
+    "TenThucPham": "Bánh rán bọc đường",
+    "Kcal": 318.4,
+    "Protid_g": 3.7,
+    "Lipid_g": 9.1,
+    "Carb_g": 55.4
+  },
+  {
+    "TenThucPham": "Bánh tẻ",
+    "Kcal": 103.7,
+    "Protid_g": 1.5,
+    "Lipid_g": 3.2,
+    "Carb_g": 17.2
+  },
+  {
+    "TenThucPham": "Bánh tôm",
+    "Kcal": 203.8,
+    "Protid_g": 4.0,
+    "Lipid_g": 10.8,
+    "Carb_g": 22.6
+  },
+  {
+    "TenThucPham": "Bánh trôi",
+    "Kcal": 202.1,
+    "Protid_g": 2.8,
+    "Lipid_g": 0.6,
+    "Carb_g": 46.4
+  },
+  {
+    "TenThucPham": "Bún bò Nam bộ",
+    "Kcal": 81.1,
+    "Protid_g": 3.2,
+    "Lipid_g": 0.6,
+    "Carb_g": 15.7
+  },
+  {
+    "TenThucPham": "Bún chả",
+    "Kcal": 135.6,
+    "Protid_g": 6.1,
+    "Lipid_g": 4.4,
+    "Carb_g": 17.9
+  },
+  {
+    "TenThucPham": "Bún cua",
+    "Kcal": 52.9,
+    "Protid_g": 2.1,
+    "Lipid_g": 0.9,
+    "Carb_g": 9.1
+  },
+  {
+    "TenThucPham": "Bún đậu",
+    "Kcal": 150.8,
+    "Protid_g": 3.0,
+    "Lipid_g": 6.4,
+    "Carb_g": 20.3
+  },
+  {
+    "TenThucPham": "Bún dọc mùng",
+    "Kcal": 68.6,
+    "Protid_g": 3.0,
+    "Lipid_g": 2.6,
+    "Carb_g": 8.3
+  },
+  {
+    "TenThucPham": "Bún nem",
+    "Kcal": 119.5,
+    "Protid_g": 3.3,
+    "Lipid_g": 3.9,
+    "Carb_g": 17.8
+  },
+  {
+    "TenThucPham": "Bún ốc",
+    "Kcal": 62.3,
+    "Protid_g": 3.1,
+    "Lipid_g": 0.7,
+    "Carb_g": 10.9
+  },
+  {
+    "TenThucPham": "Caramen",
+    "Kcal": 108.9,
+    "Protid_g": 5.2,
+    "Lipid_g": 4.1,
+    "Carb_g": 12.8
+  },
+  {
+    "TenThucPham": "Chả quế",
+    "Kcal": 338.6,
+    "Protid_g": 18.3,
+    "Lipid_g": 29.0,
+    "Carb_g": 1.1
+  },
+  {
+    "TenThucPham": "Cháo lòng",
+    "Kcal": 69.2,
+    "Protid_g": 1.4,
+    "Lipid_g": 4.4,
+    "Carb_g": 6.0
+  },
+  {
+    "TenThucPham": "Cháo sườn",
+    "Kcal": 39.8,
+    "Protid_g": 1.5,
+    "Lipid_g": 0.2,
+    "Carb_g": 8.0
+  },
+  {
+    "TenThucPham": "Cháo trai",
+    "Kcal": 48.7,
+    "Protid_g": 2.2,
+    "Lipid_g": 0.7,
+    "Carb_g": 8.4
+  },
+  {
+    "TenThucPham": "Chè bưởi",
+    "Kcal": 73.5,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.4,
+    "Carb_g": 16.6
+  },
+  {
+    "TenThucPham": "Chè chuối",
+    "Kcal": 81.6,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.9,
+    "Carb_g": 17.1
+  },
+  {
+    "TenThucPham": "Chè cốm",
+    "Kcal": 80.0,
+    "Protid_g": 0.2,
+    "Lipid_g": 0.3,
+    "Carb_g": 19.0
+  },
+  {
+    "TenThucPham": "Chè đỗ đen",
+    "Kcal": 79.3,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.3,
+    "Carb_g": 18.0
+  },
+  {
+    "TenThucPham": "Chè đỗ đỏ",
+    "Kcal": 77.0,
+    "Protid_g": 1.9,
+    "Lipid_g": 0.4,
+    "Carb_g": 16.5
+  },
+  {
+    "TenThucPham": "Chè đỗ xanh",
+    "Kcal": 79.1,
+    "Protid_g": 1.4,
+    "Lipid_g": 0.4,
+    "Carb_g": 17.5
+  },
+  {
+    "TenThucPham": "Chè hạt sen",
+    "Kcal": 74.7,
+    "Protid_g": 1.2,
+    "Lipid_g": 0.1,
+    "Carb_g": 17.1
+  },
+  {
+    "TenThucPham": "Chè khoai sọ",
+    "Kcal": 83.1,
+    "Protid_g": 0.8,
+    "Lipid_g": 0.4,
+    "Carb_g": 19.1
+  },
+  {
+    "TenThucPham": "Chè ngô cốm",
+    "Kcal": 72.5,
+    "Protid_g": 0.3,
+    "Lipid_g": 0.6,
+    "Carb_g": 16.4
+  },
+  {
+    "TenThucPham": "Chè sắn",
+    "Kcal": 85.8,
+    "Protid_g": 0.6,
+    "Lipid_g": 0.7,
+    "Carb_g": 19.2
+  },
+  {
+    "TenThucPham": "Chè Thái",
+    "Kcal": 81.6,
+    "Protid_g": 0.7,
+    "Lipid_g": 0.5,
+    "Carb_g": 18.5
+  },
+  {
+    "TenThucPham": "Cơm rang",
+    "Kcal": 198.2,
+    "Protid_g": 6.0,
+    "Lipid_g": 9.7,
+    "Carb_g": 21.9
+  },
+  {
+    "TenThucPham": "Gà tần",
+    "Kcal": 131.0,
+    "Protid_g": 6.7,
+    "Lipid_g": 7.4,
+    "Carb_g": 9.4
+  },
+  {
+    "TenThucPham": "Miến lươn",
+    "Kcal": 72.7,
+    "Protid_g": 2.4,
+    "Lipid_g": 2.6,
+    "Carb_g": 9.9
+  },
+  {
+    "TenThucPham": "Miến ngan",
+    "Kcal": 65.4,
+    "Protid_g": 2.0,
+    "Lipid_g": 2.4,
+    "Carb_g": 9.0
+  },
+  {
+    "TenThucPham": "Mỳ vằn thắn",
+    "Kcal": 80.6,
+    "Protid_g": 2.6,
+    "Lipid_g": 3.1,
+    "Carb_g": 10.6
+  },
+  {
+    "TenThucPham": "Mỳ xào",
+    "Kcal": 139.4,
+    "Protid_g": 5.7,
+    "Lipid_g": 7.0,
+    "Carb_g": 13.4
+  },
+  {
+    "TenThucPham": "Nem lụi",
+    "Kcal": 182.8,
+    "Protid_g": 6.7,
+    "Lipid_g": 13.3,
+    "Carb_g": 9.1
+  },
+  {
+    "TenThucPham": "Nem rán",
+    "Kcal": 145.0,
+    "Protid_g": 4.5,
+    "Lipid_g": 7.7,
+    "Carb_g": 14.4
+  },
+  {
+    "TenThucPham": "Nộm tai lợn",
+    "Kcal": 118.5,
+    "Protid_g": 6.6,
+    "Lipid_g": 6.3,
+    "Carb_g": 8.9
+  },
+  {
+    "TenThucPham": "Phở bò chín",
+    "Kcal": 73.3,
+    "Protid_g": 5.2,
+    "Lipid_g": 0.9,
+    "Carb_g": 11.1
+  },
+  {
+    "TenThucPham": "Phở bò tái",
+    "Kcal": 67.1,
+    "Protid_g": 4.3,
+    "Lipid_g": 0.3,
+    "Carb_g": 11.8
+  },
+  {
+    "TenThucPham": "Phở gà",
+    "Kcal": 73.4,
+    "Protid_g": 3.8,
+    "Lipid_g": 1.0,
+    "Carb_g": 12.3
+  },
+  {
+    "TenThucPham": "Thịt xiên nướng",
+    "Kcal": 322.4,
+    "Protid_g": 26.5,
+    "Lipid_g": 23.8,
+    "Carb_g": 0.5
+  },
+  {
+    "TenThucPham": "Xôi đỗ xanh",
+    "Kcal": 229.6,
+    "Protid_g": 5.5,
+    "Lipid_g": 0.4,
+    "Carb_g": 51.0
+  },
+  {
+    "TenThucPham": "Xôi gấc",
+    "Kcal": 231.2,
+    "Protid_g": 3.1,
+    "Lipid_g": 0.8,
+    "Carb_g": 52.9
+  },
+  {
+    "TenThucPham": "Xôi lạc",
+    "Kcal": 245.5,
+    "Protid_g": 4.2,
+    "Lipid_g": 4.3,
+    "Carb_g": 47.5
+  },
+  {
+    "TenThucPham": "Xôi ngô",
+    "Kcal": 197.6,
+    "Protid_g": 4.4,
+    "Lipid_g": 4.0,
+    "Carb_g": 36.0
+  },
+  {
+    "TenThucPham": "Xôi xéo",
+    "Kcal": 254.1,
+    "Protid_g": 4.3,
+    "Lipid_g": 3.7,
+    "Carb_g": 50.9
+  }
+]

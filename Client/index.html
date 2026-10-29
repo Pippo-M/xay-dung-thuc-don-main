@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyên gia Dinh dưỡng AI</title>
+    <link rel="icon" href="data:,">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- FontAwesome 6 for modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-analytics-compat.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <header style="background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 999;">
+        <div class="container header-container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 12px 24px;">
+            
+            <div class="logo" style="display: flex; align-items: center; gap: 12px; margin-left: 0;">
+                <div style="width: 44px; height: 44px; background: #eef2f1; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden; border: 1px solid #e0e6e4;">
+                    <img src="logo.png" alt="NutriAI" style="width: 85%; height: 85%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML=`<i class='fa-solid fa-seedling' style='color: #00796B;'></i>`;">
+                </div>
+                <div class="logo-text" style="text-align: left;">
+                    <span class="hospital-name" style="display: block; font-size: 13px; color: #666; font-weight: 500; line-height: 1.3;">Hệ thống Tư vấn</span>
+                    <span class="brand-name" style="font-size: 19px; font-weight: bold; color: #00796B; line-height: 1.2; display: block;">Dinh Dưỡng AI</span>
+                </div>
+            </div>
+
+            <nav style="margin-right: auto; margin-left: 40px;">
+                <ul style="display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0;">
+                    <li><a href="index.html" class="active" style="text-decoration: none; color: #00796B; font-weight: bold;">Trang chủ</a></li>
+                    <li><a href="#bmi-hero" style="text-decoration: none; color: #333; font-weight: 500;">Tính BMI & Calo</a></li>
+                    <li><a href="#appointment" style="text-decoration: none; color: #333; font-weight: 500;">Xây dựng Thực đơn</a></li>
+                    <li><a href="#suggestions" style="text-decoration: none; color: #333; font-weight: 500;">Đề xuất AI</a></li>
+                </ul>
+            </nav>
+            
+            <div id="nav-auth-block" style="position: relative;">
+                 </div>
+        </div>
+    </header>
+
+    <div id="auth-screen" class="auth-modal-overlay" style="display: none;">
+        <div class="auth-modal-box">
+            <button class="close-modal-btn" onclick="document.getElementById('auth-screen').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="auth-modal-title">Đăng nhập</h2>
+            <p id="auth-modal-sub">Vui lòng đăng nhập để tiếp tục</p>
+            
+            <button class="btn-auth-google" id="btn-google-login">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                Đăng nhập với Google
+            </button>
+            
+            <div style="margin: 15px 0; color: #888; font-size: 12px; display: flex; align-items: center; gap: 10px;">
+                <div style="flex: 1; height: 1px; background: #eee;"></div>
+                HOẶC
+                <div style="flex: 1; height: 1px; background: #eee;"></div>
+            </div>
+
+            <div id="auth-form-fields">
+                <!-- Sẽ được fill bằng JS -->
+            </div>
+
+            <button id="btn-auth-submit" class="btn-auth-submit">Đăng nhập</button>
+            <div id="modal-auth-err" style="color: #ff5252; font-size: 13px; margin-top: 10px; min-height: 20px;"></div>
+            
+            <button class="btn-modal-back" id="modal-toggle-wrapper" onclick="showAuthModal('register')">Chưa có tài khoản? Đăng ký</button>
+        </div>
+    </div>
+
+    <section id="bmi-hero" class="bmi-hero">
+        <div class="container bmi-hero-container">
+            <div class="hero-content">
+                <h1>Hệ thống Quản lý Dinh dưỡng Chuyên sâu cho Gia đình</h1>
+                <p>Chăm sóc sức khỏe toàn diện với công nghệ AI, giúp bạn theo dõi BMI và xây dựng thực đơn cá nhân hóa, an tâm như tại bệnh viện.</p>
+                <div class="hero-buttons">
+                    <a href="#appointment" class="btn btn-primary">Xây dựng Thực đơn</a>
+                    <a href="#bmi-form-card" class="btn btn-secondary">Tính Calo mục tiêu</a>
+                </div>
+            </div>
+            
+            <div id="bmi-form-card" class="card bmi-form-card">
+                <h2>1. Thông tin cá nhân</h2>
+                <div class="form-group">
+                    <label>Họ và tên:</label>
+                    <input type="text" id="fullname" placeholder="VD: Nguyễn Văn A">
+                </div>
+                <div class="form-group">
+                    <label>Giới tính:</label>
+                    <select id="gender"><option value="nam">Nam</option><option value="nu">Nữ</option></select>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="age" placeholder="Tuổi (VD: 25)">
+                </div>
+                <div class="form-group">
+                    <input type="number" id="height" placeholder="Chiều cao (cm) (VD: 170)">
+                </div>
+                <div class="form-group">
+                    <input type="number" id="weight" placeholder="Cân nặng (kg) (VD: 65)">
+                </div>
+                <div class="form-group">
+                    <label>Mức độ vận động:</label>
+                    <select id="activity">
+                        <option value="1.2">Ít vận động (Việc văn phòng)</option>
+                        <option value="1.375">Vận động nhẹ (1-3 ngày/tuần)</option>
+                        <option value="1.55">Vận động vừa (3-5 ngày/tuần)</option>
+                        <option value="1.725">Vận động nhiều (6-7 ngày/tuần)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                <label>Bệnh nền (nếu có):</label>
+                <select id="disease">
+                    <option value="Không có">Không có bệnh nền</option>
+                    <option value="Tiểu đường">Tiểu đường (Đái tháo đường)</option>
+                    <option value="Cao huyết áp">Cao huyết áp</option>
+                    <option value="Đau dạ dày">Đau dạ dày / Đại tràng</option>
+                    <option value="Gút (Gout)">Bệnh Gút (Gout)</option>
+                </select>
+            </div>
+                <button onclick="calculateMetrics()">Tính BMI & Calo mục tiêu</button>
+                
+                <div class="results-area">
+                    <p id="bmi-result"></p>
+                    <p id="ideal-weight"></p>
+                    <p id="tdee-result"></p>
+                    <p id="bmi-suggestion" style="display: none; margin-top: 15px; padding: 12px; background: #eef2f1; border-left: 4px solid #00796B; border-radius: 4px; font-weight: normal; color: #333; line-height: 1.5;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="appointment" class="appointment-thucdon">
+        <div class="container appointment-container">
+            <div class="thucdon-input-area card">
+                <h2>2. Thêm món ăn vào Thực đơn</h2>
+                <div class="form-group">
+                    <label>Bữa ăn:</label>
+                    <select id="meal-type">
+                        <option value="sang">Bữa Sáng</option>
+                        <option value="trua">Bữa Trưa</option>
+                        <option value="toi">Bữa Tối</option>
+                    </select>
+                </div>
+                <div class="form-group" style="position: relative;">
+                    <input type="text" id="food-search" placeholder="Nhập tên món (VD: Gạo lứt, Thịt bò...)" autocomplete="off">
+                    <ul id="search-suggestions" class="suggestions-list"></ul>
+                </div>
+                <div class="form-group">
+                    <input type="number" id="food-weight" placeholder="Khối lượng (gam)">
+                </div>
+                <button onclick="addFood()" class="btn btn-add-food">Thêm vào thực đơn</button>
+            </div>
+            
+            <div id="suggestions" class="card" style="padding: 0; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e0e0e0; min-height: 500px;">
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div>
+                            <strong>NutriAI Tư Vấn Tại Chỗ</strong>
+                            <span class="chat-status">● Sẵn sàng hỗ trợ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-messages" id="inline-nutri-messages" style="flex: 1; min-height: 380px; max-height: 400px; border-radius: 0;">
+                    <div class="chat-msg bot">
+                        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                        <div class="msg-bubble">
+                            Chào bạn! Tôi là <b>NutriAI</b> <i class="fa-solid fa-hand-wave"></i><br>
+                            Ngoài bong bóng chat ở góc, bạn có thể hỏi nhanh tôi ngay tại khung này về thực đơn của mình.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-quick" id="inline-nutri-quick">
+                    <button onclick="quickSendInline('Phân tích thực đơn hôm nay của tôi')"><i class="fa-solid fa-chart-simple"></i> Phân tích hôm nay</button>
+                    <button onclick="quickSendInline('Tôi đang thiếu chất gì? Gợi ý món ăn bổ sung')"><i class="fa-solid fa-utensils"></i> Thiếu chất gì?</button>
+                    <button onclick="quickSendInline('Gợi ý thực phẩm giàu protein cho bữa tối')"><i class="fa-solid fa-dumbbell"></i> Giàu protein</button>
+                    <button onclick="quickSendInline('Tôi đang thừa calo, nên ăn gì nhẹ hơn?')"><i class="fa-solid fa-arrow-trend-down"></i> Giảm calo</button>
+                    <button onclick="quickSendInline('Dựa trên thông tin cung cấp hãy lên thực đơn 7 ngày cho tôi')"><i class="fa-solid fa-calendar-days" style="color: #1976D2;"></i> Thực đơn 7 ngày</button>
+                </div>
+
+                <div class="chat-input-row">
+                    <input type="text" id="inline-nutri-input" placeholder="Hỏi AI tại đây..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendChatInline();}">
+                    <button id="inline-nutri-send-btn" onclick="sendChatInline()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    
+    <!-- MODAL CẢNH BÁO TỰ ĐỘNG -->
+    <div id="ai-alert-modal" style="display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0, 0, 0, 0.5); align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: white; border-radius: 16px; width: 100%; max-width: 450px; overflow: hidden; box-shadow: 0 10px 40px rgba(229, 57, 53, 0.2);">
+            <div style="background: #e53935; color: white; padding: 15px 20px; font-weight: bold; font-size: 18px; display: flex; align-items: center; gap: 10px;">
+                <span>⚠️</span> <span>Cảnh Báo Từ NutriAI</span>
+            </div>
+            <div style="padding: 24px;">
+                <p id="ai-alert-message" style="font-size: 15px; color: #333; line-height: 1.5; margin-bottom: 24px;"></p>
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button onclick="document.getElementById('ai-alert-modal').style.display='none'" style="padding: 10px 20px; border: none; background: #e0e0e0; color: #333; border-radius: 8px; cursor: pointer; font-weight: bold;">Bỏ qua</button>
+                    <button onclick="forceAddFood()" style="padding: 10px 20px; border: none; background: #e53935; color: white; border-radius: 8px; cursor: pointer; font-weight: bold;">Vẫn thêm vào</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="meals-features">
+        <div class="container feature-grid">
+            <div class="card feature-card">
+                <div class="icon teal-icon">🍳</div>
+                <h3>Bữa Sáng</h3>
+                <p>Năng lượng cho khởi đầu.</p>
+                <ul id="list-sang" class="meal-food-list"></ul>
+            </div>
+            <div class="card feature-card">
+                <div class="icon teal-icon">🍲</div>
+                <h3>Bữa Trưa</h3>
+                <p>Năng lượng cho buổi chiều.</p>
+                <ul id="list-trua" class="meal-food-list"></ul>
+            </div>
+            <div class="card feature-card">
+                <div class="icon teal-icon">🥗</div>
+                <h3>Bữa Tối</h3>
+                <p>Nhẹ nhàng, dễ tiêu hóa.</p>
+                <ul id="list-toi" class="meal-food-list"></ul>
+            </div>
+            <div id="summary-card" class="card feature-card summary-card">
+                <div class="icon">🧠</div>
+                <h3>Đánh giá Tổng quát</h3>
+                <p id="summary-result" class="kcal-summary">0 / 0 Kcal</p>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin: 15px 0; font-size: 0.85em; color: #555; background-color: #f4f7f6; padding: 10px; border-radius: 8px;">
+                    <span id="protein-summary" style="flex: 1; text-align: center;">🥗 P: 0/0g</span>
+                    <span id="lipid-summary" style="flex: 1; text-align: center; border-left: 1px solid #ccc; border-right: 1px solid #ccc;">🥑 L: 0/0g</span>
+                    <span id="carb-summary" style="flex: 1; text-align: center;">🍞 C: 0/0g</span>
+                </div>
+                
+                <button onclick="exportToExcel()" class="btn" style="background-color: #1D6F42; width: 100%; margin-bottom: 10px;">
+                    📥 Xuất File Excel
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL LỊCH ĂN 7 NGÀY -->
+    <div id="weekly-schedule-modal" style="display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(244, 247, 246, 0.9); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px;">
+        <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); width: 100%; max-width: 900px; max-height: 90vh; overflow-y: auto; position: relative;">
+            <button onclick="document.getElementById('weekly-schedule-modal').style.display='none'" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 20px; cursor: pointer; color: #888;">✕</button>
+            
+            <h2 style="color: #00796B; font-size: 24px; font-weight: 800; margin-bottom: 8px; text-align: center;">Lịch Ăn Uống 7 Ngày</h2>
+            <p style="color: #666; font-size: 14px; margin-bottom: 24px; text-align: center;">Được thiết kế riêng bởi NutriAI dựa trên mục tiêu và thể trạng của bạn.</p>
+            
+            <div id="schedule-loading" style="display: none; text-align: center; padding: 40px;">
+                <div class="typing-dots" style="justify-content: center; transform: scale(1.5);"><span></span><span></span><span></span></div>
+                <p style="margin-top: 15px; color: #00796B; font-weight: 500;">AI đang phân tích và thiết kế thực đơn...</p>
+            </div>
+
+            <div id="schedule-content" style="display: none;">
+                <!-- Dữ liệu lịch ăn sẽ được render ở đây -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Hệ thống xây dựng thực đơn thông minh.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+
+    <div id="nutri-bubble" onclick="toggleChat()">
+        <span id="nutri-bubble-icon"><i class="fa-solid fa-comment-dots"></i></span>
+        <span id="nutri-badge" class="bubble-unread" style="display:none">1</span>
+    </div>
+
+    <div id="nutri-window" style="display:none;">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <strong>NutriAI Assistant</strong>
+                    <span class="chat-status">● Trực tuyến</span>
+                </div>
+            </div>
+            <button class="chat-close-btn" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="chat-messages" id="nutri-messages">
+            <div class="chat-msg bot">
+                <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="msg-bubble">
+                    Xin chào! Tôi là <b>NutriAI</b> <i class="fa-solid fa-hand-wave"></i><br>
+                    Tôi có thể giúp bạn:<br>
+                    • Phân tích thực đơn hôm nay<br>
+                    • Gợi ý món bổ sung calo/protein/chất béo còn thiếu<br>
+                    • Tư vấn dinh dưỡng dựa trên 621 thực phẩm Việt Nam<br><br>
+                    Hãy hỏi tôi bất cứ điều gì! <i class="fa-solid fa-face-smile"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-quick" id="nutri-quick">
+            <button onclick="quickSend('Phân tích thực đơn hôm nay của tôi')"><i class="fa-solid fa-chart-simple"></i> Phân tích hôm nay</button>
+            <button onclick="quickSend('Tôi đang thiếu chất gì? Gợi ý món ăn bổ sung')"><i class="fa-solid fa-utensils"></i> Thiếu chất gì?</button>
+            <button onclick="quickSend('Gợi ý thực phẩm giàu protein cho bữa tối')"><i class="fa-solid fa-dumbbell"></i> Giàu protein</button>
+            <button onclick="quickSend('Tôi đang thừa calo, nên ăn gì nhẹ hơn?')"><i class="fa-solid fa-arrow-trend-down"></i> Giảm calo</button>
+            <button onclick="quickSend('Dựa trên thông tin cung cấp hãy lên thực đơn 7 ngày cho tôi')"><i class="fa-solid fa-calendar-days" style="color: #1976D2;"></i> Thực đơn 7 ngày</button>
+        </div>
+
+        <div class="chat-input-row">
+            <input type="text" id="nutri-input" placeholder="Nhắn tin với NutriAI..." onkeydown="if(event.key==='Enter' && !event.shiftKey){event.preventDefault();sendChat();}">
+            <button id="nutri-send-btn" onclick="sendChat()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="chatbot.js?v=update_v3"></script>
+
+    </body>
+</html>

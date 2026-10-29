@@ -1,0 +1,1039 @@
+<title>NutriAI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#00796B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: ứng dụng một màn hình, cột 520px, thanh tab dưới cố định trong khung */
+:root{
+  --bg:#F4F8F7; --surface:#FFFFFF; --surface2:#EEF4F2; --text:#14211E; --muted:#4E5E5A; --line:#D6E1DE;
+  --primary:#00796B; --on-primary:#FFFFFF; --tint:#E0F2F1; --track:#DCE7E4;
+  --ok:#2E7D32; --ok-bg:#E7F4E8; --warn:#7A4F00; --warn-bg:#FFF3D6; --warn-line:#F9A825; --bad:#B3261E; --bad-bg:#FDECEA;
+  --scrim:rgba(10,20,18,.5); --P:#1565C0; --L:#E39B00; --C:#8D6E63;
+  --font:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0E1513; --surface:#17211E; --surface2:#1F2B28; --text:#E4EEEB; --muted:#A2B4AF; --line:#2D3C38;
+  --primary:#4DB6AC; --on-primary:#00201C; --tint:#12332E; --track:#2A3A36;
+  --ok:#81C784; --ok-bg:#16301A; --warn:#FFD54F; --warn-bg:#33290F; --warn-line:#F9A825; --bad:#F28B82; --bad-bg:#3A1B19;
+  --scrim:rgba(0,0,0,.6); --P:#64B5F6; --L:#FFCA28; --C:#BCAAA4; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0E1513; --surface:#17211E; --surface2:#1F2B28; --text:#E4EEEB; --muted:#A2B4AF; --line:#2D3C38;
+  --primary:#4DB6AC; --on-primary:#00201C; --tint:#12332E; --track:#2A3A36;
+  --ok:#81C784; --ok-bg:#16301A; --warn:#FFD54F; --warn-bg:#33290F; --warn-line:#F9A825; --bad:#F28B82; --bad-bg:#3A1B19;
+  --scrim:rgba(0,0,0,.6); --P:#64B5F6; --L:#FFCA28; --C:#BCAAA4; color-scheme:dark }
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.45;-webkit-text-size-adjust:100%}
+*{box-sizing:border-box}
+h1,h2,h3,p{margin:0}
+h1,h2{text-wrap:balance}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+#app{height:100%;max-width:520px;margin:0 auto;position:relative;overflow:hidden;display:flex;flex-direction:column;background:var(--bg)}
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 28px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack-s{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:12px}
+.between{justify-content:space-between}
+.wrap{flex-wrap:wrap}
+.grow{flex:1;min-width:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.h1{font-size:26px;font-weight:800;line-height:1.2;letter-spacing:-.01em}
+.h2{font-size:18px;font-weight:700}
+.muted{color:var(--muted)}
+.s{font-size:14px}.xs{font-size:13px}
+.b{font-weight:700}.xb{font-weight:800}
+.num{font-variant-numeric:tabular-nums}
+.center{text-align:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px}
+.tile{background:var(--surface2);border-radius:14px;padding:10px 12px}
+.btn{min-height:48px;border-radius:14px;border:0;font-weight:700;font-size:15px;padding:0 16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.btn-p{background:var(--primary);color:var(--on-primary)}
+.btn-s{background:var(--surface2);color:var(--text);border:1px solid var(--line)}
+.btn-o{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-t{background:transparent;color:var(--primary)}
+.btn-x{min-height:56px;font-size:17px;border-radius:16px}
+.btn[disabled]{background:var(--track);color:var(--muted);border:0;cursor:not-allowed}
+.block{width:100%}
+.chip{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap;display:inline-block}
+.c-ok{background:var(--ok-bg);color:var(--ok)}.c-warn{background:var(--warn-bg);color:var(--warn)}.c-bad{background:var(--bad-bg);color:var(--bad)}.c-tint{background:var(--tint);color:var(--primary)}.c-mute{background:var(--surface2);color:var(--muted)}
+.dot{width:10px;height:10px;border-radius:3px;display:inline-block;flex-shrink:0}
+.bar{height:10px;border-radius:999px;background:var(--track);overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:999px}
+.ring{width:148px;height:148px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ring>div{width:116px;height:116px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.iconbtn{width:44px;height:44px;border-radius:50%;border:0;background:var(--surface2);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:14px;font-weight:600}
+.input{height:52px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);padding:0 14px;font-size:16px;width:100%}
+.input.err{border-color:var(--bad)}
+.opt{min-height:48px;padding:0 16px;border-radius:999px;border:2px solid var(--line);background:var(--surface);font-size:15px;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+.opt[aria-pressed="true"],.opt[aria-checked="true"]{border-color:var(--primary);background:var(--tint);color:var(--primary)}
+.optcard{min-height:72px;text-align:left;padding:14px 16px;border-radius:18px;border:2px solid var(--line);background:var(--surface);display:flex;align-items:center;gap:14px;width:100%}
+.optcard[aria-checked="true"]{border-color:var(--primary);background:var(--tint)}
+.radio{width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.optcard[aria-checked="true"] .radio{border-color:var(--primary)}
+.optcard[aria-checked="true"] .radio::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--primary)}
+.stepper{display:flex;align-items:center;justify-content:space-between}
+.stepper button{width:56px;height:56px;border-radius:16px;border:0;background:var(--surface2);color:var(--primary);font-size:28px;font-weight:700}
+.bignum{font-size:40px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.progress{height:8px;border-radius:999px;background:var(--track);overflow:hidden}
+.progress>i{display:block;height:100%;background:var(--primary);border-radius:999px;transition:width .25s}
+.itemrow{width:100%;display:flex;align-items:center;gap:12px;padding:10px 0;min-height:56px;background:none;border:0;border-top:1px solid var(--line);text-align:left}
+.switch{width:52px;height:32px;border-radius:999px;background:var(--track);position:relative;flex-shrink:0;transition:background .2s}
+.switch::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+[aria-checked="true"]>.switch{background:var(--primary)}
+[aria-checked="true"]>.switch::after{left:24px}
+.listbtn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;background:none;border:0;border-top:1px solid var(--line);padding:0;text-align:left}
+.nav{flex-shrink:0;background:var(--surface);border-top:1px solid var(--line)}
+.nav-in{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;height:76px;padding-top:6px;padding-left:max(4px,env(safe-area-inset-left,0px));padding-right:max(4px,env(safe-area-inset-right,0px))}
+.navbtn{background:none;border:0;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--muted);font-size:13px;font-weight:500}
+.navbtn[aria-current="page"]{color:var(--primary);font-weight:700}
+.fab{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:-28px;color:var(--muted);font-size:12px;font-weight:700;white-space:nowrap}
+.fab>span:first-child{width:62px;height:62px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center;border:4px solid var(--surface);box-shadow:0 6px 16px rgba(0,121,107,.35)}
+.fab[aria-current="page"]{color:var(--primary)}
+.sheet-wrap{position:absolute;inset:0;background:var(--scrim);display:flex;align-items:flex-end;z-index:20}
+.sheet-bg{position:absolute;inset:0;background:transparent;border:0}
+.sheet{position:relative;width:100%;max-height:90%;overflow-y:auto;background:var(--surface);border-radius:24px 24px 0 0;padding:10px max(20px,env(safe-area-inset-right,0px)) 24px max(20px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:14px}
+.handle{align-self:center;width:40px;height:5px;border-radius:999px;background:var(--line)}
+.alert{border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.alert-red{border:2px solid var(--bad);background:var(--bad-bg)}
+.alert-amber{border:2px solid var(--warn-line);background:var(--warn-bg)}
+.alt{background:var(--surface);border-radius:14px;padding:12px;display:flex;align-items:center;gap:12px}
+.bu{align-self:flex-end;max-width:82%;background:var(--primary);color:var(--on-primary);padding:10px 14px;border-radius:18px 18px 4px 18px;white-space:pre-line;overflow-wrap:anywhere}
+.bb{align-self:flex-start;max-width:88%;background:var(--surface);border:1px solid var(--line);padding:10px 14px;border-radius:18px 18px 18px 4px;white-space:pre-line}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.qchip{flex-shrink:0;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--primary);background:var(--surface);color:var(--primary);font-size:14px;font-weight:600}
+.days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
+.days::-webkit-scrollbar{display:none}
+.daybtn{flex-shrink:0;width:58px;min-height:64px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.daybtn[aria-selected="true"]{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
+.cal span{height:40px;display:flex;align-items:center;justify-content:center;border-radius:12px;font-size:15px;border:2px solid transparent}
+.overlay{position:absolute;inset:0;background:var(--bg);z-index:30;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:32px 24px}
+.toast{position:absolute;left:16px;right:16px;bottom:96px;z-index:40;background:var(--text);color:var(--bg);border-radius:14px;padding:12px 16px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.trend{display:flex;align-items:flex-end;gap:8px;height:120px;border-bottom:1px solid var(--line);padding-top:8px;position:relative}
+.trend>div{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%}
+.trend i{display:block;width:100%;border-radius:6px 6px 0 0;background:var(--primary)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div id="app" aria-live="off"></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- Dữ liệu: FCDB 2017 (Client/food_data.json) + GI (Server/data/gi_rules.json) ---------- */
+var FOODS = {
+  gao_lut:{ n:'Gạo lứt', kcal:358.8, p:7.5, l:2.7, c:76.2, gi:68, grp:'tinh bột' },
+  gao_te:{ n:'Gạo tẻ máy', kcal:345.8, p:7.9, l:1.0, c:76.3, gi:73, grp:'tinh bột' },
+  gao_nep:{ n:'Gạo nếp', db:'Gạo nếp cái', kcal:348.3, p:8.6, l:1.5, c:75.1, gi:86, grp:'tinh bột' },
+  mien:{ n:'Miến dong', kcal:338.1, p:0.6, l:0.1, c:83.7, gi:45, grp:'tinh bột' },
+  bun:{ n:'Bún', kcal:111.6, p:1.7, l:0, c:26.2, gi:61, grp:'tinh bột' },
+  khoai:{ n:'Khoai lang', kcal:124.2, p:0.8, l:0.2, c:29.8, gi:63, grp:'tinh bột' },
+  oi:{ n:'Ổi', kcal:57.2, p:0.6, l:0, c:13.7, gi:31, grp:'trái cây' },
+  buoi:{ n:'Bưởi', kcal:32.8, p:0.2, l:0, c:8.0, gi:25, grp:'trái cây' },
+  tao:{ n:'Táo tây', kcal:49.2, p:0.5, l:0, c:11.8, gi:36, grp:'trái cây' },
+  chuoi:{ n:'Chuối tiêu', kcal:99.8, p:1.5, l:0.2, c:23.0, gi:51, grp:'trái cây' },
+  trung:{ n:'Trứng gà ta', kcal:149.8, p:13.0, l:10.3, c:1.2, gi:0 },
+  dau:{ n:'Dầu đậu tương', kcal:900, p:0, l:100, c:0, gi:0 },
+  ca:{ n:'Cá rô phi', kcal:99.5, p:19.7, l:2.3, c:0, gi:0 },
+  rau:{ n:'Rau muống', kcal:26.8, p:3.2, l:0, c:3.5, gi:0 },
+  daup:{ n:'Đậu phụ', kcal:96.6, p:10.9, l:5.4, c:1.1, gi:0 },
+  ga:{ n:'Ức gà (lườn)', db:'Thịt gà công nghiệp, lườn', kcal:133.5, p:22.9, l:4.7, c:0, gi:0 },
+  bi:{ n:'Bí đao', db:'Bí đao (bí xanh)', kcal:16.0, p:0.6, l:0, c:3.4, gi:0 },
+  suachua:{ n:'Sữa chua', kcal:60.9, p:3.3, l:3.7, c:3.6, gi:0 },
+  lon:{ n:'Thịt lợn nạc', kcal:139.0, p:19.0, l:7.0, c:0, gi:0 }
+};
+var BASE = {
+  sang:[ { id:'gao_lut', g:80 }, { id:'trung', g:100 }, { id:'oi', g:150 }, { id:'dau', g:5 } ],
+  trua:[ { id:'gao_lut', g:130 }, { id:'ca', g:200 }, { id:'rau', g:200 }, { id:'daup', g:150 }, { id:'dau', g:10 } ],
+  toi:[ { id:'gao_lut', g:120 }, { id:'ga', g:200 }, { id:'bi', g:250 }, { id:'dau', g:10 }, { id:'buoi', g:200 }, { id:'suachua', g:100 } ]
+};
+var MEALS = [ { k:'sang', t:'Bữa sáng', time:'07:00' }, { k:'trua', t:'Bữa trưa', time:'12:00' }, { k:'toi', t:'Bữa tối', time:'19:00' } ];
+
+/* Lớp 1 — chép từ Server/server.js: CONTRAINDICATIONS, WARNING_REASONS */
+var CONTRA = {
+  'Tiểu đường':['đường','kẹo','nước ngọt','bánh mì trắng','mật ong','chè','sữa đặc'],
+  'Gout':['thịt bò','thịt chó','hải sản','nội tạng','bia','rượu','tôm','cua','ghẹ'],
+  'Cao huyết áp':['muối','dưa muối','mắm','mỡ động vật','cà phê'],
+  'Gan nhiễm mỡ':['mỡ lợn','nội tạng','đồ chiên','rượu','bia','đồ nướng'],
+  'Dạ dày':['ớt','tiêu','rượu','bia','chanh','quất','đồ chua']
+};
+var REASON = {
+  'Tiểu đường':'Đây là nhóm thực phẩm GI cao, dễ làm đường huyết tăng đột ngột sau ăn.',
+  'Gout':'Thực phẩm này có thể làm tăng axit uric trong máu, gây đau khớp cấp.',
+  'Cao huyết áp':'Chứa nhiều natri hoặc chất kích thích, dễ làm tăng huyết áp.',
+  'Gan nhiễm mỡ':'Nhiều chất béo xấu hoặc cồn, tăng gánh nặng cho gan.',
+  'Dạ dày':'Gây kích ứng niêm mạc, làm nặng thêm tình trạng viêm loét.'
+};
+var ALT = {
+  'Tiểu đường':{ t:'Bưởi 200 g', i:'65,6 kcal · GL 4,0 · Thấp' },
+  'Gout':{ t:'Ức gà 150 g', i:'200,3 kcal · Đạm 34,4 g' },
+  'Cao huyết áp':{ t:'Nêm nhạt, dùng tỏi, hành, rau thơm', i:'Giảm natri mà vẫn đậm vị' },
+  'Gan nhiễm mỡ':{ t:'Món luộc hoặc hấp', i:'Thay cho chiên, nướng' },
+  'Dạ dày':{ t:'Món luộc, hấp, gia vị dịu', i:'Ít kích ứng niêm mạc' }
+};
+var DIS = [
+  { k:'dtd', label:'Tiểu đường', key:'Tiểu đường', focus:true },
+  { k:'gout', label:'Gút', key:'Gout' },
+  { k:'hap', label:'Cao huyết áp', key:'Cao huyết áp' },
+  { k:'dd', label:'Dạ dày / Đại tràng', key:'Dạ dày' },
+  { k:'gan', label:'Gan nhiễm mỡ', key:'Gan nhiễm mỡ' },
+  { k:'none', label:'Không có' }
+];
+var PALS = [
+  { v:1.2, label:'Ít vận động', sub:'Việc văn phòng, ít đi lại' },
+  { v:1.375, label:'Vận động nhẹ', sub:'Tập 1–3 ngày/tuần' },
+  { v:1.55, label:'Vận động vừa', sub:'Tập 3–5 ngày/tuần' },
+  { v:1.725, label:'Vận động nhiều', sub:'Tập 6–7 ngày/tuần' }
+];
+var AVOID = [ 'Hải sản', 'Sữa bò', 'Lạc (đậu phộng)', 'Trứng', 'Thịt bò' ];
+var LIKES = [ 'Cá', 'Đậu phụ', 'Rau luộc', 'Ức gà', 'Canh rau' ];
+var EMRF = [
+  { k:'dx', label:'Chẩn đoán & tiền sử bệnh', sub:'Mã ICD-10, ví dụ E11 · Đái tháo đường type 2' },
+  { k:'lab', label:'Kết quả xét nghiệm', sub:'HbA1c, đường huyết lúc đói, mỡ máu, acid uric' },
+  { k:'body', label:'Chiều cao, cân nặng, huyết áp', sub:'Lần khám gần nhất' },
+  { k:'rx', label:'Thuốc đang dùng', sub:'Cảnh báo tương tác thuốc – thực phẩm' },
+  { k:'allergy', label:'Dị ứng', sub:'Thực phẩm và thuốc' }
+];
+var GEN_STEPS = [ 'Tính nhu cầu dinh dưỡng · công thức (1)–(7)', 'Chọn món từ 621 thực phẩm FCDB', 'Kiểm tra an toàn Lớp 1 · luật y khoa', 'Kiểm tra an toàn Lớp 2 · AI kiểm duyệt', 'Cân đối ±50 kcal và ưu tiên GL thấp' ];
+var DOW = [ 'CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7' ];
+
+var I = {
+  today:'<path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  menu:'<path d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1zM8 6H5v15h14V6h-3M9 11h6M9 15h6"/>',
+  chat:'<path d="M4 5h16v11H9l-5 4zM8 9h8M8 12h5"/>',
+  log:'<path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/>',
+  profile:'<path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0"/>',
+  back:'<path d="M15 6l-6 6 6 6"/>', close:'<path d="M6 6l12 12M18 6L6 18"/>', chev:'<path d="M9 6l6 6-6 6"/>',
+  shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9.5 9.5l5 5M14.5 9.5l-5 5"/>',
+  shieldok:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/>',
+  swap:'<path d="M7 7h11l-3-3M17 17H6l3 3"/>', arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  spark:'<path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/>',
+  send:'<path d="M4 12l16-8-6 16-2-7z"/>', check:'<path d="M5 12l5 5 9-10"/>',
+  leaf:'<path d="M12 21c-4.5-2.2-8-6-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 3.5C20 15 16.5 18.8 12 21zM12 7V3"/>',
+  doc:'<path d="M6 3h9l3 3v15H6zM9 12h6M12 9v6"/>'
+};
+function ic(name, size, sw){ return '<svg width="' + (size || 22) + '" height="' + (size || 22) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (sw || 2) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + I[name] + '</svg>'; }
+
+/* ---------- Tiện ích ---------- */
+function r1(x){ return Math.round(x * 10) / 10; }
+function nf(x, d){ if (d === undefined) d = 1; return Number(x).toLocaleString('vi-VN', { minimumFractionDigits:d, maximumFractionDigits:d }); }
+function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+function pad2(n){ return (n < 10 ? '0' : '') + n; }
+function dkey(d){ return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); }
+function addDays(d, n){ var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+function clone(o){ return JSON.parse(JSON.stringify(o)); }
+function calc(id, g){
+  var f = FOODS[id], r = g / 100, c = r1(f.c * r), gi = f.c < 5 ? 0 : f.gi;
+  return { kcal:r1(f.kcal * r), p:r1(f.p * r), l:r1(f.l * r), c:c, gi:gi, gl:r1(gi * c / 100) };
+}
+function glCls(gl, gi){ if (gi === 0) return 'ok'; return gl <= 10 ? 'ok' : (gl < 20 ? 'warn' : 'bad'); }
+var GLL = { ok:'Thấp', warn:'Trung bình', bad:'Cao' };
+function tot(items){
+  var t = { kcal:0, p:0, l:0, c:0, gl:0 };
+  items.forEach(function(it){ var v = calc(it.id, it.g); for (var k in t) t[k] += v[k]; });
+  for (var k in t) t[k] = r1(t[k]);
+  return t;
+}
+function dayTot(menu){
+  var t = { kcal:0, p:0, l:0, c:0, gl:0 };
+  MEALS.forEach(function(m){ var x = tot(menu[m.k]); for (var k in t) t[k] += x[k]; });
+  for (var k in t) t[k] = r1(t[k]);
+  return t;
+}
+/* Khớp từng chữ với Server/nutrition_engine.js: computeTargets() */
+function targets(p){
+  var h = p.h, w = p.w, a = p.age, pal = p.pal;
+  var bmi = +(w / Math.pow(h / 100, 2)).toFixed(1);
+  var cls = bmi < 18.5 ? 'Thiếu cân' : (bmi < 25 ? 'Bình thường' : (bmi < 30 ? 'Tiền béo phì' : 'Béo phì'));
+  var S = p.gender === 'nam' ? 5 : -161;
+  var bmr = +((10 * w) + (6.25 * h) - (5 * a) + S).toFixed(2);
+  var tdee = Math.round(bmr * pal);
+  var pRatio = pal > 1.5 ? 2.0 : 1.5;
+  var P = Math.round(w * pRatio), L = Math.round((tdee * 0.25) / 9), C = Math.round((tdee - (P * 4 + L * 9)) / 4);
+  return { bmi:bmi, cls:cls, ideal:+((h - 100) * 0.9).toFixed(1), S:S, bmr:bmr, tdee:tdee, pRatio:pRatio, P:P, L:L, C:C,
+    pctP:+((P * 4 / tdee) * 100).toFixed(1), pctL:+((L * 9 / tdee) * 100).toFixed(1), pctC:+((C * 4 / tdee) * 100).toFixed(1) };
+}
+function adaRows(t){
+  var band = function(v, lo, hi){ return v >= lo && v <= hi; };
+  return [
+    { label:'Đạm', g:t.P, pct:t.pctP, band:'15–20%', ok:band(t.pctP, 15, 20), color:'var(--P)' },
+    { label:'Béo', g:t.L, pct:t.pctL, band:'20–30%', ok:band(t.pctL, 20, 30), color:'var(--L)' },
+    { label:'Bột đường', g:t.C, pct:t.pctC, band:'45–60%', ok:band(t.pctC, 45, 60), color:'var(--C)' }
+  ];
+}
+function altsFor(id, g){
+  var f = FOODS[id];
+  if (!f.grp || f.gi === 0 || f.c < 5) return { better:[], worse:0 };
+  var cur = calc(id, g);
+  var all = Object.keys(FOODS).filter(function(k){ return k !== id && FOODS[k].grp === f.grp; }).map(function(k){
+    var ng = Math.max(5, Math.round(cur.kcal / (FOODS[k].kcal / 100) / 5) * 5);
+    var v = calc(k, ng);
+    return { id:k, g:ng, v:v, delta: cur.gl > 0 ? (v.gl - cur.gl) / cur.gl * 100 : 0 };
+  }).sort(function(a, b){ return a.v.gl - b.v.gl; });
+  var better = all.filter(function(a){ return a.v.gl < cur.gl; });
+  return { better:better, worse:all.length - better.length };
+}
+/* Thực đơn mẫu (tổng 2.475,6 kcal) được co giãn theo TDEE của người dùng rồi cân lại bằng gạo lứt bữa tối */
+function genMenu(p, variant){
+  var t = targets(p), f = t.tdee / 2475.6;
+  var m = clone(BASE);
+  if (variant % 2 === 1) { m.trua[1].id = 'ga'; m.toi[1].id = 'ca'; m.sang[2].id = 'buoi'; m.toi[4].id = 'oi'; }
+  MEALS.forEach(function(ml){
+    m[ml.k].forEach(function(it){
+      if (p.avoid && p.avoid['Trứng'] && it.id === 'trung') it.id = 'daup';
+      if (p.avoid && p.avoid['Sữa bò'] && it.id === 'suachua') { it.id = 'tao'; it.g = 125; }
+      it.g = it.id === 'dau' ? Math.max(2, Math.round(it.g * f)) : Math.max(5, Math.round(it.g * f / 5) * 5);
+    });
+  });
+  var diff = t.tdee - dayTot(m).kcal;
+  m.toi[0].g = Math.max(30, Math.round((m.toi[0].g + diff / 3.588) / 5) * 5);
+  return m;
+}
+/* Lớp 1: từ khóa cấm, bỏ qua khi đứng sau "tránh/không/cấm/kiêng" (theo bài báo) */
+var EXCEPT = { 'đường':['đường huyết','đường ruột','đường tiêu hóa'], 'tiêu':['tiêu hóa','tiêu chảy','tiêu chuẩn','mục tiêu'], 'chè':['chè xanh'], 'muối':['muối khoáng'] };
+function layer1(text, p){
+  var low = text.toLowerCase(), hits = {};
+  DIS.forEach(function(d){
+    if (!d.key || !p.dis[d.k]) return;
+    CONTRA[d.key].forEach(function(kw){
+      var re = new RegExp('(^|[^\\p{L}])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\p{L}])', 'gu'), mt;
+      while ((mt = re.exec(low))) {
+        var at = mt.index + mt[1].length;
+        var tail = low.slice(at, at + kw.length + 12);
+        if ((EXCEPT[kw] || []).some(function(x){ return tail.indexOf(x) === 0 || low.slice(Math.max(0, at - 4), at + kw.length).indexOf(x) >= 0; })) continue;
+        var before = low.slice(Math.max(0, at - 16), at);
+        if (/(tránh|không|cấm|kiêng|bỏ)\s*(ăn|uống|dùng)?\s*$/.test(before)) continue;
+        (hits[d.key] = hits[d.key] || {})[kw] = true;
+        break;
+      }
+    });
+  });
+  return Object.keys(hits).map(function(k){ return { disease:k, kws:Object.keys(hits[k]) }; });
+}
+var DLABEL = { 'Tiểu đường':'Tiểu đường', 'Gout':'Gút', 'Cao huyết áp':'Cao huyết áp', 'Gan nhiễm mỡ':'Gan nhiễm mỡ', 'Dạ dày':'Dạ dày' };
+
+/* ---------- Trạng thái (lưu trên máy này) ---------- */
+var KEY = 'nutriai.app.v1';
+function load(){ try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+var S = load() || { account:null, profile:null, menus:{}, done:{}, reminders:{ sang:true, trua:true, toi:true }, chat:[], theme:'system' };
+var U = { view:null, tab:'today', step:0, draft:null, sheet:null, sel:null, draftG:0, swapView:false, gen:null, day:0, loginErr:'', showCalc:false, confirmReset:false,
+  emrOn:{ dx:true, lab:true, body:true, rx:false, allergy:true }, chips:{}, chatDraft:'', resetScroll:false, toBottom:false };
+var TODAY = dkey(new Date());
+
+/* ---------- Chế độ trực tuyến: chạy trên server NutriAI tại /app (server gán window.NUTRIAI_ONLINE) ---------- */
+var ONLINE = window.NUTRIAI_ONLINE || null;
+function freshState(){ return { account:null, profile:null, menus:{}, done:{}, reminders:{ sang:true, trua:true, toi:true }, chat:[], theme:S.theme || 'system' }; }
+function api(path, method, body){
+  var h = { 'Content-Type':'application/json' };
+  if (S.token) h.Authorization = 'Bearer ' + S.token;
+  return fetch(ONLINE.api + path, { method:method || 'GET', headers:h, body: body ? JSON.stringify(body) : undefined })
+    .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){
+      if (!r.ok) { var e = new Error(d.error || ('Máy chủ trả lỗi ' + r.status)); e.status = r.status; throw e; }
+      return d; }); });
+}
+function onAuthed(d, method){
+  var u = d.user || {};
+  if (S.account && S.account.id !== u.id) S = freshState();
+  S.token = d.token;
+  S.account = { method:method, id:u.id, name:u.name || '', label:u.email || '', initial:(u.name || u.email || 'B').charAt(0).toUpperCase() };
+  save(); U.loginErr = ''; U.offerRegister = false; U.pending = null; U.busy = false; U.resetScroll = true; render();
+  return pullProfile();
+}
+function parseDisease(s){
+  var low = String(s || '').toLowerCase(), d = {};
+  DIS.forEach(function(x){ if (x.key && (low.indexOf(x.key.toLowerCase()) >= 0 || low.indexOf(x.label.toLowerCase()) >= 0)) d[x.k] = true; });
+  if (!Object.keys(d).length) d.none = true;
+  return d;
+}
+function pullProfile(){
+  return api('/api/user/profile').then(function(p){
+    U.srv = p;
+    if (!(p.age && p.height && p.weight && p.activity_pal)) return;
+    var local = S.profile || {};
+    var np = { gender: p.gender === 'nu' ? 'nu' : 'nam', age:+p.age, h:Math.round(+p.height), w:Math.round(+p.weight), pal:+p.activity_pal, dis:parseDisease(p.disease), avoid:local.avoid || {}, likes:local.likes || {} };
+    if (!S.profile || JSON.stringify(S.profile) !== JSON.stringify(np)) { S.profile = np; S.menus = {}; S.chat = []; U.chips = {}; save(); render(); toast('Đã tải hồ sơ từ máy chủ'); }
+  }).catch(function(e){
+    if (e.status === 401) { S = freshState(); save(); render(); toast('Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại'); }
+  });
+}
+function pushProfile(){
+  var p = S.profile, srv = U.srv || {};
+  var dis = DIS.filter(function(x){ return x.key && p.dis[x.k]; }).map(function(x){ return x.key; });
+  var palDef = PALS.filter(function(x){ return x.v === p.pal; })[0];
+  return api('/api/user/profile', 'PUT', { name: srv.name || S.account.name || S.account.label, phone: srv.phone || null, avatar: srv.avatar || null,
+      age:p.age, gender:p.gender, height:p.h, weight:p.w, disease: dis.length ? dis.join('\n') : 'Không có', activity_pal:p.pal, pal_label: palDef ? palDef.label : null })
+    .then(function(r){ toast('Đã lưu hồ sơ lên máy chủ' + (r.targets ? ' · TDEE ' + nf(r.targets.tdee_kcal, 0) + ' kcal' : '')); })
+    .catch(function(e){ toast('Chưa lưu được lên máy chủ: ' + e.message); });
+}
+function googleLogin(){
+  if (!window.firebase) { toast('Chưa tải được Firebase, kiểm tra kết nối mạng'); return; }
+  try { if (!firebase.apps.length) firebase.initializeApp(ONLINE.firebase); } catch (e) {}
+  U.busy = true; U.loginErr = ''; render();
+  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .then(function(r){ return r.user.getIdToken(); })
+    .then(function(t){ return api('/api/auth/google', 'POST', { token:t }); })
+    .then(function(d){ return onAuthed(d, 'google'); })
+    .catch(function(e){ U.busy = false; U.loginErr = 'Đăng nhập Google thất bại: ' + (e.message || e); render(); });
+}
+function emailLogin(em, pw, register){
+  U.busy = true; U.loginErr = ''; render();
+  var login = function(){ return api('/api/auth/login', 'POST', { email:em, password:pw }); };
+  var p = register ? api('/api/auth/register', 'POST', { name:em.split('@')[0], email:em, password:pw }).then(login) : login();
+  p.then(function(d){ return onAuthed(d, 'email'); })
+   .catch(function(e){
+     U.busy = false;
+     if (!register && e.status === 401) { U.pending = { em:em, pw:pw }; U.offerRegister = true; U.loginErr = 'Sai email hoặc mật khẩu. Nếu chưa có tài khoản, bấm “Tạo tài khoản mới”.'; }
+     else U.loginErr = e.message;
+     render();
+     var el = document.getElementById('lg-email'); if (el) el.value = em;
+   });
+}
+function menuText(menu){
+  return MEALS.map(function(m){ return m.t + ' (' + m.time + '):\n' + menu[m.k].map(function(it){ var v = calc(it.id, it.g); return '- ' + FOODS[it.id].n + ' (' + it.g + 'g, ' + v.kcal + 'kcal, P: ' + v.p + 'g, L: ' + v.l + 'g, C: ' + v.c + 'g)'; }).join('\n'); }).join('\n');
+}
+function postMeal(k){
+  var items = S.menus[TODAY][k].map(function(it){ var v = calc(it.id, it.g);
+    return { food_name_raw: FOODS[it.id].db || FOODS[it.id].n, grams:it.g, meal_slot:k, origin: it.from ? 'counterfactual' : 'user', kcal:v.kcal, protein_g:v.p, lipid_g:v.l, carb_g:v.c }; });
+  api('/api/user/meals', 'POST', { log_date:TODAY, items:items })
+    .then(function(r){ toast('Máy chủ đã ghi ' + r.inserted + ' món · còn lại ' + nf(Math.max(0, r.summary.kcal_remaining), 0) + ' kcal'); })
+    .catch(function(e){ toast('Chưa ghi được lên máy chủ: ' + e.message); });
+}
+function exportExcel(key){
+  var p = S.profile;
+  fetch(ONLINE.api + '/api/export-excel', { method:'POST', headers:{ 'Content-Type':'application/json' },
+      body: JSON.stringify({ meal_data:menuText(S.menus[key]), user_info:{ name:S.account.name || S.account.label, gender:p.gender, age:p.age, height:p.h, weight:p.w, disease:diseaseNames(p) || 'Không có' } }) })
+    .then(function(r){ if (!r.ok) throw new Error('máy chủ không tạo được file'); return r.blob(); })
+    .then(function(b){ var a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'Thuc_Don_NutriAI.xlsx'; document.body.appendChild(a); a.click(); a.remove(); toast('Đã tải Thuc_Don_NutriAI.xlsx'); })
+    .catch(function(e){ toast('Xuất Excel thất bại: ' + e.message); });
+}
+/* Câu trả lời từ server có thể kèm hộp cảnh báo HTML của Lớp 1 phía server: bỏ HTML, giữ chữ */
+function cleanAI(s){
+  return String(s).replace(/<div class="warning-box"[\s\S]*?<\/div>\s*/i, '')
+    .replace(/<p[^>]*>\s*Gợi ý thực đơn thay thế:\s*<\/p>/i, '')
+    .replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/^#+\s*/gm, '').trim();
+}
+function md(s){ return esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); }
+/* Lớp 1 trên câu trả lời: như server, bỏ qua dòng có từ phủ định */
+function layer1Answer(text, p){
+  var hits = {};
+  String(text).split('\n').forEach(function(line){
+    if (/(không|tránh|cấm|hạn chế|thay thế|loại bỏ|kiêng)/i.test(line)) return;
+    layer1(line, p).forEach(function(h){ hits[h.disease] = hits[h.disease] || {}; h.kws.forEach(function(k){ hits[h.disease][k] = true; }); });
+  });
+  return Object.keys(hits).map(function(k){ return { disease:k, kws:Object.keys(hits[k]) }; });
+}
+function replaceTyping(msgs){
+  var i = -1; S.chat.forEach(function(m, j){ if (m.k === 'typing') i = j; });
+  if (i >= 0) Array.prototype.splice.apply(S.chat, [ i, 1 ].concat(msgs)); else S.chat = S.chat.concat(msgs);
+  save(); U.toBottom = true; render();
+}
+function askAI(q){
+  var p = S.profile, t = targets(p), c = ctx();
+  var ds = DIS.filter(function(x){ return x.key && p.dis[x.k]; }).map(function(x){ return x.key; }).join(', ');
+  var avoid = Object.keys(p.avoid || {}).filter(function(k){ return p.avoid[k]; });
+  var hist = S.chat.filter(function(m){ return m.k === 'user' || m.k === 'ai'; }).slice(-12).map(function(m){ return { role: m.k === 'user' ? 'user' : 'assistant', content:m.text }; });
+  var sys = 'Bạn là NutriAI, trợ lý dinh dưỡng cho người Việt có bệnh nền. Trả lời bằng tiếng Việt, ngắn gọn (tối đa 150 từ), dùng món ăn Việt Nam, nêu khối lượng gam và kcal khi gợi ý món. Không chẩn đoán, không kê đơn; khuyên hỏi bác sĩ khi cần.\n' +
+    'Hồ sơ: ' + (p.gender === 'nam' ? 'Nam' : 'Nữ') + ', ' + p.age + ' tuổi, ' + p.h + ' cm, ' + p.w + ' kg, PAL ' + p.pal + '. Bệnh nền: ' + (ds || 'Không có') + '.\n' +
+    'Mục tiêu mỗi ngày (đã tính bằng công thức, không tự tính lại): ' + t.tdee + ' kcal; đạm ' + t.P + ' g; béo ' + t.L + ' g; bột đường ' + t.C + ' g.\n' +
+    'Hôm nay đã ăn ' + c.eaten.kcal + ' kcal, còn lại ' + Math.max(0, c.remaining) + ' kcal. Ưu tiên thực phẩm GI thấp.' + (avoid.length ? ' Người dùng không ăn: ' + avoid.join(', ') + '.' : '');
+  api('/api/chat/generate', 'POST', { messages:hist, systemPrompt:sys, disease: ds || 'Không có' })
+    .then(function(d){
+      var txt = cleanAI((d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || '');
+      var out = [ { k:'ai', text: txt || 'Máy chủ AI không trả về nội dung, vui lòng hỏi lại.' } ];
+      layer1Answer(txt, p).forEach(function(h){
+        out.push({ k:'block', title:'Câu trả lời có ' + h.kws.join(', ') + ' — không phù hợp với bệnh ' + DLABEL[h.disease], reason:REASON[h.disease], layer:'Lớp 1 · phát hiện trong câu trả lời của AI', alt:ALT[h.disease].t, altInfo:ALT[h.disease].i, used:false });
+      });
+      replaceTyping(out);
+      if (ds && txt) layer2(q, txt, ds);
+    })
+    .catch(function(e){ replaceTyping([ { k:'bot', text:'Chưa gọi được máy chủ AI: ' + e.message } ]); });
+}
+function layer2(q, ans, ds){
+  api('/api/chat/generate', 'POST', { systemPrompt:'Bạn là hệ thống kiểm duyệt an toàn y khoa. Chỉ trả về SAFE hoặc một câu cảnh báo ngắn.', disease:'Không có', temperature:0.1, max_tokens:100,
+      messages:[ { role:'user', content:'Bệnh nền: ' + ds + '.\nCâu hỏi của người bệnh: ' + q + '\nCâu trả lời cần kiểm tra:\n' + ans + '\n\nNếu câu trả lời khuyên dùng thực phẩm có hại cho bệnh nền trên (kể cả đường ẩn trong món chế biến), trả về một câu cảnh báo dưới 30 từ. Nếu an toàn, chỉ trả về SAFE.' } ] })
+    .then(function(d){
+      var v = cleanAI((d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || '');
+      if (!v || /^\W*safe\b/i.test(v)) return;
+      S.chat.push({ k:'block', title:'Lớp 2 · AI kiểm duyệt có cảnh báo', reason:v, layer:'Lớp 2 · AI kiểm duyệt (τ = 0,1)', alt:'', altInfo:'', used:false });
+      save(); U.toBottom = true; render();
+    })
+    .catch(function(){});
+}
+function applyTheme(){ var r = document.documentElement; if (S.theme === 'system') r.removeAttribute('data-theme'); else r.setAttribute('data-theme', S.theme); }
+function defaultDraft(){ return { gender:'nam', age:45, h:170, w:75, pal:1.55, dis:{ dtd:true }, avoid:{}, likes:{ 'Cá':true, 'Rau luộc':true } }; }
+function ensureToday(){
+  if (!S.profile) return;
+  if (!S.menus[TODAY]) { S.menus[TODAY] = genMenu(S.profile, 0); save(); }
+  if (!S.done[TODAY]) S.done[TODAY] = {};
+  if (!S.chat.length) {
+    var t = targets(S.profile), ds = diseaseNames(S.profile);
+    S.chat.push({ k:'bot', text:'Chào bạn! Tôi đã nạp hồ sơ: ' + (S.profile.gender === 'nam' ? 'Nam' : 'Nữ') + ', ' + S.profile.age + ' tuổi' + (ds ? ', ' + ds : '') + ' · mục tiêu ' + nf(t.tdee, 0) + ' kcal/ngày.\nHãy hỏi về món bạn định ăn — tôi kiểm tra an toàn trước khi trả lời.' });
+    save();
+  }
+}
+function diseaseNames(p){ return DIS.filter(function(d){ return d.key && p.dis[d.k]; }).map(function(d){ return d.label; }).join(', '); }
+
+/* ---------- Toast ---------- */
+var toastT;
+function toast(msg){
+  var el = document.getElementById('toast');
+  if (!el) { el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; el.setAttribute('role', 'status'); document.getElementById('app').appendChild(el); }
+  el.textContent = msg; el.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(function(){ el.hidden = true; }, 3200);
+}
+
+/* ---------- Màn: Đăng nhập ---------- */
+function vLogin(){
+  return '<div class="scroll" id="sc"><div class="pad stack" style="padding-top:40px">' +
+    '<div class="stack-s"><span style="width:56px;height:56px;border-radius:18px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center">' + ic('leaf', 30) + '</span>' +
+    '<h1 style="font-size:32px;font-weight:800">NutriAI</h1><p class="muted">Thực đơn cá nhân hóa, an toàn cho người bệnh đái tháo đường.</p></div>' +
+    '<section class="stack-s" aria-label="Đăng nhập">' +
+      '<button class="btn btn-s btn-x block" data-a="google" style="background:var(--surface)"' + (U.busy ? ' disabled' : '') + '><span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;border:2px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">G</span>Tiếp tục với Google</button>' +
+      '<div class="row s muted"><span style="flex:1;height:1px;background:var(--line)"></span>hoặc dùng email<span style="flex:1;height:1px;background:var(--line)"></span></div>' +
+      '<form data-form="login" class="stack-s" novalidate>' +
+        '<div class="field"><label for="lg-email">Email</label><input class="input' + (U.loginErr ? ' err' : '') + '" id="lg-email" type="email" autocomplete="email" inputmode="email" placeholder="ten@vidu.com"></div>' +
+        '<div class="field"><label for="lg-pass">Mật khẩu</label><input class="input" id="lg-pass" type="password" autocomplete="current-password" placeholder="Ít nhất 6 ký tự"></div>' +
+        (U.loginErr ? '<p role="alert" class="s" style="color:var(--bad)">' + esc(U.loginErr) + '</p>' : '') +
+        '<button type="submit" class="btn btn-p btn-x block"' + (U.busy ? ' disabled' : '') + '>' + (U.busy ? 'Đang đăng nhập…' : (ONLINE ? 'Đăng nhập' : 'Đăng nhập / Tạo tài khoản')) + '</button>' +
+        (U.offerRegister ? '<button type="button" class="btn btn-o btn-x block" data-a="register"' + (U.busy ? ' disabled' : '') + '>Tạo tài khoản mới với email này</button>' : '') +
+      '</form></section>' +
+    '<section class="card stack-s" aria-label="Hồ sơ được lưu ra sao"><h2 class="h2" style="font-size:17px">Hồ sơ của bạn được lưu thế nào</h2>' +
+      step('1', 'Tài khoản Google hoặc email gắn với một hồ sơ duy nhất.', 'c-tint') +
+      step('2', 'Chỉ số cơ thể, bệnh nền, mục tiêu và nhật ký được lưu lại, mở app là có ngay.', 'c-tint') +
+      step('3', '<b>Sắp có:</b> lấy tiền sử bệnh từ Hồ sơ sức khỏe điện tử, không cần tự nhập.', 'c-warn') +
+    '</section>' +
+    '<p class="xs muted center">' + (ONLINE ? 'Hồ sơ và nhật ký được lưu trên máy chủ NutriAI. Thông tin tham khảo, không thay thế tư vấn của bác sĩ.' : 'Bản thử nghiệm: đăng nhập được mô phỏng, dữ liệu chỉ lưu trên điện thoại này. Bản chính thức lưu trên máy chủ qua /api/auth và /api/user/profile.') + '</p>' +
+  '</div></div>';
+}
+function step(n, html, cls){ return '<div class="row" style="align-items:flex-start"><span class="chip ' + cls + '" style="width:32px;height:32px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:10px;font-size:14px">' + n + '</span><span style="font-size:15px">' + html + '</span></div>'; }
+
+/* ---------- Màn: Liên kết EMR (dự kiến) ---------- */
+function vEmr(){
+  var src = function(k){ return U.emrOn[k] ? '<span class="chip c-tint" style="font-size:11px;padding:2px 6px">Từ EMR</span>' : '<span class="chip c-mute" style="font-size:11px;padding:2px 6px">Tự nhập</span>'; };
+  var pv = [
+    [ 'Bệnh nền', U.emrOn.dx ? 'E11 · ĐTĐ type 2' : 'Tự khai', 'dx' ],
+    [ 'HbA1c gần nhất', U.emrOn.lab ? '[từ EMR]' : '—', 'lab' ],
+    [ 'Cân nặng · chiều cao', U.emrOn.body ? '[lần khám gần nhất]' : 'Tự khai', 'body' ],
+    [ 'Thuốc đang dùng', U.emrOn.rx ? '[từ EMR]' : 'Chưa khai', 'rx' ],
+    [ 'Dị ứng', U.emrOn.allergy ? '[từ EMR]' : 'Chưa khai', 'allergy' ]
+  ];
+  return '<header class="pad row" style="padding-block:14px 6px">' +
+      (S.profile ? '<button class="iconbtn" data-a="emr-back" aria-label="Quay lại">' + ic('back', 20, 2.2) + '</button>' : '') +
+      '<span class="b muted s">Nguồn hồ sơ</span><span class="chip c-warn" style="margin-left:auto">Tính năng dự kiến</span></header>' +
+    '<div class="scroll" id="sc"><div class="pad stack" style="padding-top:8px">' +
+      '<div><h1 class="h1">Lấy tiền sử bệnh tự động</h1><p class="muted" style="margin-top:6px;font-size:15px">Liên kết với Hồ sơ sức khỏe điện tử (EMR) do Bộ Y tế quản lý. Chẩn đoán, thuốc đang dùng và kết quả xét nghiệm sẽ tự điền vào hồ sơ NutriAI.</p></div>' +
+      '<section class="card" style="padding:6px 16px" aria-label="Chọn dữ liệu chia sẻ"><h2 class="b" style="font-size:16px;margin:10px 0 4px">Bạn chọn dữ liệu được chia sẻ</h2>' +
+        EMRF.map(function(f){ var on = !!U.emrOn[f.k]; return '<button class="itemrow" role="checkbox" aria-checked="' + on + '" data-a="emr-toggle" data-k="' + f.k + '">' +
+          '<span style="width:26px;height:26px;border-radius:8px;border:2px solid ' + (on ? 'var(--primary)' : 'var(--muted)') + ';background:' + (on ? 'var(--primary)' : 'transparent') + ';color:var(--on-primary);display:flex;align-items:center;justify-content:center;flex-shrink:0">' + (on ? ic('check', 16, 3) : '') + '</span>' +
+          '<span class="grow"><span class="b" style="display:block;font-size:15px">' + f.label + '</span><span class="xs muted">' + f.sub + '</span></span></button>'; }).join('') +
+      '</section>' +
+      '<section class="card stack-s" style="border-style:dashed;border-color:var(--primary)"><div class="row between"><h2 class="b" style="font-size:16px">Hồ sơ sau khi liên kết</h2><span class="xs muted">minh họa</span></div>' +
+        pv.map(function(r){ return '<div class="row between s" style="border-top:1px solid var(--line);padding-top:8px"><span class="muted">' + r[0] + '</span><span class="row b" style="gap:6px">' + r[1] + src(r[2]) + '</span></div>'; }).join('') +
+      '</section>' +
+      '<p class="xs muted">Chỉ đọc dữ liệu, không ghi ngược vào EMR. Có thể hủy liên kết bất cứ lúc nào. Xử lý dữ liệu sức khỏe theo Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân.</p>' +
+      '<div class="stack-s"><button class="btn btn-x block" disabled>Đồng ý và liên kết · sắp có</button>' +
+      '<button class="btn btn-p btn-x block" data-a="to-onb">' + (S.profile ? 'Sửa hồ sơ thủ công' : 'Nhập thủ công (5 bước)') + '</button></div>' +
+    '</div></div>';
+}
+
+/* ---------- Màn: Thiết lập hồ sơ 5 bước ---------- */
+function vOnb(){
+  var d = U.draft, st = U.step, t = targets(d);
+  var head = '<header class="pad stack-s" style="padding-block:14px 8px"><div class="row" style="min-height:44px">' +
+    (st > 0 || S.profile ? '<button class="iconbtn" data-a="onb-back" aria-label="Quay lại">' + ic('back', 20, 2.2) + '</button>' : '') +
+    '<span class="xb" style="font-size:18px;color:var(--primary)">NutriAI</span><span class="s b muted" style="margin-left:auto">' + (st < 5 ? 'Bước ' + (st + 1) + '/5' : 'Hoàn tất') + '</span></div>' +
+    '<div class="progress" role="progressbar" aria-label="Tiến độ thiết lập" aria-valuemin="0" aria-valuemax="5" aria-valuenow="' + Math.min(st + 1, 5) + '"><i style="width:' + Math.min(st + 1, 5) * 20 + '%"></i></div></header>';
+  var title = function(h, p){ return '<div><h1 class="h1">' + h + '</h1><p class="muted" style="margin-top:6px">' + p + '</p></div>'; };
+  var stepper = function(label, val, unit, act){ return '<div class="card"><div class="b" style="font-size:15px;margin-bottom:10px">' + label + '</div><div class="stepper"><button data-a="' + act + '" data-d="-1" aria-label="Giảm ' + label.toLowerCase() + '">−</button><div class="center"><span class="bignum">' + val + '</span><span class="muted"> ' + unit + '</span></div><button data-a="' + act + '" data-d="1" aria-label="Tăng ' + label.toLowerCase() + '">+</button></div></div>'; };
+  var body = '';
+  if (st === 0) {
+    body = title('Giới tính và tuổi', 'Dùng để tính năng lượng chuyển hóa cơ bản (BMR).') +
+      '<div class="grid2" role="radiogroup" aria-label="Giới tính">' + [ [ 'nam', 'Nam', 'S = +5' ], [ 'nu', 'Nữ', 'S = −161' ] ].map(function(g){
+        return '<button class="optcard" role="radio" aria-checked="' + (d.gender === g[0]) + '" data-a="onb-gender" data-k="' + g[0] + '" style="flex-direction:column;justify-content:center;min-height:96px;text-align:center;gap:2px"><span class="b" style="font-size:18px">' + g[1] + '</span><span class="xs muted">' + g[2] + '</span></button>'; }).join('') + '</div>' +
+      stepper('Tuổi', d.age, 'tuổi', 'onb-age');
+  } else if (st === 1) {
+    body = title('Chiều cao và cân nặng', 'Đo buổi sáng, trước khi ăn để chính xác nhất.') +
+      stepper('Chiều cao', d.h, 'cm', 'onb-h') + stepper('Cân nặng', d.w, 'kg', 'onb-w') +
+      '<div class="row between" style="background:var(--tint);border-radius:16px;padding:14px"><span>BMI tạm tính</span><span class="xb" style="font-size:18px">' + nf(t.bmi) + ' · ' + t.cls + '</span></div>';
+  } else if (st === 2) {
+    body = title('Mức vận động', 'Chọn mức gần nhất với một tuần bình thường của bạn.') +
+      '<div class="stack-s" role="radiogroup" aria-label="Mức vận động">' + PALS.map(function(p){
+        return '<button class="optcard" role="radio" aria-checked="' + (d.pal === p.v) + '" data-a="onb-pal" data-v="' + p.v + '"><span class="radio"></span><span class="grow"><span class="b" style="display:block;font-size:17px">' + p.label + '</span><span class="s muted">' + p.sub + '</span></span><span class="s b" style="color:var(--primary)">PAL ' + String(p.v).replace('.', ',') + '</span></button>'; }).join('') + '</div>';
+  } else if (st === 3) {
+    body = title('Bệnh nền', 'Có thể chọn nhiều. Lá chắn an toàn sẽ chặn món không phù hợp.') +
+      '<div class="row wrap" style="gap:10px">' + DIS.map(function(x){
+        return '<button class="opt" aria-pressed="' + !!d.dis[x.k] + '" data-a="onb-dis" data-k="' + x.k + '">' + x.label + (x.focus ? '<span class="chip" style="background:var(--primary);color:var(--on-primary);font-size:12px;padding:2px 8px">Trọng tâm</span>' : '') + '</button>'; }).join('') + '</div>' +
+      (d.dis.dtd ? '<div class="row" style="background:var(--tint);border-radius:16px;padding:14px;align-items:flex-start"><span style="color:var(--primary)">' + ic('shieldok', 24) + '</span><p style="font-size:15px">Với Tiểu đường, NutriAI ưu tiên món GI thấp, chặn thực phẩm chống chỉ định và theo dõi tải lượng đường huyết (GL) từng món.</p></div>' : '');
+  } else if (st === 4) {
+    var tog = function(list, act, key){ return '<div class="row wrap" style="gap:10px">' + list.map(function(x){ return '<button class="opt" style="font-weight:600" aria-pressed="' + !!d[key][x] + '" data-a="' + act + '" data-k="' + esc(x) + '">' + x + '</button>'; }).join('') + '</div>'; };
+    body = title('Khẩu vị của bạn', 'AI tránh món bạn không ăn và ưu tiên món bạn thích.') +
+      '<section><h2 class="b" style="font-size:17px;margin-bottom:10px">Dị ứng / không ăn</h2>' + tog(AVOID, 'onb-avoid', 'avoid') + '</section>' +
+      '<section><h2 class="b" style="font-size:17px;margin-bottom:10px">Món yêu thích</h2>' + tog(LIKES, 'onb-like', 'likes') + '</section>' +
+      '<div class="card"><div class="b" style="font-size:15px">3 bữa mỗi ngày</div><div class="s muted">Nhắc bữa lúc 07:00 · 12:00 · 19:00 — đổi được trong Hồ sơ</div></div>';
+  } else {
+    var rows = adaRows(t), bad = rows.filter(function(r){ return !r.ok; });
+    var bmiColor = t.bmi < 18.5 ? 'var(--P)' : (t.bmi < 25 ? 'var(--ok)' : (t.bmi < 30 ? 'var(--warn)' : 'var(--bad)'));
+    var hS = nf(d.h / 100, 2);
+    var F = [
+      [ 1, 'BMI = W / (H/100)²', d.w + ' / ' + hS + '²', nf(t.bmi) + ' · ' + t.cls ],
+      [ 2, 'Cân nặng lý tưởng = (H − 100) × 0,9', '(' + d.h + ' − 100) × 0,9', nf(t.ideal) + ' kg' ],
+      [ 3, 'BMR = 10W + 6,25H − 5·Tuổi + S', '10×' + d.w + ' + 6,25×' + d.h + ' − 5×' + d.age + (t.S > 0 ? ' + 5' : ' − 161'), nf(t.bmr) + ' kcal' ],
+      [ 4, 'TDEE = BMR × PAL', nf(t.bmr) + ' × ' + String(d.pal).replace('.', ','), nf(t.tdee, 0) + ' kcal' ],
+      [ 5, 'Đạm = W × ' + nf(t.pRatio) + ' g/kg' + (d.pal > 1.5 ? ' (PAL > 1,5)' : ' (PAL ≤ 1,5)'), d.w + ' × ' + nf(t.pRatio), t.P + ' g' ],
+      [ 6, 'Béo = TDEE × 25% / 9', nf(t.tdee, 0) + ' × 0,25 / 9', t.L + ' g' ],
+      [ 7, 'Bột đường = (TDEE − (4P + 9L)) / 4', '(' + nf(t.tdee, 0) + ' − (' + t.P + '×4 + ' + t.L + '×9)) / 4', t.C + ' g' ]
+    ];
+    body = title('Nhu cầu của bạn', 'Tính bằng công thức chuẩn, không do AI ước đoán.') +
+      '<section class="card stack-s"><div class="row between" style="align-items:baseline"><span class="muted" style="font-size:15px">Chỉ số BMI</span><span class="xb" style="font-size:24px">' + nf(t.bmi) + ' <span class="b" style="font-size:15px;color:' + bmiColor + '">' + t.cls + '</span></span></div>' +
+        '<div style="position:relative;padding-top:6px"><div style="display:flex;height:12px;border-radius:999px;overflow:hidden"><span style="width:17.5%;background:#90CAF9"></span><span style="width:32.5%;background:#81C784"></span><span style="width:25%;background:#FFD54F"></span><span style="width:25%;background:#E57373"></span></div>' +
+        '<span aria-hidden="true" style="position:absolute;top:0;left:' + Math.max(0, Math.min(100, (t.bmi - 15) / 20 * 100)) + '%;width:4px;height:24px;margin-left:-2px;border-radius:2px;background:var(--text)"></span>' +
+        '<div class="row between xs muted" style="margin-top:6px"><span>15</span><span>18,5</span><span>25</span><span>30</span><span>35</span></div></div>' +
+        '<div class="s muted">Cân nặng lý tưởng: <b style="color:var(--text)">' + nf(t.ideal) + ' kg</b></div></section>' +
+      '<section style="background:var(--primary);color:var(--on-primary);border-radius:20px;padding:18px" class="stack-s"><span style="font-size:15px;opacity:.9">Năng lượng mỗi ngày (TDEE)</span><span class="num xb" style="font-size:40px;line-height:1.1">' + nf(t.tdee, 0) + ' <span style="font-size:18px;font-weight:600">kcal</span></span><span class="s" style="opacity:.9">BMR ' + nf(t.bmr) + ' kcal × PAL ' + String(d.pal).replace('.', ',') + '</span></section>' +
+      '<div class="grid3">' + rows.map(function(r){ return '<div class="card stack-s" style="padding:12px;gap:4px"><span class="row s b" style="gap:6px"><i class="dot" style="background:' + r.color + '"></i>' + r.label + '</span><span class="num xb" style="font-size:22px">' + r.g + ' g</span><span class="xs muted">' + nf(r.pct) + '% · ADA ' + r.band + '</span><span class="chip ' + (r.ok ? 'c-ok' : 'c-warn') + '" style="align-self:flex-start;font-size:12px;padding:2px 8px">' + (r.ok ? 'Đạt' : 'Ngoài dải') + '</span></div>'; }).join('') + '</div>' +
+      (bad.length ? '<p class="s" style="color:var(--warn);background:var(--warn-bg);border-radius:14px;padding:12px">' + bad.map(function(r){ return r.label + ' chiếm ' + nf(r.pct) + '% năng lượng, ngoài dải ADA ' + r.band; }).join('; ') + '. Nên hỏi chuyên gia dinh dưỡng trước khi áp dụng.</p>' : '') +
+      '<button class="btn btn-s block" style="color:var(--primary)" data-a="onb-calc" aria-expanded="' + U.showCalc + '">' + (U.showCalc ? 'Ẩn cách tính' : 'Xem cách tính') + '</button>' +
+      (U.showCalc ? '<ol class="stack-s" style="list-style:none;margin:0;padding:0">' + F.map(function(f){ return '<li class="card" style="padding:10px 12px"><div class="xs muted">(' + f[0] + ') ' + f[1] + '</div><div class="s" style="font-family:var(--mono)">' + f[2] + '</div><div class="xb">' + f[3] + '</div></li>'; }).join('') + '</ol>' : '') +
+      '<p class="xs muted center">Thông tin tham khảo, không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.</p>';
+  }
+  var foot = st < 5
+    ? '<button class="btn btn-p btn-x block" data-a="onb-next">' + (st === 4 ? 'Tính nhu cầu của tôi' : 'Tiếp tục') + '</button>'
+    : '<button class="btn btn-p btn-x block" data-a="onb-save">Lưu hồ sơ & vào ứng dụng</button><button class="btn btn-t block" data-a="onb-restart">Chỉnh lại từ đầu</button>';
+  return head + '<div class="scroll" id="sc"><div class="pad stack" style="padding-top:12px">' + body + '</div></div>' +
+    '<footer class="pad stack-s" style="padding-block:12px 16px;border-top:1px solid var(--line);background:var(--bg)">' + foot + '</footer>';
+}
+
+/* ---------- Ứng dụng chính ---------- */
+function ctx(){
+  var p = S.profile, t = targets(p), key = U.tab === 'menu' ? dkey(addDays(new Date(), U.day)) : TODAY;
+  var menu = S.menus[TODAY], done = S.done[TODAY] || {};
+  var mt = {}, eaten = { kcal:0, p:0, l:0, c:0, gl:0 }, day = dayTot(menu), top = null;
+  MEALS.forEach(function(m){
+    mt[m.k] = tot(menu[m.k]);
+    if (done[m.k]) for (var k in eaten) eaten[k] += mt[m.k][k];
+    menu[m.k].forEach(function(it, i){ var v = calc(it.id, it.g); if (!top || v.gl > top.v.gl) top = { mk:m.k, i:i, it:it, v:v, meal:m }; });
+  });
+  for (var k in eaten) eaten[k] = r1(eaten[k]);
+  var allDone = MEALS.every(function(m){ return done[m.k]; });
+  return { p:p, t:t, menu:menu, done:done, mt:mt, eaten:eaten, day:day, top:top, allDone:allDone,
+    remaining:r1(t.tdee - eaten.kcal), gapDay:r1(Math.abs(day.kcal - t.tdee)), gapEaten:r1(Math.abs(eaten.kcal - t.tdee)), key:key };
+}
+function glChip(v){ var c = glCls(v.gl, v.gi); return '<span class="chip c-' + c + '">' + (v.gi === 0 ? 'GL ≈ 0' : 'GL ' + nf(v.gl)) + '</span>'; }
+
+function vToday(c){
+  var t = c.t, ring, pct = Math.min(c.eaten.kcal / t.tdee, 1) * 360;
+  if (c.allDone) {
+    var ok = c.gapEaten < 50;
+    ring = { top:'Đã ăn', big:nf(c.eaten.kcal, 0), color: ok ? 'var(--ok)' : 'var(--warn-line)', status: ok ? 'Đạt mục tiêu · lệch ' + nf(c.gapEaten) + ' kcal' : 'Lệch ' + nf(c.gapEaten) + ' kcal', cls: ok ? 'c-ok' : 'c-warn' };
+  } else {
+    var left = MEALS.filter(function(m){ return !c.done[m.k]; }).length;
+    ring = { top:'Còn lại', big:nf(Math.max(c.remaining, 0), 0), color:'var(--primary)', status:'Còn ' + left + ' bữa', cls:'c-tint' };
+  }
+  var macro = [ [ 'Đạm', 'p', t.P, 'var(--P)' ], [ 'Béo', 'l', t.L, 'var(--L)' ], [ 'Bột đường', 'c', t.C, 'var(--C)' ] ];
+  var dateStr = new Date().toLocaleDateString('vi-VN', { weekday:'long', day:'2-digit', month:'2-digit', year:'numeric' });
+  var dis = diseaseNames(c.p) || 'Không có bệnh nền';
+  var top = c.top, topCls = glCls(top.v.gl, top.v.gi);
+  var nextPending = null;
+  MEALS.forEach(function(m){ if (!c.done[m.k] && !nextPending) nextPending = m.k; });
+  return '<div class="pad stack">' +
+    '<header class="row between"><div><p class="s muted" style="text-transform:capitalize">' + esc(dateStr) + '</p><h1 class="h1">Hôm nay</h1></div>' +
+      '<button class="row" data-a="tab" data-k="profile" style="min-height:48px;padding:5px 14px 5px 5px;border-radius:999px;border:1px solid var(--line);background:var(--surface);gap:8px;max-width:58%"><span style="width:38px;height:38px;border-radius:50%;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">' + (S.account && S.account.initial || 'B') + '</span><span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.25;min-width:0;text-align:left"><span class="s b">Bản thân</span><span class="xs muted" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px">' + esc(dis) + '</span></span></button></header>' +
+    '<section class="card" aria-label="Năng lượng hôm nay" style="padding:20px"><div class="row" style="gap:18px">' +
+      '<div class="ring" role="img" aria-label="Đã ăn ' + nf(c.eaten.kcal) + ' trên mục tiêu ' + nf(t.tdee, 0) + ' kcal" style="background:conic-gradient(' + ring.color + ' ' + pct + 'deg, var(--track) 0deg)"><div><span class="xs muted">' + ring.top + '</span><span class="num xb" style="font-size:30px;line-height:1.1">' + ring.big + '</span><span class="xs muted">kcal</span></div></div>' +
+      '<div class="grow stack-s s" style="gap:8px"><div class="row between"><span class="muted">Mục tiêu</span><b class="num">' + nf(t.tdee, 0) + '</b></div><div class="row between"><span class="muted">Đã ăn</span><b class="num">' + nf(c.eaten.kcal) + '</b></div><div class="row between"><span class="muted">Dự kiến ngày</span><b class="num">' + nf(c.day.kcal) + '</b></div><span class="chip ' + ring.cls + '" style="align-self:flex-start">' + ring.status + '</span></div></div>' +
+      '<div class="stack-s" style="margin-top:18px">' + macro.map(function(m){ var e = c.eaten[m[1]]; return '<div><div class="row between s" style="margin-bottom:6px"><span class="row b" style="gap:8px"><i class="dot" style="background:' + m[3] + '"></i>' + m[0] + '</span><span class="num muted"><b style="color:var(--text)">' + nf(e) + '</b> / ' + m[2] + ' g</span></div><div class="bar"><i style="width:' + Math.min(100, Math.round(e / m[2] * 100)) + '%;background:' + m[3] + '"></i></div></div>'; }).join('') + '</div>' +
+      '<button class="btn btn-s block" style="margin-top:16px;color:var(--primary)" data-a="formula">Xem cách tính mục tiêu</button></section>' +
+    '<section class="card stack-s" aria-label="Tải lượng đường huyết"><div class="row between"><h2 class="b" style="font-size:17px">Tải lượng đường huyết (GL)</h2>' + (c.p.dis.dtd ? '<span class="chip c-tint">Ưu tiên ĐTĐ</span>' : '') + '</div>' +
+      '<div class="grid2"><div class="tile"><div class="xs muted">Đã ăn</div><div class="num xb" style="font-size:22px">' + nf(c.eaten.gl) + '</div></div><div class="tile"><div class="xs muted">Dự kiến cả ngày</div><div class="num xb" style="font-size:22px">' + nf(c.day.gl) + '</div></div></div>' +
+      '<div class="row" style="border-top:1px solid var(--line);padding-top:12px"><div class="grow"><div class="xs muted">Món đóng góp GL nhiều nhất</div><div class="b">' + FOODS[top.it.id].n + ' ' + nf(top.it.g, 0) + ' g</div><div class="s muted">' + top.meal.t + '</div></div><span class="chip c-' + topCls + '">GL ' + nf(top.v.gl) + ' · ' + GLL[topCls] + '</span></div>' +
+      '<button class="btn btn-o block" data-a="open-food" data-mk="' + top.mk + '" data-i="' + top.i + '" data-swap="1">Tìm món GL thấp hơn</button>' +
+      '<p class="xs muted">GL = GI × Bột đường (g) / 100. Màu theo từng món: ≤10 Thấp · 10–20 Trung bình · ≥20 Cao.</p></section>' +
+    '<section class="stack-s" aria-label="Các bữa hôm nay"><h2 class="h2">Các bữa hôm nay</h2>' +
+      MEALS.map(function(m){
+        var d = !!c.done[m.k], x = c.mt[m.k], pending = !d && m.k === nextPending;
+        var fit = r1(Math.abs(c.eaten.kcal + MEALS.filter(function(o){ return !c.done[o.k]; }).reduce(function(s, o){ return s + c.mt[o.k].kcal; }, 0) - t.tdee));
+        var maxI = 0; c.menu[m.k].forEach(function(it, i){ if (calc(it.id, it.g).gl > calc(c.menu[m.k][maxI].id, c.menu[m.k][maxI].g).gl) maxI = i; });
+        return '<article class="card stack-s" style="border:1.5px solid ' + (pending ? 'var(--primary)' : 'var(--line)') + '"><div class="row between"><div><div class="b" style="font-size:17px">' + m.t + '</div><div class="s muted num">' + m.time + ' · ' + nf(x.kcal) + ' kcal · GL ' + nf(x.gl) + '</div></div><span class="chip ' + (d ? 'c-ok' : 'c-tint') + '">' + (d ? 'Đã ăn' : 'Sắp tới') + '</span></div>' +
+          '<p class="muted" style="font-size:15px">' + c.menu[m.k].map(function(it){ return FOODS[it.id].n + ' ' + nf(it.g, 0) + ' g'; }).join(' · ') + '</p>' +
+          (pending ? '<div style="background:var(--tint);border-radius:14px;padding:12px;font-size:15px"><div>Ngân sách còn lại: <b class="num">' + nf(Math.max(c.remaining, 0)) + ' kcal</b></div><div class="s muted">= ' + nf(t.tdee, 0) + ' mục tiêu − ' + nf(c.eaten.kcal) + ' đã ăn</div><div class="s muted">Các bữa còn lại theo gợi ý → cả ngày lệch ' + nf(fit) + ' kcal ' + (fit < 50 ? '(đạt ±50)' : '(chưa đạt)') + '</div></div>' : '') +
+          (!d ? '<div class="grid2"><button class="btn btn-p" data-a="meal-done" data-k="' + m.k + '">Đã ăn</button><button class="btn btn-s" data-a="open-food" data-mk="' + m.k + '" data-i="' + maxI + '" data-swap="1">Ăn khác đi</button></div>' : '<button class="btn btn-t" style="align-self:flex-start;min-height:40px;padding:0" data-a="meal-undo" data-k="' + m.k + '">Hoàn tác</button>') +
+        '</article>';
+      }).join('') + '</section>' +
+    '<p class="xs muted center">Thông tin tham khảo, không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.</p></div>';
+}
+
+function vMenu(c){
+  var days = [];
+  for (var i = 0; i < 7; i++) { var dt = addDays(new Date(), i); days.push({ i:i, dow: i === 0 ? 'Nay' : DOW[dt.getDay()], dd: pad2(dt.getDate()), key:dkey(dt) }); }
+  var key = days[U.day].key, menu = S.menus[key];
+  var out = '<div class="pad stack"><header class="row between"><h1 class="h1">Thực đơn</h1><button class="btn btn-p" style="border-radius:999px" data-a="gen">' + ic('spark', 18, 2.2) + (menu ? 'Tạo lại thực đơn' : 'Tạo thực đơn') + '</button></header>' +
+    '<div class="days" role="tablist" aria-label="Chọn ngày">' + days.map(function(d){ var has = !!S.menus[d.key]; return '<button class="daybtn" role="tab" aria-selected="' + (d.i === U.day) + '" data-a="day" data-i="' + d.i + '"><span class="xs b">' + d.dow + '</span><span class="xb" style="font-size:17px">' + d.dd + '</span><span style="width:6px;height:6px;border-radius:50%;background:' + (has ? 'currentColor' : 'transparent') + '"></span></button>'; }).join('') + '</div>';
+  if (!menu) {
+    return out + '<section class="card stack-s center" style="border:1.5px dashed var(--line);padding:32px 20px;align-items:center"><span style="width:64px;height:64px;border-radius:50%;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center">' + ic('log', 30) + '</span>' +
+      '<h2 class="h2">Chưa có thực đơn cho ngày ' + days[U.day].dd + '</h2><p class="muted" style="font-size:15px">Lập 3 bữa từ 621 thực phẩm Việt Nam, kiểm tra an toàn 2 lớp và cân đối trong ±50 kcal so với mục tiêu.</p>' +
+      '<button class="btn btn-p btn-x" data-a="gen">Tạo thực đơn ngày này</button></section></div>';
+  }
+  var d = dayTot(menu), gap = r1(Math.abs(d.kcal - c.t.tdee)), within = gap < 50;
+  out += '<section class="card stack-s"><div class="row between" style="align-items:flex-start"><div><div class="s muted">Tổng ngày · mục tiêu ' + nf(c.t.tdee, 0) + ' kcal</div><div class="num xb" style="font-size:26px">' + nf(d.kcal) + ' <span class="b muted" style="font-size:15px">kcal</span></div></div><span class="chip ' + (within ? 'c-ok' : 'c-warn') + '">' + (within ? 'Đạt ±50 · lệch ' : 'Lệch ') + nf(gap) + ' kcal</span></div>' +
+    '<div class="grid4">' + [ [ 'Đạm', d.p + '', c.t.P, 'var(--P)' ], [ 'Béo', d.l + '', c.t.L, 'var(--L)' ], [ 'Bột', d.c + '', c.t.C, 'var(--C)' ] ].map(function(x){ return '<div class="tile" style="padding:8px 10px"><div class="xs muted row" style="gap:5px"><i class="dot" style="width:8px;height:8px;background:' + x[3] + '"></i>' + x[0] + '</div><div class="num xb" style="font-size:15px;white-space:nowrap">' + nf(+x[1]) + ' g</div><div class="xs muted">/ ' + x[2] + ' g</div></div>'; }).join('') +
+    '<div class="tile" style="padding:8px 10px"><div class="xs muted">GL</div><div class="num xb" style="font-size:15px;white-space:nowrap">' + nf(d.gl) + '</div><div class="xs muted">cả ngày</div></div></div></section>';
+  out += MEALS.map(function(m){
+    return '<section class="card" style="padding:14px 16px 6px" aria-label="' + m.t + '"><div class="row between" style="align-items:baseline;padding-bottom:6px"><h2 class="b" style="font-size:17px">' + m.t + ' <span class="s muted" style="font-weight:500">· ' + m.time + '</span></h2><span class="s b num">' + nf(tot(menu[m.k]).kcal) + ' kcal</span></div>' +
+      menu[m.k].map(function(it, i){ var v = calc(it.id, it.g); return '<button class="itemrow" data-a="open-food" data-mk="' + m.k + '" data-i="' + i + '"><span class="grow" style="display:flex;flex-direction:column"><span class="b" style="font-weight:600">' + FOODS[it.id].n + '</span><span class="s muted num">' + nf(it.g, 0) + ' g · ' + nf(v.kcal) + ' kcal</span>' + (it.from ? '<span class="xs b" style="color:var(--primary)">Đã thay vì: ' + esc(it.from) + '</span>' : '') + '</span>' + glChip(v) + '<span class="muted">' + ic('chev', 18) + '</span></button>'; }).join('') + '</section>';
+  }).join('');
+  out += '<div class="grid3"><button class="btn btn-p" data-a="save-log">Lưu nhật ký</button><button class="btn btn-s" data-a="export">Xuất Excel</button><button class="btn btn-s" data-a="share">Chia sẻ</button></div></div>';
+  return out;
+}
+
+function vChat(c){
+  var chipsDef = [ [ 'xoi', 'Sáng mai ăn xôi với chè được không?' ], [ 'kho', 'Thịt kho tàu có được không?' ], [ 'budget', 'Bữa tiếp theo còn bao nhiêu calo?' ], [ 'rice', 'Món thay cơm trắng' ], [ 'week', 'Thực đơn 7 ngày' ] ];
+  var msgs = S.chat.map(function(m, i){
+    if (m.k === 'user') return '<div class="bu">' + esc(m.text) + '</div>';
+    if (m.k === 'bot') return '<div class="bb">' + esc(m.text) + '</div>';
+    if (m.k === 'ai') return '<div class="bb">' + md(m.text) + '</div>';
+    if (m.k === 'typing') return '<div class="bb muted" role="status">NutriAI đang trả lời…</div>';
+    if (m.k === 'block') return '<div class="alert alert-red" role="alert"><div class="row" style="align-items:flex-start;gap:10px"><span style="color:var(--bad);flex-shrink:0">' + ic('shield', 26) + '</span><strong style="color:var(--bad);font-size:17px;line-height:1.3">' + esc(m.title) + '</strong></div><p style="font-size:15px">' + esc(m.reason) + '</p><span class="chip" style="align-self:flex-start;background:var(--surface);color:var(--bad);border:1px solid var(--bad);white-space:normal">' + esc(m.layer) + '</span>' +
+      (m.alt ? '<div class="alt"><div class="grow"><div class="xs muted">Thay thế an toàn hơn</div><div class="b">' + esc(m.alt) + '</div><div class="xs muted">' + esc(m.altInfo) + '</div></div><button class="btn ' + (m.used ? 'btn-s' : 'btn-p') + '" data-a="chat-use" data-i="' + i + '"' + (m.used ? ' disabled' : '') + '>' + (m.used ? 'Đã ghi nhận' : 'Dùng') + '</button></div>' : '') + '</div>';
+    if (m.k === 'swap') return '<div class="alert alert-amber"><div class="row" style="gap:10px"><span style="color:var(--warn)">' + ic('swap', 24) + '</span><strong style="color:var(--warn);font-size:17px">' + esc(m.title) + '</strong></div>' +
+      '<div style="display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:8px;align-items:center"><div class="alt" style="display:block;padding:10px"><div class="s b">' + esc(m.fromName) + '</div><div class="xs muted">' + esc(m.fromInfo) + '</div></div><span style="color:var(--warn)">' + ic('arrow', 24, 2.2) + '</span><div class="alt" style="display:block;padding:10px"><div class="s b">' + esc(m.toName) + '</div><div class="xs muted">' + esc(m.toInfo) + '</div></div></div>' +
+      '<div class="xb" style="color:var(--ok);font-size:15px">' + esc(m.delta) + '</div><p class="s muted">' + esc(m.note) + '</p></div>';
+    return '';
+  }).join('');
+  return '<header class="pad" style="padding-block:16px 12px;border-bottom:1px solid var(--line);background:var(--surface)"><h1 style="font-size:22px;font-weight:800">Hỏi NutriAI</h1><p class="xs muted">' + (ONLINE ? 'GPT-OSS-120B · Lớp 1 và Lớp 2 kiểm tra mỗi câu trả lời' : 'Mỗi câu hỏi đi qua Lớp 1 (luật y khoa) trước khi trả lời') + '</p></header>' +
+    '<div class="scroll" id="sc"><div class="pad stack-s" style="gap:12px">' + msgs + '<p class="xs muted center" style="margin-top:4px">Thông tin tham khảo, không thay thế tư vấn của bác sĩ hoặc chuyên gia dinh dưỡng.</p></div></div>' +
+    '<div class="pad stack-s" style="padding-block:8px 10px;border-top:1px solid var(--line);background:var(--bg);gap:8px">' +
+      '<div class="chips">' + chipsDef.filter(function(x){ return !U.chips[x[0]]; }).map(function(x){ return '<button class="qchip" data-a="chip" data-k="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div>' +
+      '<form data-form="chat" class="row" style="gap:8px"><label for="chat-in" class="sr">Nhập câu hỏi</label><input id="chat-in" class="input" style="border-radius:999px;height:48px" placeholder="Ví dụ: bữa trưa ăn bún bò được không?" value="' + esc(U.chatDraft) + '" autocomplete="off"><button type="submit" class="btn btn-p" aria-label="Gửi" style="width:48px;padding:0;border-radius:50%;flex-shrink:0">' + ic('send', 20, 2.2) + '</button></form></div>';
+}
+
+function vLog(c){
+  var now = new Date(), y = now.getFullYear(), mo = now.getMonth();
+  var first = new Date(y, mo, 1), lead = (first.getDay() + 6) % 7, nDays = new Date(y, mo + 1, 0).getDate();
+  var stat = function(key){
+    var menu = S.menus[key], done = S.done[key];
+    if (!menu || !done) return null;
+    var eaten = 0, n = 0;
+    MEALS.forEach(function(m){ if (done[m.k]) { eaten += tot(menu[m.k]).kcal; n++; } });
+    if (!n) return null;
+    return { eaten:r1(eaten), full: n === 3, ok: n === 3 && Math.abs(eaten - c.t.tdee) < 50 };
+  };
+  var cells = '', withData = 0;
+  for (var b = 0; b < lead; b++) cells += '<span aria-hidden="true"></span>';
+  for (var d = 1; d <= nDays; d++) {
+    var key = y + '-' + pad2(mo + 1) + '-' + pad2(d), st = stat(key), isT = key === TODAY;
+    if (st) withData++;
+    var style = st ? (st.ok ? 'background:var(--ok-bg);border-color:var(--ok)' : (st.full ? 'background:var(--warn-bg);border-color:var(--warn-line)' : 'border-color:var(--primary)')) : (isT ? 'border-color:var(--primary)' : '');
+    cells += '<span class="num" style="' + style + ';font-weight:' + (isT || st ? 800 : 400) + ';color:' + (st || isT ? 'var(--text)' : 'var(--muted)') + '" aria-label="Ngày ' + d + (st ? (st.ok ? ', đạt mục tiêu' : (st.full ? ', lệch mục tiêu' : ', đang ghi')) : ', chưa có dữ liệu') + '">' + d + '</span>';
+  }
+  var last7 = [];
+  for (var i = 6; i >= 0; i--) { var dt = addDays(now, -i), s = stat(dkey(dt)); last7.push({ lbl:DOW[dt.getDay()], v: s ? s.eaten : 0, has:!!s }); }
+  var haveN = last7.filter(function(x){ return x.has; }).length, maxV = Math.max(c.t.tdee * 1.2, Math.max.apply(null, last7.map(function(x){ return x.v; })));
+  var trend = haveN >= 3
+    ? '<div class="trend" role="img" aria-label="Calo 7 ngày gần nhất so với mục tiêu"><span aria-hidden="true" style="position:absolute;left:0;right:0;bottom:' + (c.t.tdee / maxV * 100) + '%;border-top:2px dashed var(--ok)"></span>' + last7.map(function(x){ return '<div><i style="height:' + (x.v / maxV * 100) + '%;opacity:' + (x.has ? 1 : 0) + '"></i><span class="xs muted">' + x.lbl + '</span></div>'; }).join('') + '</div><p class="xs muted">Đường nét đứt: mục tiêu ' + nf(c.t.tdee, 0) + ' kcal.</p>'
+    : '<p class="muted" style="font-size:15px">Cần ít nhất 3 ngày có nhật ký để vẽ xu hướng calo. Hiện có ' + haveN + ' ngày trong 7 ngày qua.</p><div class="bar"><i style="width:' + Math.round(haveN / 3 * 100) + '%;background:var(--primary)"></i></div>';
+  var todayList = MEALS.map(function(m){ var d = !!c.done[m.k]; return '<div style="border-top:1px solid var(--line);padding-top:10px"><div class="row between"><b>' + m.t + ' · ' + nf(c.mt[m.k].kcal) + ' kcal</b><span class="chip ' + (d ? 'c-ok' : 'c-mute') + '">' + (d ? 'Đã ăn' : 'Chưa ăn') + '</span></div>' +
+    c.menu[m.k].map(function(it){ return '<div class="row between s muted" style="padding-top:4px"><span>' + FOODS[it.id].n + ' · ' + nf(it.g, 0) + ' g' + (it.from ? ' <span class="b" style="color:var(--primary)">(thay ' + esc(it.from) + ')</span>' : '') + '</span><span class="num">' + nf(calc(it.id, it.g).kcal) + '</span></div>'; }).join('') + '</div>'; }).join('');
+  return '<div class="pad stack"><h1 class="h1">Nhật ký</h1>' +
+    '<section class="card"><div class="row between" style="margin-bottom:10px"><h2 class="b" style="font-size:17px">Tháng ' + (mo + 1) + '/' + y + '</h2><span class="xs muted">' + withData + ' ngày có dữ liệu</span></div>' +
+      '<div class="cal">' + [ 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN' ].map(function(w){ return '<span class="xs b muted" style="height:28px">' + w + '</span>'; }).join('') + cells + '</div>' +
+      '<div class="row wrap xs muted" style="gap:14px;margin-top:12px"><span class="row" style="gap:6px"><i class="dot" style="width:12px;height:12px;background:var(--ok-bg);border:2px solid var(--ok)"></i>Đạt ±50 kcal</span><span class="row" style="gap:6px"><i class="dot" style="width:12px;height:12px;background:var(--warn-bg);border:2px solid var(--warn-line)"></i>Lệch mục tiêu</span><span class="row" style="gap:6px"><i class="dot" style="width:12px;height:12px;border:2px solid var(--primary)"></i>Đang ghi</span></div></section>' +
+    '<section class="card stack-s"><h2 class="b" style="font-size:17px">Xu hướng 7 ngày</h2>' + trend + '</section>' +
+    '<section class="card stack-s"><h2 class="b" style="font-size:17px">Hôm nay · ' + nf(c.eaten.kcal) + ' kcal đã ăn</h2>' + todayList + '</section></div>';
+}
+
+function vProfile(c){
+  var p = c.p, t = c.t, acc = S.account || {};
+  var rows = adaRows(t), bad = rows.filter(function(r){ return !r.ok; });
+  var stats = [ [ 'Tuổi', p.age ], [ 'Chiều cao', p.h + ' cm' ], [ 'Cân nặng', p.w + ' kg' ], [ 'BMI', nf(t.bmi) ], [ 'Phân loại', t.cls ], [ 'Vận động', String(p.pal).replace('.', ',') ] ];
+  var tags = DIS.filter(function(d){ return d.key && p.dis[d.k]; }).map(function(d){ return '<span class="chip c-bad" style="font-size:14px;padding:6px 12px">' + d.label + '</span>'; }).join('') +
+    Object.keys(p.avoid || {}).filter(function(k){ return p.avoid[k]; }).map(function(k){ return '<span class="chip c-mute" style="font-size:14px;padding:6px 12px">Không ăn: ' + esc(k) + '</span>'; }).join('');
+  var themes = [ [ 'system', 'Theo máy' ], [ 'light', 'Sáng' ], [ 'dark', 'Tối' ] ];
+  return '<div class="pad stack"><h1 class="h1">Hồ sơ</h1>' +
+    '<section class="card stack-s" aria-label="Tài khoản và đồng bộ"><div class="row"><span style="width:44px;height:44px;border-radius:50%;background:var(--tint);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">' + esc(acc.initial || 'B') + '</span>' +
+      '<div class="grow"><div class="b">' + (acc.method === 'google' ? 'Đăng nhập bằng Google' : 'Đăng nhập bằng email') + '</div><div class="xs muted" style="overflow-wrap:anywhere">' + esc(acc.label || '') + '</div></div><span class="chip c-ok" style="font-size:12px">Đã lưu</span></div>' +
+      '<p class="xs muted">' + (ONLINE ? 'Hồ sơ lưu trên máy chủ NutriAI, đăng nhập trên máy khác là có ngay.' : 'Bản thử nghiệm lưu trên điện thoại này. Bản chính thức lưu trên máy chủ để mở trên mọi thiết bị.') + '</p>' +
+      '<button class="listbtn" data-a="to-emr"><span class="row" style="gap:12px"><span style="color:var(--primary)">' + ic('doc', 24) + '</span><span><span class="b" style="display:block">Hồ sơ sức khỏe điện tử (EMR)</span><span class="xs muted">Tự lấy chẩn đoán, xét nghiệm, thuốc đang dùng</span></span></span><span class="chip c-warn" style="font-size:12px">Sắp có</span></button></section>' +
+    '<section class="card stack-s"><div class="row between"><h2 class="b" style="font-size:17px">Chỉ số cơ thể</h2><button class="btn btn-t" style="min-height:44px;padding:0 4px" data-a="edit-profile">Sửa hồ sơ</button></div>' +
+      '<div class="grid3">' + stats.map(function(s){ return '<div class="tile"><div class="xs muted">' + s[0] + '</div><div class="xb">' + esc(s[1]) + '</div></div>'; }).join('') + '</div>' +
+      '<div class="row wrap" style="gap:8px">' + (tags || '<span class="chip c-mute" style="font-size:14px;padding:6px 12px">Không có bệnh nền</span>') + '</div></section>' +
+    '<section class="card stack-s"><div class="row between"><h2 class="b" style="font-size:17px">Mục tiêu mỗi ngày</h2><button class="btn" style="min-height:44px;background:var(--tint);color:var(--primary)" data-a="formula">Xem cách tính</button></div>' +
+      '<div class="row" style="border-top:1px solid var(--line);padding-top:10px"><i class="dot" style="background:var(--primary)"></i><div class="grow"><div class="b">Năng lượng ' + nf(t.tdee, 0) + ' kcal</div><div class="xs muted">TDEE = BMR × PAL</div></div><span class="chip c-tint">Mục tiêu</span></div>' +
+      rows.map(function(r){ return '<div class="row" style="border-top:1px solid var(--line);padding-top:10px"><i class="dot" style="background:' + r.color + '"></i><div class="grow"><div class="b">' + r.label + ' ' + r.g + ' g</div><div class="xs muted">' + nf(r.pct) + '% năng lượng · ADA ' + r.band + '</div></div><span class="chip ' + (r.ok ? 'c-ok' : 'c-warn') + '">' + (r.ok ? 'Đạt' : 'Ngoài dải') + '</span></div>'; }).join('') +
+      (bad.length ? '<p class="s" style="color:var(--warn);background:var(--warn-bg);border-radius:12px;padding:10px">' + bad.map(function(r){ return r.label + ' ' + nf(r.pct) + '% ngoài dải ADA ' + r.band; }).join('; ') + (bad.some(function(r){ return r.label === 'Đạm'; }) && p.pal > 1.5 ? ' (PAL > 1,5 nên hệ số đạm 2,0 g/kg)' : '') + '. Nên hỏi chuyên gia trước khi áp dụng.</p>' : '') + '</section>' +
+    '<section class="card" style="padding-bottom:6px"><h2 class="b" style="font-size:17px;margin-bottom:6px">Nhắc bữa ăn</h2>' +
+      MEALS.map(function(m){ var on = !!S.reminders[m.k]; return '<button class="listbtn" role="switch" aria-checked="' + on + '" data-a="rem" data-k="' + m.k + '"><span><span class="b" style="display:block">' + m.t + '</span><span class="xs muted">' + m.time + ' · thông báo + email</span></span><span class="switch"></span></button>'; }).join('') + '</section>' +
+    '<section class="card stack-s"><h2 class="b" style="font-size:17px">Giao diện</h2><div class="grid3" role="radiogroup" aria-label="Giao diện">' + themes.map(function(x){ return '<button class="opt" style="justify-content:center;border-radius:14px" role="radio" aria-checked="' + (S.theme === x[0]) + '" data-a="theme" data-k="' + x[0] + '">' + x[1] + '</button>'; }).join('') + '</div></section>' +
+    '<section class="stack-s"><button class="btn btn-s block" data-a="logout">Đăng xuất</button>' +
+      (U.confirmReset
+        ? '<div class="card stack-s" style="border-color:var(--bad)"><p class="s">Xóa hồ sơ, thực đơn và nhật ký trên điện thoại này? Không thể hoàn tác.</p><div class="grid2"><button class="btn" style="background:var(--bad);color:#FFFFFF" data-a="reset-yes">Xóa dữ liệu</button><button class="btn btn-s" data-a="reset-no">Giữ lại</button></div></div>'
+        : '<button class="btn btn-t block" style="color:var(--bad)" data-a="reset-ask">Xóa dữ liệu trên máy này</button>') +
+    '</section><p class="xs muted center">NutriAI đưa ra gợi ý dinh dưỡng tham khảo, không chẩn đoán hay điều trị.</p></div>';
+}
+
+function vSheet(c){
+  if (U.sheet === 'formula') {
+    var p = c.p, t = c.t, hS = nf(p.h / 100, 2);
+    var F = [
+      [ 1, 'Chỉ số khối cơ thể', 'BMI = ' + p.w + ' / ' + hS + '²', nf(t.bmi) + ' · ' + t.cls ],
+      [ 2, 'Cân nặng lý tưởng', '(' + p.h + ' − 100) × 0,9', nf(t.ideal) + ' kg' ],
+      [ 3, 'Chuyển hóa cơ bản (Mifflin-St Jeor)', '10×' + p.w + ' + 6,25×' + p.h + ' − 5×' + p.age + (t.S > 0 ? ' + 5' : ' − 161'), 'BMR = ' + nf(t.bmr) + ' kcal' ],
+      [ 4, 'Năng lượng cả ngày', nf(t.bmr) + ' × ' + String(p.pal).replace('.', ','), 'TDEE = ' + nf(t.tdee, 0) + ' kcal' ],
+      [ 5, 'Đạm (' + (p.pal > 1.5 ? 'PAL > 1,5 → 2,0' : 'PAL ≤ 1,5 → 1,5') + ' g/kg)', p.w + ' × ' + nf(t.pRatio), t.P + ' g' ],
+      [ 6, 'Béo (25% năng lượng)', nf(t.tdee, 0) + ' × 0,25 / 9', t.L + ' g' ],
+      [ 7, 'Bột đường (phần còn lại)', '(' + nf(t.tdee, 0) + ' − (' + t.P + '×4 + ' + t.L + '×9)) / 4', t.C + ' g' ]
+    ];
+    return sheetWrap('Cách tính mục tiêu', '<div class="row between"><h2 style="font-size:20px;font-weight:800">Cách tính mục tiêu</h2><button class="iconbtn" data-a="close" aria-label="Đóng">' + ic('close', 20, 2.2) + '</button></div>' +
+      '<p class="s muted">' + (p.gender === 'nam' ? 'Nam' : 'Nữ') + ' · ' + p.age + ' tuổi · ' + p.h + ' cm · ' + p.w + ' kg · PAL ' + String(p.pal).replace('.', ',') + '. Tính bằng code theo Mifflin-St Jeor và ADA 2026, không do AI ước đoán.</p>' +
+      F.map(function(f){ return '<div class="tile row" style="align-items:flex-start;padding:12px"><span class="chip c-tint" style="width:30px;height:30px;padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0">' + f[0] + '</span><div class="grow"><div class="s muted">' + f[1] + '</div><div style="font-family:var(--mono);font-size:15px;overflow-wrap:anywhere">' + f[2] + '</div><div class="xb" style="font-size:17px">' + f[3] + '</div></div></div>'; }).join(''));
+  }
+  if (U.sheet === 'food') {
+    var menu = S.menus[U.sel.key], cur = menu[U.sel.mk][U.sel.i], f = FOODS[cur.id], v = calc(cur.id, U.draftG), cls = glCls(v.gl, v.gi);
+    var meal = MEALS.filter(function(m){ return m.k === U.sel.mk; })[0];
+    var al = altsFor(cur.id, U.draftG);
+    var chip = v.gi === 0 ? 'GL ≈ 0' : 'GL ' + nf(v.gl) + ' · ' + GLL[cls];
+    if (!U.swapView) {
+      return sheetWrap('Chi tiết món', '<div class="row between" style="align-items:flex-start"><div><div class="s muted">' + meal.t + ' · ' + meal.time + '</div><h2 style="font-size:22px;font-weight:800">' + f.n + '</h2></div><button class="iconbtn" data-a="close" aria-label="Đóng">' + ic('close', 20, 2.2) + '</button></div>' +
+        '<div class="stepper tile" style="padding:8px;border-radius:16px"><button data-a="g" data-d="-10" aria-label="Giảm 10 gam" style="background:var(--surface)">−</button><div class="center"><div class="num xb" style="font-size:28px">' + nf(U.draftG, 0) + ' g</div><div class="xs muted">khối lượng nguyên liệu sống</div></div><button data-a="g" data-d="10" aria-label="Tăng 10 gam" style="background:var(--surface)">+</button></div>' +
+        '<div class="grid3">' + [ [ 'Năng lượng', nf(v.kcal) + ' kcal' ], [ 'Đạm', nf(v.p) + ' g' ], [ 'Béo', nf(v.l) + ' g' ], [ 'Bột đường', nf(v.c) + ' g' ], [ 'GI', v.gi === 0 ? '—' : v.gi ], [ 'GL', v.gi === 0 ? '≈ 0' : nf(v.gl) ] ].map(function(s){ return '<div style="border:1px solid var(--line);border-radius:12px;padding:10px"><div class="xs muted">' + s[0] + '</div><div class="num xb" style="font-size:17px">' + s[1] + '</div></div>'; }).join('') + '</div>' +
+        '<div class="row c-' + cls + '" style="border-radius:14px;padding:12px;gap:10px"><b>' + chip + '</b><span class="s" style="color:var(--text)">' + (v.gi === 0 ? 'Bột đường dưới 5 g/100 g nên gần như không ảnh hưởng đường huyết.' : '= GI ' + v.gi + ' × ' + nf(v.c) + ' g bột đường / 100') + '</span></div>' +
+        '<p class="xs muted">Nguồn: Bảng Thành phần Thực phẩm Việt Nam (FCDB 2017). GI: ' + (v.gi === 0 ? 'không áp dụng' : 'giá trị công bố (Atkinson et al.)') + '.</p>' +
+        '<button class="btn btn-p btn-x block" data-a="g-save">Lưu khối lượng</button>' +
+        (f.grp && v.gi > 0 ? '<button class="btn btn-o btn-x block" data-a="to-swap">Tìm món GL thấp hơn</button>' : ''));
+    }
+    return sheetWrap('Đổi món', '<div class="row" style="gap:8px"><button class="iconbtn" data-a="swap-back" aria-label="Quay lại">' + ic('back', 20, 2.2) + '</button><h2 style="font-size:20px;font-weight:800">Đổi món GL thấp hơn</h2></div>' +
+      '<div class="tile" style="padding:12px"><div class="xs muted">Đang dùng · ' + meal.t + '</div><div class="b">' + f.n + ' ' + nf(U.draftG, 0) + ' g</div><div class="s muted num">' + nf(v.kcal) + ' kcal · ' + chip + '</div></div>' +
+      '<p class="s muted">Giữ nguyên năng lượng, chọn món cùng nhóm “' + (f.grp || '') + '” có GL thấp hơn.</p>' +
+      (al.better.length ? al.better.map(function(a){ var ac = glCls(a.v.gl, a.v.gi); return '<div class="stack-s" style="border:1.5px solid var(--line);border-radius:16px;padding:12px;gap:8px"><div class="row between" style="align-items:flex-start"><div><div class="b" style="font-size:17px">' + FOODS[a.id].n + ' ' + nf(a.g, 0) + ' g</div><div class="s muted num">' + nf(a.v.kcal) + ' kcal · Bột đường ' + nf(a.v.c) + ' g · GI ' + a.v.gi + '</div></div><span class="chip c-' + ac + '">GL ' + nf(a.v.gl) + '</span></div><div class="xb" style="color:var(--ok);font-size:15px">Giảm ' + nf(Math.abs(a.delta)) + '% GL so với món hiện tại</div><button class="btn btn-p" data-a="use-alt" data-id="' + a.id + '" data-g="' + a.g + '" data-delta="' + nf(Math.abs(a.delta)) + '">Dùng món này</button></div>'; }).join('')
+        : '<p class="tile" style="padding:12px;font-size:15px">Chưa có món cùng nhóm nào giảm được GL khi giữ nguyên năng lượng. Hãy thử giảm khẩu phần.</p>') +
+      (al.worse ? '<p class="xs muted">' + al.worse + ' món cùng nhóm có GL cao hơn đã được loại khỏi danh sách.</p>' : ''));
+  }
+  return '';
+}
+function sheetWrap(label, inner){ return '<div class="sheet-wrap"><button class="sheet-bg" data-a="close" aria-label="Đóng"></button><div class="sheet" role="dialog" aria-modal="true" aria-label="' + label + '"><span class="handle"></span>' + inner + '</div></div>'; }
+
+function vGen(){
+  var g = U.gen, frac = (g + 0.5) / GEN_STEPS.length;
+  return '<div class="overlay" role="status" aria-live="polite"><div class="stack-s center" style="align-items:center"><span style="width:84px;height:84px;border-radius:50%;background:conic-gradient(var(--primary) ' + Math.round(frac * 360) + 'deg, var(--track) 0deg);display:flex;align-items:center;justify-content:center"><span class="xb" style="width:66px;height:66px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary)">' + Math.round(frac * 100) + '%</span></span><h2 style="font-size:22px;font-weight:800">AI đang lập thực đơn</h2><p class="muted" style="font-size:15px">Món ăn đi qua từng lớp kiểm tra dưới đây trước khi tới bạn.</p></div>' +
+    '<ol class="stack-s" style="list-style:none;margin:0;padding:0">' + GEN_STEPS.map(function(l, i){ var st = i < g ? 'done' : (i === g ? 'run' : 'wait');
+      return '<li class="row" style="background:' + (st === 'run' ? 'var(--tint)' : 'var(--surface)') + ';border:1.5px solid ' + (st === 'run' ? 'var(--primary)' : 'var(--line)') + ';border-radius:14px;padding:12px"><span style="width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;background:' + (st === 'done' ? 'var(--ok)' : (st === 'run' ? 'var(--primary)' : 'var(--surface2)')) + ';color:' + (st === 'wait' ? 'var(--muted)' : 'var(--on-primary)') + '">' + (st === 'done' ? '✓' : i + 1) + '</span><span style="font-size:15px;font-weight:' + (st === 'run' ? 700 : 500) + ';color:' + (st === 'wait' ? 'var(--muted)' : 'var(--text)') + '">' + l + '</span></li>'; }).join('') + '</ol></div>';
+}
+
+function vApp(){
+  ensureToday();
+  var c = ctx(), body;
+  if (U.tab === 'chat') body = vChat(c);
+  else body = '<div class="scroll" id="sc">' + (U.tab === 'today' ? vToday(c) : U.tab === 'menu' ? vMenu(c) : U.tab === 'log' ? vLog(c) : vProfile(c)) + '</div>';
+  var nav = [ [ 'today', 'Hôm nay' ], [ 'menu', 'Thực đơn' ], [ 'chat', 'Hỏi NutriAI' ], [ 'log', 'Nhật ký' ], [ 'profile', 'Hồ sơ' ] ];
+  return body + '<nav class="nav" aria-label="Điều hướng chính"><div class="nav-in">' + nav.map(function(n){
+    var cur = U.tab === n[0] ? ' aria-current="page"' : '';
+    if (n[0] === 'chat') return '<button class="fab" data-a="tab" data-k="chat"' + cur + '><span>' + ic('chat', 26) + '</span><span>' + n[1] + '</span></button>';
+    return '<button class="navbtn" data-a="tab" data-k="' + n[0] + '"' + cur + '>' + ic(n[0], 24) + '<span>' + n[1] + '</span></button>'; }).join('') + '</div></nav>' +
+    vSheet(c) + (U.gen !== null ? vGen() : '');
+}
+
+/* ---------- Render ---------- */
+var app = document.getElementById('app');
+function currentView(){
+  if (!S.account) return 'login';
+  if (U.view === 'onb') return 'onb';
+  if (U.view === 'emr' || !S.profile) return 'emr';
+  return 'app';
+}
+function render(){
+  var sc = document.getElementById('sc'), top = sc ? sc.scrollTop : 0;
+  var t = document.getElementById('toast');
+  var v = currentView();
+  app.innerHTML = v === 'login' ? vLogin() : v === 'emr' ? vEmr() : v === 'onb' ? vOnb() : vApp();
+  if (t) app.appendChild(t);
+  var ns = document.getElementById('sc');
+  if (ns) {
+    if (U.toBottom) { ns.scrollTop = ns.scrollHeight; U.toBottom = false; }
+    else if (U.resetScroll) { ns.scrollTop = 0; U.resetScroll = false; }
+    else ns.scrollTop = top;
+  }
+}
+
+/* ---------- Chat ---------- */
+function reply(q, chipId){
+  var p = S.profile, out = [ { k:'user', text:q } ], low = q.toLowerCase();
+  var hits = layer1(q, p);
+  hits.forEach(function(h){
+    var a = ALT[h.disease];
+    if (h.disease === 'Tiểu đường' && h.kws.indexOf('nước ngọt') >= 0) a = { t:'Trà xanh không đường', i:'Thay nước ngọt, không làm tăng đường huyết' };
+    out.push({ k:'block', title:h.kws.map(function(k){ return k.charAt(0).toUpperCase() + k.slice(1); }).join(', ') + ' không phù hợp với bệnh ' + DLABEL[h.disease] + ' của bạn', reason:REASON[h.disease], layer:'Chặn bởi Lớp 1 · Luật y khoa', alt:a.t, altInfo:a.i, used:false });
+  });
+  var dtd = !!p.dis.dtd, handled = hits.length > 0;
+  if (dtd && /(^|[^\p{L}])xôi(?![\p{L}])|gạo nếp/u.test(low)) {
+    var a1 = calc('gao_nep', 200), b1 = calc('gao_lut', 200);
+    out.push({ k:'swap', title:'Xôi nếp có GI cao (86) — đề xuất đổi', fromName:'Xôi · 200 g gạo nếp', fromInfo:nf(a1.kcal) + ' kcal · GL ' + nf(a1.gl), toName:'Cơm gạo lứt · 200 g', toInfo:nf(b1.kcal) + ' kcal · GL ' + nf(b1.gl), delta:'Giảm ' + nf((a1.gl - b1.gl) / a1.gl * 100) + '% GL, năng lượng gần như giữ nguyên', note:'Gạo lứt vẫn thuộc mức GL cao — nên giảm khẩu phần và ăn kèm rau, đạm.' });
+    handled = true;
+  }
+  if (!ONLINE && dtd && /(^|[^\p{L}])kho(?![\p{L}])/u.test(low)) {
+    out.push({ k:'block', title:'Món kho nên hạn chế với bệnh Tiểu đường', reason:'Món kho thường dùng nước màu (đường thắng) hoặc nước dừa — đường ẩn mà danh sách từ khóa không phát hiện được.', layer:'Lớp 2 · AI kiểm duyệt (mô phỏng trong bản thử)', alt:'Thịt lợn nạc luộc 100 g', altInfo:'139,0 kcal · Bột đường 0 g · GL ≈ 0', used:false });
+    handled = true;
+  }
+  var c = ctx(), localOnly = false;
+  if (/calo|ngân sách|kcal/.test(low) && !hits.length) {
+    localOnly = true;
+    var next = MEALS.filter(function(m){ return !c.done[m.k]; });
+    out.push({ k:'bot', text: next.length
+      ? 'Bạn đã ăn ' + nf(c.eaten.kcal) + ' kcal hôm nay.\nNgân sách còn lại: ' + nf(Math.max(c.remaining, 0)) + ' kcal cho ' + next.map(function(m){ return m.t.toLowerCase(); }).join(', ') + '.\nNếu ăn theo gợi ý, cả ngày lệch ' + nf(c.gapDay) + ' kcal' + (c.gapDay < 50 ? ' — trong ngưỡng ±50 kcal.' : ' — ngoài ngưỡng ±50 kcal.')
+      : 'Bạn đã ăn đủ 3 bữa: ' + nf(c.eaten.kcal) + ' kcal, lệch ' + nf(c.gapEaten) + ' kcal so với mục tiêu ' + nf(c.t.tdee, 0) + ' kcal.' });
+    handled = true;
+  }
+  if (/thay cơm|thay gạo|cơm trắng/.test(low)) {
+    localOnly = true;
+    var base = calc('gao_te', 100), al = altsFor('gao_te', 100).better;
+    out.push({ k:'bot', text:'Cùng năng lượng với 100 g gạo tẻ (' + nf(base.kcal) + ' kcal · GL ' + nf(base.gl) + '):\n' + al.map(function(a){ return '• ' + FOODS[a.id].n + ' ' + nf(a.g, 0) + ' g — GL ' + nf(a.v.gl) + ' (giảm ' + nf(Math.abs(a.delta)) + '%)'; }).join('\n') + '\nMiến dong giảm GL nhiều nhất; các lựa chọn khác giảm ít.' });
+    handled = true;
+  }
+  if (!handled && !ONLINE) out.push({ k:'bot', text:'Lớp 1 không phát hiện thực phẩm chống chỉ định với hồ sơ của bạn' + (diseaseNames(p) ? ' (' + diseaseNames(p) + ')' : '') + '.\nBản thử nghiệm chưa nối với máy chủ AI nên chưa trả lời tự do. Bản chính thức gửi câu hỏi tới GPT-OSS-120B kèm hồ sơ và danh sách 621 món, rồi kiểm tra thêm bằng Lớp 2.' });
+  var useAI = !!ONLINE && !localOnly;
+  if (useAI) out.push({ k:'typing' });
+  S.chat = S.chat.concat(out).slice(-60);
+  if (chipId) U.chips[chipId] = true;
+  save(); U.toBottom = true; render();
+  if (useAI) askAI(q);
+}
+
+/* ---------- Hành động ---------- */
+var genT;
+function runGen(){
+  if (U.gen !== null) return;
+  U.gen = 0; render();
+  var tick = function(){
+    U.gen++;
+    if (U.gen < GEN_STEPS.length) { render(); genT = setTimeout(tick, 700); return; }
+    var key = dkey(addDays(new Date(), U.day));
+    S.menus[key] = genMenu(S.profile, U.day);
+    if (!S.done[key]) S.done[key] = {};
+    save(); U.gen = null; U.tab = 'menu'; render();
+    var hits = 0;
+    MEALS.forEach(function(m){ S.menus[key][m.k].forEach(function(it){ hits += layer1(FOODS[it.id].n, S.profile).length; }); });
+    toast('Đã tạo thực đơn · ' + hits + ' món vi phạm sau kiểm tra Lớp 1');
+  };
+  genT = setTimeout(tick, 700);
+}
+function act(a, ds){
+  var d = U.draft, menuKey;
+  switch (a) {
+    case 'google': if (ONLINE) { googleLogin(); return; } S.account = { method:'google', label:'Tài khoản Google (mô phỏng trong bản thử)', initial:'G' }; save(); U.resetScroll = true; break;
+    case 'register': if (U.pending) emailLogin(U.pending.em, U.pending.pw, true); return;
+    case 'logout':
+      if (ONLINE) { try { if (window.firebase && firebase.apps.length) firebase.auth().signOut(); } catch (e) {} S = freshState(); U.srv = null; U.chips = {}; }
+      else S.account = null;
+      U.view = null; U.tab = 'today'; save(); break;
+    case 'to-emr': U.view = 'emr'; U.resetScroll = true; break;
+    case 'emr-back': U.view = null; break;
+    case 'emr-toggle': U.emrOn[ds.k] = !U.emrOn[ds.k]; break;
+    case 'to-onb': case 'edit-profile': U.draft = S.profile ? clone(S.profile) : defaultDraft(); U.step = 0; U.showCalc = false; U.view = 'onb'; U.resetScroll = true; break;
+    case 'onb-back': if (U.step > 0) U.step--; else U.view = S.profile ? null : 'emr'; U.resetScroll = true; break;
+    case 'onb-next': U.step = Math.min(5, U.step + 1); U.resetScroll = true; break;
+    case 'onb-restart': U.step = 0; U.showCalc = false; U.resetScroll = true; break;
+    case 'onb-gender': d.gender = ds.k; break;
+    case 'onb-age': d.age = Math.max(18, Math.min(90, d.age + +ds.d)); break;
+    case 'onb-h': d.h = Math.max(120, Math.min(220, d.h + +ds.d)); break;
+    case 'onb-w': d.w = Math.max(30, Math.min(200, d.w + +ds.d)); break;
+    case 'onb-pal': d.pal = +ds.v; break;
+    case 'onb-dis': if (ds.k === 'none') d.dis = d.dis.none ? {} : { none:true }; else { d.dis[ds.k] = !d.dis[ds.k]; delete d.dis.none; } break;
+    case 'onb-avoid': d.avoid[ds.k] = !d.avoid[ds.k]; break;
+    case 'onb-like': d.likes[ds.k] = !d.likes[ds.k]; break;
+    case 'onb-calc': U.showCalc = !U.showCalc; break;
+    case 'onb-save':
+      var changed = !S.profile || JSON.stringify(S.profile) !== JSON.stringify(d);
+      S.profile = clone(d);
+      if (changed) { S.menus = {}; S.menus[TODAY] = genMenu(S.profile, 0); S.done[TODAY] = S.done[TODAY] || {}; S.chat = []; U.chips = {}; }
+      save(); U.view = null; U.tab = 'today'; U.resetScroll = true; render(); toast('Đã lưu hồ sơ · mục tiêu ' + nf(targets(S.profile).tdee, 0) + ' kcal/ngày');
+      if (ONLINE) pushProfile();
+      return;
+    case 'tab': U.tab = ds.k; U.sheet = null; U.resetScroll = true; if (ds.k === 'chat') U.toBottom = true; if (ds.k === 'menu') U.day = 0; break;
+    case 'day': U.day = +ds.i; break;
+    case 'gen': runGen(); return;
+    case 'meal-done': S.done[TODAY][ds.k] = true; save(); render(); toast('Đã ghi ' + MEALS.filter(function(m){ return m.k === ds.k; })[0].t.toLowerCase() + ' vào nhật ký'); if (ONLINE) postMeal(ds.k); return;
+    case 'meal-undo': delete S.done[TODAY][ds.k]; save(); if (ONLINE) { render(); toast('Đã hoàn tác trên máy này; bản ghi đã gửi máy chủ vẫn được giữ'); return; } break;
+    case 'formula': U.sheet = 'formula'; break;
+    case 'close': U.sheet = null; U.swapView = false; break;
+    case 'open-food':
+      menuKey = U.tab === 'menu' ? dkey(addDays(new Date(), U.day)) : TODAY;
+      U.sel = { key:menuKey, mk:ds.mk, i:+ds.i }; U.draftG = S.menus[menuKey][ds.mk][+ds.i].g; U.swapView = ds.swap === '1'; U.sheet = 'food'; break;
+    case 'g': U.draftG = Math.max(10, Math.min(1000, U.draftG + +ds.d)); break;
+    case 'g-save': S.menus[U.sel.key][U.sel.mk][U.sel.i].g = U.draftG; save(); U.sheet = null; render(); toast('Đã cập nhật khối lượng — tổng ngày được tính lại'); return;
+    case 'to-swap': U.swapView = true; break;
+    case 'swap-back': U.swapView = false; break;
+    case 'use-alt':
+      var arr = S.menus[U.sel.key][U.sel.mk], old = arr[U.sel.i];
+      arr[U.sel.i] = { id:ds.id, g:+ds.g, from: old.from || (FOODS[old.id].n + ' ' + nf(U.draftG, 0) + ' g') };
+      save(); U.sheet = null; U.swapView = false; render(); toast('Đã đổi sang ' + FOODS[ds.id].n + ' ' + ds.g + ' g · GL giảm ' + ds.delta + '%'); return;
+    case 'save-log':
+      if (!ONLINE) { toast('Đã lưu. Bản chính thức ghi vào máy chủ qua POST /api/user/meals'); return; }
+      menuKey = dkey(addDays(new Date(), U.day));
+      api('/api/user/schedules', 'POST', { date:menuKey, meal_data:menuText(S.menus[menuKey]) })
+        .then(function(){ toast('Đã lưu thực đơn — email nhắc bữa sẽ gửi thực đơn này'); })
+        .catch(function(e){ toast('Chưa lưu được: ' + e.message); });
+      return;
+    case 'export':
+      if (!ONLINE) { toast('Bản chính thức xuất Ho_So_Dinh_Duong_NutriAI.xlsx qua /api/export-excel'); return; }
+      exportExcel(dkey(addDays(new Date(), U.day))); return;
+    case 'share': toast('Bản thử nghiệm chưa hỗ trợ chia sẻ cho người thân'); return;
+    case 'chip':
+      if (ds.k === 'week') { U.tab = 'menu'; U.day = 0; U.resetScroll = true; break; }
+      var q = { xoi:'Sáng mai ăn xôi với chè được không?', kho:'Thịt kho tàu có được không?', budget:'Bữa tiếp theo còn bao nhiêu calo?', rice:'Món thay cơm trắng' }[ds.k];
+      reply(q, ds.k); return;
+    case 'chat-use': S.chat[+ds.i].used = true; save(); break;
+    case 'rem': S.reminders[ds.k] = !S.reminders[ds.k]; save(); render(); toast(S.reminders[ds.k] ? 'Đã bật nhắc bữa (bản thử chưa gửi thông báo thật)' : 'Đã tắt nhắc bữa'); return;
+    case 'theme': S.theme = ds.k; save(); applyTheme(); break;
+    case 'reset-ask': U.confirmReset = true; break;
+    case 'reset-no': U.confirmReset = false; break;
+    case 'reset-yes':
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      S = { account:null, profile:null, menus:{}, done:{}, reminders:{ sang:true, trua:true, toi:true }, chat:[], theme:'system' };
+      U.confirmReset = false; U.view = null; U.tab = 'today'; applyTheme(); break;
+  }
+  render();
+}
+app.addEventListener('click', function(e){
+  var el = e.target.closest('[data-a]');
+  if (!el || el.disabled) return;
+  act(el.getAttribute('data-a'), el.dataset);
+});
+app.addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target.getAttribute('data-form');
+  if (f === 'login') {
+    var em = (document.getElementById('lg-email').value || '').trim(), pw = document.getElementById('lg-pass').value || '';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { U.loginErr = 'Email chưa đúng định dạng, ví dụ ten@vidu.com.'; render(); return; }
+    if (pw.length < 6) { U.loginErr = 'Mật khẩu cần ít nhất 6 ký tự.'; render(); document.getElementById('lg-email').value = em; return; }
+    if (ONLINE) { U.offerRegister = false; emailLogin(em, pw, false); return; }
+    U.loginErr = '';
+    S.account = { method:'email', label:em, initial:em.charAt(0).toUpperCase() };
+    save(); U.resetScroll = true; render();
+  } else if (f === 'chat') {
+    var inp = document.getElementById('chat-in'), q = (inp.value || '').trim();
+    if (!q) return;
+    U.chatDraft = '';
+    reply(q);
+    var ni = document.getElementById('chat-in'); if (ni) ni.focus();
+  }
+});
+app.addEventListener('input', function(e){ if (e.target.id === 'chat-in') U.chatDraft = e.target.value; });
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && U.sheet) { U.sheet = null; U.swapView = false; render(); } });
+
+S.chat = (S.chat || []).filter(function(m){ return m.k !== 'typing'; });
+applyTheme();
+render();
+if (ONLINE && S.token) pullProfile();
+})();
+</script>

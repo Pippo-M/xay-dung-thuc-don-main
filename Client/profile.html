@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Cá Nhân - Dinh Dưỡng AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background: #fafafa; margin: 0; color: #333; }
+        
+        /* Đồng bộ Header với index.html */
+        header { background: white; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 999; }
+        .header-container { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 12px 24px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-box { width: 44px; height: 44px; background: #eef2f1; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px solid #e0e6e4; }
+        .brand-name { font-size: 19px; font-weight: bold; color: #00796B; line-height: 1.2; display: block; }
+        .hospital-name { display: block; font-size: 13px; color: #666; font-weight: 500; line-height: 1.3; }
+        
+        nav ul { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; }
+        nav a.active { color: #00796B; font-weight: bold; }
+        nav a:hover { color: #00796B; }
+
+        .profile-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        
+        .profile-header-card { background: white; border-radius: 16px; padding: 40px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 30px; position: relative; overflow: hidden; }
+        .profile-header-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100px; background: linear-gradient(90deg, #00796B, #009688); z-index: 0; }
+        
+        .avatar-wrapper { position: relative; z-index: 1; margin-top: 10px; }
+        .avatar-img { width: 130px; height: 130px; border-radius: 50%; border: 5px solid white; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .avatar-placeholder { width: 130px; height: 130px; background: #90CAF9; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 60px; color: white; border: 5px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        
+        .profile-name { font-size: 28px; font-weight: bold; margin: 15px 0 5px; color: #222; }
+        .profile-email { color: #666; font-size: 16px; margin-bottom: 20px; }
+        
+        .profile-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
+        .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        
+        h3 { font-size: 20px; margin: 0 0 25px; display: flex; align-items: center; gap: 10px; color: #00796B; }
+        
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; color: #555; margin-bottom: 8px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 15px; border: 1.5px solid #eee; border-radius: 10px; font-size: 15px; transition: 0.3s; box-sizing: border-box; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #00796B; outline: none; background: #f0f7f6; }
+        
+        .info-list { list-style: none; padding: 0; margin: 0; }
+        .info-list li { padding: 15px 0; border-bottom: 1px solid #f5f5f5; display: flex; justify-content: space-between; font-size: 15px; }
+        .info-list li span:first-child { color: #777; font-weight: 500; }
+        .info-list li span:last-child { color: #222; font-weight: 600; }
+
+        .btn-save { background: #00796B; color: white; border: none; padding: 14px 30px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; font-size: 16px; margin-top: 10px; }
+        .btn-save:hover { background: #004D40; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,121,107,0.3); }
+        
+        .logout-link { color: #ff5252; text-decoration: none; font-weight: bold; font-size: 14px; margin-top: 20px; display: inline-block; cursor: pointer; }
+
+        .schedule-section { margin-top: 40px; }
+        .schedule-item { background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; border-left: 6px solid #00796B; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; }
+        .schedule-date { font-size: 13px; color: #999; margin-bottom: 10px; font-weight: bold; text-transform: uppercase; }
+        .schedule-content { font-size: 15px; line-height: 1.7; color: #444; white-space: pre-wrap; }
+        .btn-delete-task { position: absolute; top: 20px; right: 20px; color: #ddd; background: none; border: none; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        .btn-delete-task:hover { color: #ff5252; }
+
+        @media (max-width: 850px) {
+            .profile-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-box">
+                    <i class='fa-solid fa-seedling' style='color: #00796B; font-size: 20px;'></i>
+                </div>
+                <div class="logo-text">
+                    <span class="hospital-name">Hệ thống Tư vấn</span>
+                    <span class="brand-name">Dinh Dưỡng AI</span>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="profile.html" class="active">Trang cá nhân</a></li>
+                </ul>
+            </nav>
+            <div id="user-greeting" style="font-weight: bold; color: #00796B; font-size: 14px;"></div>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-header-card">
+            <div class="avatar-wrapper" id="avatar-container">
+                <div class="avatar-placeholder"><i class="fa-solid fa-user"></i></div>
+            </div>
+            <div class="profile-name" id="display-name">Đang tải...</div>
+            <div class="profile-email" id="display-email">...</div>
+            <a onclick="logout()" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất tài khoản</a>
+        </div>
+
+        <div class="profile-grid">
+            <!-- Cột Trái: Chỉnh sửa -->
+            <div class="card">
+                <h3><i class="fa-solid fa-user-pen"></i> Chỉnh sửa hồ sơ</h3>
+                
+                <div class="form-group">
+                    <label>Họ và tên</label>
+                    <input type="text" id="user-name" placeholder="Nhập tên của bạn">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input type="text" id="user-phone" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <label>Tuổi</label>
+                        <input type="number" id="user-age" placeholder="Tuổi">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Giới tính</label>
+                        <select id="user-gender">
+                            <option value="nam">Nam</option>
+                            <option value="nu">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Chiều cao (cm)</label>
+                        <input type="number" id="user-height" placeholder="Chiều cao">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cân nặng (kg)</label>
+                    <input type="number" id="user-weight" placeholder="Cân nặng">
+                </div>
+
+                <div class="form-group">
+                    <label>Bệnh nền (Càng chi tiết AI càng tư vấn chuẩn)</label>
+                    <textarea id="user-disease" rows="4" placeholder="Ví dụ: Tiểu đường tuýp 2, Gout, Gan nhiễm mỡ..."></textarea>
+                </div>
+
+                <button class="btn-save" onclick="saveProfile()">Cập nhật thông tin</button>
+            </div>
+
+            <!-- Cột Phải: Thông tin tóm tắt -->
+            <div class="card">
+                <h3><i class="fa-solid fa-circle-info"></i> Chỉ số hiện tại</h3>
+                <ul class="info-list">
+                    <li><span>Chiều cao:</span> <span id="info-height">-- cm</span></li>
+                    <li><span>Cân nặng:</span> <span id="info-weight">-- kg</span></li>
+                    <li><span>Tuổi:</span> <span id="info-age">-- tuổi</span></li>
+                    <li><span>Giới tính:</span> <span id="info-gender">--</span></li>
+                    <li><span>Bệnh nền:</span> <span id="info-disease">--</span></li>
+                    <li><span>Quyền hạn:</span> <span id="info-role" style="color:#00796B">User</span></li>
+                </ul>
+
+                <div style="margin-top: 30px; padding: 20px; background: #f8fbfb; border-radius: 12px; border: 1px solid #e0f2f1;">
+                    <p style="margin: 0; font-size: 13px; color: #555; line-height: 1.5;">
+                        <i class="fa-solid fa-lightbulb" style="color: #ffb300;"></i> 
+                        <b>Mẹo:</b> Thông tin chiều cao và cân nặng sẽ giúp AI tính toán chính xác lượng Calo bạn cần nạp mỗi ngày.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="schedule-section">
+            <h3><i class="fa-solid fa-calendar-days"></i> Lịch ăn uống đã lưu</h3>
+            <div id="schedule-list">
+                <!-- Sẽ được fill bằng JS -->
+                <div style="text-align: center; padding: 50px; color: #aaa;">
+                    <i class="fa-solid fa-box-open" style="font-size: 40px; margin-bottom: 15px;"></i>
+                    <p>Chưa có lịch ăn uống nào được lưu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = window.location.origin;
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        }
+
+        async function loadProfile() {
+            const token = localStorage.getItem('token');
+            if (!token) return logout();
+
+            try {
+                const res = await fetch(`${API_BASE}/api/user/profile`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!res.ok) {
+                    console.error("Token invalid or expired");
+                    return logout();
+                }
+
+                const user = await res.json();
+                
+                // Hiển thị Header
+                document.getElementById('user-greeting').innerText = `XIN CHÀO, ${user.name.toUpperCase()}`;
+                document.getElementById('display-name').innerText = user.name;
+                document.getElementById('display-email').innerText = user.email;
+
+                // Hiển thị Avatar
+                if (user.avatar) {
+                    document.getElementById('avatar-container').innerHTML = `<img src="${user.avatar}" class="avatar-img">`;
+                }
+
+                // Điền vào Form
+                document.getElementById('user-name').value = user.name || '';
+                document.getElementById('user-phone').value = user.phone || '';
+                document.getElementById('user-age').value = user.age || '';
+                document.getElementById('user-gender').value = user.gender || 'nam';
+                document.getElementById('user-height').value = user.height || '';
+                document.getElementById('user-weight').value = user.weight || '';
+                document.getElementById('user-disease').value = user.disease || '';
+
+                // Hiển thị bảng tóm tắt
+                document.getElementById('info-height').innerText = user.height ? `${user.height} cm` : '--';
+                document.getElementById('info-weight').innerText = user.weight ? `${user.weight} kg` : '--';
+                document.getElementById('info-age').innerText = user.age ? `${user.age} tuổi` : '--';
+                document.getElementById('info-gender').innerText = user.gender === 'nu' ? 'Nữ' : 'Nam';
+                document.getElementById('info-disease').innerText = user.disease || 'Không có';
+                document.getElementById('info-role').innerText = user.role === 'admin' ? 'Quản trị viên' : 'Thành viên';
+
+                loadSchedules();
+            } catch (err) {
+                console.error("Lỗi tải profile:", err);
+                logout();
+            }
+        }
+
+        async function saveProfile() {
+            const token = localStorage.getItem('token');
+            const data = {
+                name: document.getElementById('user-name').value,
+                phone: document.getElementById('user-phone').value,
+                age: document.getElementById('user-age').value,
+                gender: document.getElementById('user-gender').value,
+                height: document.getElementById('user-height').value,
+                weight: document.getElementById('user-weight').value,
+                disease: document.getElementById('user-disease').value
+            };
+
+            try {
+                const res = await fetch(`${API_BASE}/api/user/profile`, {
+                    method: 'PUT',
+                    headers: { 
+                        'Content-Type': 'application/json', 
+                        'Authorization': `Bearer ${token}` 
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok) {
+                    alert('✅ Cập nhật hồ sơ thành công!');
+                    location.reload();
+                } else {
+                    alert('❌ Cập nhật thất bại, vui lòng thử lại.');
+                }
+            } catch (err) {
+                alert('Lỗi kết nối server.');
+            }
+        }
+
+        async function loadSchedules() {
+            const token = localStorage.getItem('token');
+            try {
+                const res = await fetch(`${API_BASE}/api/user/schedules`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const schedules = await res.json();
+                const container = document.getElementById('schedule-list');
+
+                if (schedules && schedules.length > 0) {
+                    container.innerHTML = '';
+                    schedules.forEach(s => {
+                        let content = s.meal_data.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                        content = content.replace(/\n/g, '<br>');
+
+                        const div = document.createElement('div');
+                        div.className = 'schedule-item';
+                        div.innerHTML = `
+                            <button class="btn-delete-task" onclick="deleteSchedule(${s.id})"><i class="fa-solid fa-trash-can"></i></button>
+                            <div class="schedule-date"><i class="fa-regular fa-clock"></i> Đã lưu vào ${new Date(s.created_at).toLocaleString('vi-VN')}</div>
+                            <div class="schedule-content">${content}</div>
+                        `;
+                        container.appendChild(div);
+                    });
+                }
+            } catch (err) {
+                console.error("Lỗi tải lịch trình:", err);
+            }
+        }
+
+        async function deleteSchedule(id) {
+            if (!confirm("Bạn có chắc chắn muốn xóa lịch trình này?")) return;
+            const token = localStorage.getItem('token');
+            try {
+                const res = await fetch(`${API_BASE}/api/user/schedules/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.ok) location.reload();
+            } catch (err) {}
+        }
+
+        loadProfile();
+    </script>
+</body>
+</html>

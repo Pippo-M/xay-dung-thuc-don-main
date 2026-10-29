@@ -1,0 +1,38 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "npm install && npm rebuild sqlite3 --build-from-source",
+    "test": "node scripts/05_selftest_engine.js",
+    "db:inspect": "node scripts/00_inspect.js",
+    "db:migrate": "node scripts/01_migrate.js",
+    "db:seed-foods": "node scripts/02_seed_foods.js",
+    "db:push-exp": "node scripts/03_push_experiments.js",
+    "db:verify": "node scripts/04_verify.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "firebase-admin": "^14.0.0",
+    "google-auth-library": "^10.7.0",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.24.4",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^8.0.11",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
+  }
+}

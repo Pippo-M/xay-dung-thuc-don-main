@@ -1,0 +1,24 @@
+# Dependency directories
+node_modules/
+[Ss]erver/node_modules/
+[Cc]lient/node_modules/
+
+# Environment variables
+.env
+[Ss]erver/.env
+
+# Khóa riêng Firebase Admin — đưa lên Render qua biến FIREBASE_SERVICE_ACCOUNT
+serviceAccount.json
+[Ss]erver/serviceAccount.json
+
+# Database
+*.sqlite
+*.sqlite-journal
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

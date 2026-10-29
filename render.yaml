@@ -1,0 +1,40 @@
+# Render Blueprint cho NutriAI — Render đọc file này khi tạo dịch vụ bằng "New > Blueprint".
+# Các giá trị bí mật (sync: false) được nhập tay trên giao diện Render, không nằm trong mã nguồn.
+services:
+  - type: web
+    name: nutriai
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: cd Server && npm install
+    startCommand: cd Server && npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: TZ
+        value: Asia/Ho_Chi_Minh
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: "4000"
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false

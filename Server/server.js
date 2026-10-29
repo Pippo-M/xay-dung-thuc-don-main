@@ -59,10 +59,15 @@ try {
 }
 
 async function initDB() {
+    let connection;
     try {
-        const connection = await pool.getConnection();
+        connection = await pool.getConnection();
         console.log('Connected to MySQL database.');
-
+    } catch (err) {
+        console.error('Không kết nối được MySQL:', err.message);
+        process.exit(1);
+    }
+    try {
         await connection.query(`
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -100,12 +105,30 @@ async function initDB() {
             console.log('Bảng foods trống — đang nạp FCDB bằng scripts/02_seed_foods.js...');
             require('child_process').fork(path.join(__dirname, 'scripts', '02_seed_foods.js'));
         }
-
-        connection.release();
     } catch (err) {
         console.error('Lỗi khởi tạo MySQL:', err.message);
-        process.exit(1);
+        await logDbDiagnostics(connection);
+        // Thiếu quyền CREATE nhưng bảng đã có sẵn thì vẫn phục vụ được; chưa có bảng thì dừng.
+        let ready = false;
+        try {
+            const [[{ n }]] = await connection.query(
+                "SELECT COUNT(*) AS n FROM information_schema.tables WHERE table_schema = DATABASE() AND table_name IN ('users', 'schedules')");
+            ready = Number(n) === 2;
+        } catch (e) { /* bỏ qua, coi như chưa sẵn sàng */ }
+        if (!ready) { connection.release(); process.exit(1); }
+        console.warn('Bảng users và schedules đã có sẵn — server vẫn chạy, nhưng tài khoản CSDL đang thiếu quyền tạo bảng.');
     }
+    connection.release();
+}
+
+// In ra tài khoản, database đang dùng và quyền của nó (không chứa mật khẩu) để chẩn đoán lỗi quyền
+async function logDbDiagnostics(connection) {
+    try {
+        const [[who]] = await connection.query('SELECT CURRENT_USER() AS user, DATABASE() AS db');
+        console.error(`Chẩn đoán: user = ${who.user}, database = ${JSON.stringify(who.db)}`);
+        const [grants] = await connection.query('SHOW GRANTS');
+        grants.forEach(g => console.error('  ' + Object.values(g)[0]));
+    } catch (e) { console.error('Không đọc được thông tin quyền:', e.message); }
 }
 
 // Áp lược đồ db/01_schema_nutriai.sql mỗi lần khởi động (idempotent, giống scripts/01_migrate.js)

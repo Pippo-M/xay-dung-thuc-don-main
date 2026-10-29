@@ -218,12 +218,17 @@ ${body}
 app.post('/api/auth/register', async (req, res) => {
     const { name, password, phone, age, gender } = req.body;
     const email = String(req.body.email || '').trim().toLowerCase();
+    if (!String(name || '').trim()) return res.status(400).json({ error: 'Vui lòng nhập họ và tên.' });
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ error: 'Email chưa đúng định dạng.' });
+    if (String(password || '').length < 6) return res.status(400).json({ error: 'Mật khẩu cần ít nhất 6 ký tự.' });
     try {
-        const role = (email === process.env.ADMIN_EMAIL) ? 'admin' : 'user';
+        const [existing] = await pool.query('SELECT id FROM users WHERE LOWER(email) = ?', [email]);
+        if (existing.length) return res.status(409).json({ error: 'Email này đã có tài khoản.' });
+        const role = (email === String(process.env.ADMIN_EMAIL || '').toLowerCase()) ? 'admin' : 'user';
         const hashedPassword = await bcrypt.hash(password, 10);
         await pool.query(
             'INSERT INTO users (name, email, password, phone, age, gender, role) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [name, email, hashedPassword, phone, age, gender, role]
+            [String(name).trim(), email, hashedPassword, phone, age, gender, role]
         );
         res.status(201).json({ message: `Đăng ký thành công với quyền ${role}!` });
     } catch (error) {

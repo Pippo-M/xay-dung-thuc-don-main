@@ -415,18 +415,17 @@ function resumeGoogleRedirect(){
     .then(function(r){ if (r && r.user) return finishGoogle(r.user); U.busy = false; render(); })
     .catch(googleError);
 }
-function emailLogin(em, pw, register){
-  U.busy = true; U.loginErr = ''; render();
+function emailLogin(em, pw, register, name){
+  U.busy = true; U.loginErr = ''; U.form = { email:em, name:name || '' }; render();
   var login = function(){ return api('/api/auth/login', 'POST', { email:em, password:pw }); };
-  var p = register ? api('/api/auth/register', 'POST', { name:em.split('@')[0], email:em, password:pw }).then(login) : login();
-  p.then(function(d){ return onAuthed(d, 'email'); })
+  var p = register ? api('/api/auth/register', 'POST', { name:name, email:em, password:pw }).then(login) : login();
+  p.then(function(d){ U.form = null; U.authMode = 'login'; return onAuthed(d, 'email'); })
    .catch(function(e){
      U.busy = false;
-     if (!register && e.status === 401) { U.pending = { em:em, pw:pw }; U.offerRegister = true; U.loginErr = 'Sai email hoặc mật khẩu. Nếu trước đây bạn đăng ký bằng Google, hãy bấm “Tiếp tục với Google”. Nếu chưa có tài khoản, bấm “Tạo tài khoản mới”.'; }
-     else if (register && /tồn tại/.test(e.message)) U.loginErr = 'Email này đã có tài khoản. Nếu tài khoản được tạo bằng Google, hãy đăng nhập bằng nút Google.';
+     if (!register && e.status === 401) U.loginErr = 'Sai email hoặc mật khẩu. Nếu trước đây bạn đăng nhập bằng Google, hãy bấm “Tiếp tục với Google”. Chưa có tài khoản thì chọn “Đăng ký”.';
+     else if (register && e.status === 409) U.loginErr = 'Email này đã có tài khoản. Hãy chọn “Đăng nhập”, hoặc dùng nút Google nếu tài khoản được tạo bằng Google.';
      else U.loginErr = e.message;
      render();
-     var el = document.getElementById('lg-email'); if (el) el.value = em;
    });
 }
 function menuText(menu){
@@ -524,6 +523,33 @@ function toast(msg){
 }
 
 /* ---------- Màn: Đăng nhập ---------- */
+function vAuthForm(){
+  var reg = U.authMode === 'register', dis = U.busy ? ' disabled' : '', f = U.form || {};
+  var emailIn = function(id){ return '<input class="input' + (U.loginErr ? ' err' : '') + '" id="' + id + '" type="email" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="ten@vidu.com" value="' + esc(f.email || '') + '">'; };
+  var err = U.loginErr ? '<p role="alert" class="s" style="color:var(--bad)">' + esc(U.loginErr) + '</p>' : '';
+  var tabs = '<div role="tablist" aria-label="Đăng nhập hoặc đăng ký" class="grid2" style="gap:6px;background:var(--surface2);border-radius:16px;padding:5px">' +
+    [ [ 'login', 'Đăng nhập' ], [ 'register', 'Đăng ký' ] ].map(function(t){ var on = (t[0] === 'register') === reg;
+      return '<button type="button" role="tab" aria-selected="' + on + '" data-a="auth-mode" data-k="' + t[0] + '" class="btn" style="min-height:44px;border-radius:12px;background:' + (on ? 'var(--surface)' : 'transparent') + ';color:' + (on ? 'var(--primary)' : 'var(--muted)') + ';box-shadow:' + (on ? '0 1px 3px rgba(0,0,0,.15)' : 'none') + '">' + t[1] + '</button>'; }).join('') + '</div>';
+  if (!reg) {
+    return tabs + '<form data-form="login" class="stack-s" novalidate>' +
+      '<div class="field"><label for="lg-email">Email</label>' + emailIn('lg-email') + '</div>' +
+      '<div class="field"><label for="lg-pass">Mật khẩu</label><input class="input" id="lg-pass" type="password" autocomplete="current-password" placeholder="Ít nhất 6 ký tự"></div>' +
+      err +
+      '<button type="submit" class="btn btn-p btn-x block"' + dis + '>' + (U.busy ? 'Đang đăng nhập…' : 'Đăng nhập') + '</button>' +
+      '<p class="s muted center">Chưa có tài khoản? <button type="button" class="btn btn-t" style="min-height:40px;padding:0 4px;display:inline-flex" data-a="auth-mode" data-k="register">Đăng ký bằng email</button></p>' +
+    '</form>';
+  }
+  return tabs + '<form data-form="register" class="stack-s" novalidate>' +
+    '<div class="field"><label for="rg-name">Họ và tên</label><input class="input" id="rg-name" type="text" autocomplete="name" placeholder="Nguyễn Văn An" value="' + esc(f.name || '') + '"></div>' +
+    '<div class="field"><label for="rg-email">Email</label>' + emailIn('rg-email') + '</div>' +
+    '<div class="field"><label for="rg-pass">Mật khẩu</label><input class="input" id="rg-pass" type="password" autocomplete="new-password" placeholder="Ít nhất 6 ký tự"></div>' +
+    '<div class="field"><label for="rg-pass2">Nhập lại mật khẩu</label><input class="input" id="rg-pass2" type="password" autocomplete="new-password" placeholder="Nhập lại đúng mật khẩu trên"></div>' +
+    err +
+    '<button type="submit" class="btn btn-p btn-x block"' + dis + '>' + (U.busy ? 'Đang tạo tài khoản…' : 'Tạo tài khoản') + '</button>' +
+    '<p class="xs muted">Mật khẩu được mã hóa một chiều (bcrypt) trước khi lưu; không ai xem được mật khẩu gốc.</p>' +
+    '<p class="s muted center">Đã có tài khoản? <button type="button" class="btn btn-t" style="min-height:40px;padding:0 4px;display:inline-flex" data-a="auth-mode" data-k="login">Đăng nhập</button></p>' +
+  '</form>';
+}
 function vLogin(){
   return '<div class="scroll" id="sc"><div class="pad stack" style="padding-top:40px">' +
     '<div class="stack-s"><span style="width:56px;height:56px;border-radius:18px;background:var(--primary);color:var(--on-primary);display:flex;align-items:center;justify-content:center">' + ic('leaf', 30) + '</span>' +
@@ -531,13 +557,7 @@ function vLogin(){
     '<section class="stack-s" aria-label="Đăng nhập">' +
       '<button class="btn btn-s btn-x block" data-a="google" style="background:var(--surface)"' + (U.busy ? ' disabled' : '') + '><span aria-hidden="true" style="width:26px;height:26px;border-radius:50%;border:2px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:14px;font-weight:800">G</span>Tiếp tục với Google</button>' +
       '<div class="row s muted"><span style="flex:1;height:1px;background:var(--line)"></span>hoặc dùng email<span style="flex:1;height:1px;background:var(--line)"></span></div>' +
-      '<form data-form="login" class="stack-s" novalidate>' +
-        '<div class="field"><label for="lg-email">Email</label><input class="input' + (U.loginErr ? ' err' : '') + '" id="lg-email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="ten@vidu.com"></div>' +
-        '<div class="field"><label for="lg-pass">Mật khẩu</label><input class="input" id="lg-pass" type="password" autocomplete="current-password" placeholder="Ít nhất 6 ký tự"></div>' +
-        (U.loginErr ? '<p role="alert" class="s" style="color:var(--bad)">' + esc(U.loginErr) + '</p>' : '') +
-        '<button type="submit" class="btn btn-p btn-x block"' + (U.busy ? ' disabled' : '') + '>' + (U.busy ? 'Đang đăng nhập…' : (ONLINE ? 'Đăng nhập' : 'Đăng nhập / Tạo tài khoản')) + '</button>' +
-        (U.offerRegister ? '<button type="button" class="btn btn-o btn-x block" data-a="register"' + (U.busy ? ' disabled' : '') + '>Tạo tài khoản mới với email này</button>' : '') +
-      '</form></section>' +
+      vAuthForm() + '</section>' +
     '<section class="card stack-s" aria-label="Hồ sơ được lưu ra sao"><h2 class="h2" style="font-size:17px">Hồ sơ của bạn được lưu thế nào</h2>' +
       step('1', 'Tài khoản Google hoặc email gắn với một hồ sơ duy nhất.', 'c-tint') +
       step('2', 'Chỉ số cơ thể, bệnh nền, mục tiêu và nhật ký được lưu lại, mở app là có ngay.', 'c-tint') +
@@ -959,7 +979,10 @@ function act(a, ds){
   var d = U.draft, menuKey;
   switch (a) {
     case 'google': if (ONLINE) { googleLogin(); return; } S.account = { method:'google', label:'Tài khoản Google (mô phỏng trong bản thử)', initial:'G' }; save(); U.resetScroll = true; break;
-    case 'register': if (U.pending) emailLogin(U.pending.em, U.pending.pw, true); return;
+    case 'auth-mode':
+      var cur = document.getElementById(U.authMode === 'register' ? 'rg-email' : 'lg-email');
+      U.form = { email: cur ? cur.value.trim() : '', name: (document.getElementById('rg-name') || {}).value || '' };
+      U.authMode = ds.k; U.loginErr = ''; break;
     case 'logout':
       if (ONLINE) { try { if (window.firebase && firebase.apps.length) firebase.auth().signOut(); } catch (e) {} S = freshState(); U.srv = null; U.chips = {}; }
       else S.account = null;
@@ -1042,12 +1065,27 @@ app.addEventListener('submit', function(e){
   var f = e.target.getAttribute('data-form');
   if (f === 'login') {
     var em = (document.getElementById('lg-email').value || '').trim().toLowerCase(), pw = document.getElementById('lg-pass').value || '';
+    U.form = { email:em };
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { U.loginErr = 'Email chưa đúng định dạng, ví dụ ten@vidu.com.'; render(); return; }
     if (pw.length < 6) { U.loginErr = 'Mật khẩu cần ít nhất 6 ký tự.'; render(); document.getElementById('lg-email').value = em; return; }
-    if (ONLINE) { U.offerRegister = false; emailLogin(em, pw, false); return; }
+    if (ONLINE) { emailLogin(em, pw, false); return; }
     U.loginErr = '';
     S.account = { method:'email', label:em, initial:em.charAt(0).toUpperCase() };
     save(); U.resetScroll = true; render();
+  } else if (f === 'register') {
+    var nm = (document.getElementById('rg-name').value || '').trim();
+    var re = (document.getElementById('rg-email').value || '').trim().toLowerCase();
+    var p1 = document.getElementById('rg-pass').value || '', p2 = document.getElementById('rg-pass2').value || '';
+    U.form = { name:nm, email:re };
+    var bad = !nm ? 'Vui lòng nhập họ và tên.'
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(re) ? 'Email chưa đúng định dạng, ví dụ ten@vidu.com.'
+      : p1.length < 6 ? 'Mật khẩu cần ít nhất 6 ký tự.'
+      : p1 !== p2 ? 'Hai lần nhập mật khẩu chưa khớp.' : '';
+    if (bad) { U.loginErr = bad; render(); return; }
+    if (ONLINE) { emailLogin(re, p1, true, nm); return; }
+    U.loginErr = ''; U.form = null; U.authMode = 'login';
+    S.account = { method:'email', name:nm, label:re, initial:nm.charAt(0).toUpperCase() };
+    save(); U.resetScroll = true; render(); toast('Đã tạo tài khoản (mô phỏng trong bản thử)');
   } else if (f === 'chat') {
     var inp = document.getElementById('chat-in'), q = (inp.value || '').trim();
     if (!q) return;
